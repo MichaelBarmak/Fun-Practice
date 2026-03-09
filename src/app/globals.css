@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-slate-50 text-slate-800;
+  }
+}
+
+@layer utilities {
+  .accordion-open {
+    max-height: 2000px;
+    transition: max-height 0.4s ease-in;
+  }
+  .accordion-closed {
+    max-height: 0;
+    transition: max-height 0.25s ease-out;
+  }
+}
