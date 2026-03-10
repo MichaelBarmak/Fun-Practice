@@ -137,5 +137,16 @@
     "correctAnswer": 1,
     "tolerance": 0,
     "solution": "Let $X_{i,j}$ be the indicator random variable of the event that line $i$ intersects line $j$, for $i \\neq j$ and $i, j \\in \\{1, 2, 3\\}$.\n\nThe total number of intersections is:\n$$N = X_{1,2} + X_{1,3} + X_{2,3}$$\n\nBy linearity of expectation:\n$$\\mathbb{E}[N] = \\mathbb{E}[X_{1,2}] + \\mathbb{E}[X_{1,3}] + \\mathbb{E}[X_{2,3}]$$\n\nBy symmetry:\n$$\\mathbb{E}[X_{1,2}] = \\mathbb{E}[X_{1,3}] = \\mathbb{E}[X_{2,3}]$$\n\nSo it suffices to compute $\\mathbb{E}[X_{1,2}]$.\n\nConsider the two chords determined by four random points on the circle, say $A, B, C, D$. There are exactly three ways to pair the four endpoints into two chords:\n$$(AB,\\ CD), \\quad (AC,\\ BD), \\quad (AD,\\ BC)$$\n\nExactly one of these pairings produces intersecting chords, so:\n$$\\mathbb{P}(X_{1,2} = 1) = \\frac{1}{3}$$\n\nSince $X_{1,2}$ is an indicator variable, $\\mathbb{E}[X_{1,2}] = \\dfrac{1}{3}$.\n\nTherefore:\n$$\\mathbb{E}[N] = \\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = 1$$"
+  },
+  {
+    "id": 12,
+    "title": "Wolves and a Sheep",
+    "category": "Problem Simplification",
+    "difficulty": "Medium",
+    "isNew": true,
+    "preview": "1000 wolves and 1 sheep on an island. A wolf that eats the sheep becomes a sheep. Will the sheep be eaten?",
+    "question": "One thousand magical wolves and one sheep are located on a deserted island with no other animals.\n\nThe rules are as follows:\n1. The sheep can only eat grass. A wolf can eat grass but prefers to eat sheep.\n2. If the sheep is eaten, only one wolf eats it.\n3. Once a wolf eats a sheep, it immediately becomes a sheep itself.\n4. Every wolf wants, above all, to survive.\n5. Wolves are perfectly rational.\n\nWill the sheep be eaten?",
+    "answerType": "theory",
+    "solution": "Let $n$ be the number of wolves. A wolf will eat the sheep only if doing so does not lead to its own death. We analyze small cases:\n\n$n = 0$: No wolves, the sheep survives.\n\n$n = 1$: The wolf eats the sheep, becomes a sheep, and no wolves remain — it survives. So the wolf eats the sheep.\n\n$n = 2$: If one wolf eats the sheep, the situation becomes $n = 1$. By the previous case, the new sheep (the wolf that ate) would be eaten. So neither wolf eats the sheep.\n\n$n = 3$: If a wolf eats the sheep, the situation becomes $n = 2$. By the previous case, the sheep is safe. So the wolf that eats survives — one wolf eats the sheep.\n\nThe pattern is:\n$$n = 0 \\Rightarrow \\text{sheep survives}$$\n$$n = 1 \\Rightarrow \\text{sheep eaten}$$\n$$n = 2 \\Rightarrow \\text{sheep survives}$$\n$$n = 3 \\Rightarrow \\text{sheep eaten}$$\n\nThe sheep is eaten if and only if $n$ is odd.\n\nSince $n = 1000$ is even, the sheep will not be eaten.\n\n$\\boxed{\\text{The sheep survives.}}$"
   }
 ]
