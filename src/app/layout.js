@@ -2,11 +2,11 @@ import './globals.css';
 import 'katex/dist/katex.min.css';
 
 export const metadata = {
-  title: 'Probability Interview Questions',
+  title: 'LeetProb',
   description:
     'A curated collection of probability problems for interview prep — with full solutions.',
   openGraph: {
-    title: 'Probability Interview Questions',
+    title: 'LeetProb',
     description:
       'Practice probability problems with detailed solutions. Great for quant, data science, and SWE interviews.',
     type: 'website',
