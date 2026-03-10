@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { checkAnswer } from '../utils/answerChecker';
+import MathText from './MathText';
 
 // ── Badge helpers ────────────────────────────────────────────────────────────
 
@@ -135,8 +136,8 @@ export default function QuestionCard({
       >
         <div className="px-5 pb-6 pt-1 border-t border-slate-100">
           {/* Full question text */}
-          <p className="text-slate-700 text-sm sm:text-base whitespace-pre-line leading-relaxed mb-5">
-            {question.question}
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
+            <MathText text={question.question} />
           </p>
 
           {/* ── Numeric answer input ── */}
@@ -194,8 +195,8 @@ export default function QuestionCard({
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">
                 Solution
               </p>
-              <p className="text-sm text-slate-700 whitespace-pre-line leading-relaxed">
-                {question.solution}
+              <p className="text-sm text-slate-700 leading-relaxed">
+                <MathText text={question.solution} />
               </p>
             </div>
           )}
