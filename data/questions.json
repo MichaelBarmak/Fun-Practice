@@ -124,5 +124,18 @@
     "correctAnswer": 4.47,
     "tolerance": 0.02,
     "solution": "Use the formula: E[max] = Σ k × P(max = k) for k = 1 to 6\n\nP(max = k) = P(both ≤ k) - P(both ≤ k-1) = (k/6)² - ((k-1)/6)² = (2k-1)/36\n\nValues:\n• P(max=1) = 1/36,   contributes 1×1/36   = 1/36\n• P(max=2) = 3/36,   contributes 2×3/36   = 6/36\n• P(max=3) = 5/36,   contributes 3×5/36   = 15/36\n• P(max=4) = 7/36,   contributes 4×7/36   = 28/36\n• P(max=5) = 9/36,   contributes 5×9/36   = 45/36\n• P(max=6) = 11/36,  contributes 6×11/36  = 66/36\n\nE[max] = (1 + 6 + 15 + 28 + 45 + 66) / 36 = 161/36 ≈ 4.4722\n\nCompare to the average of a single die (3.5) — taking the max of two dice shifts the expected value up to ~4.47."
+  },
+  {
+    "id": 11,
+    "title": "Expected Intersections",
+    "category": "Expectations",
+    "difficulty": "Medium",
+    "isNew": true,
+    "preview": "Three random chords are drawn on a unit circle. What is the expected number of intersections?",
+    "question": "On a unit circle we draw three straight lines (chords), each connecting two random points on the circumference. What is the expected number of intersections between these lines?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 1,
+    "tolerance": 0,
+    "solution": "Let $X_{i,j}$ be the indicator random variable of the event that line $i$ intersects line $j$, for $i \\neq j$ and $i, j \\in \\{1, 2, 3\\}$.\n\nThe total number of intersections is:\n$$N = X_{1,2} + X_{1,3} + X_{2,3}$$\n\nBy linearity of expectation:\n$$\\mathbb{E}[N] = \\mathbb{E}[X_{1,2}] + \\mathbb{E}[X_{1,3}] + \\mathbb{E}[X_{2,3}]$$\n\nBy symmetry:\n$$\\mathbb{E}[X_{1,2}] = \\mathbb{E}[X_{1,3}] = \\mathbb{E}[X_{2,3}]$$\n\nSo it suffices to compute $\\mathbb{E}[X_{1,2}]$.\n\nConsider the two chords determined by four random points on the circle, say $A, B, C, D$. There are exactly three ways to pair the four endpoints into two chords:\n$$(AB,\\ CD), \\quad (AC,\\ BD), \\quad (AD,\\ BC)$$\n\nExactly one of these pairings produces intersecting chords, so:\n$$\\mathbb{P}(X_{1,2} = 1) = \\frac{1}{3}$$\n\nSince $X_{1,2}$ is an indicator variable, $\\mathbb{E}[X_{1,2}] = \\dfrac{1}{3}$.\n\nTherefore:\n$$\\mathbb{E}[N] = \\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = 1$$"
   }
 ]
