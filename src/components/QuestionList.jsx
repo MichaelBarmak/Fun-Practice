@@ -23,13 +23,13 @@ export default function QuestionList({ questions }) {
 
   // Filter questions based on search text and selected category
   const filtered = useMemo(() => {
-    const q = search.toLowerCase();
+    const q = search.trim().toLowerCase();
+    const isNumberSearch = /^\d+$/.test(q);
     return questions.filter((item) => {
       const matchesSearch =
         !q ||
-        item.title.toLowerCase().includes(q) ||
-        item.preview.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q);
+        (isNumberSearch && item.id === parseInt(q)) ||
+        item.title.toLowerCase().includes(q);
 
       const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
@@ -67,7 +67,7 @@ export default function QuestionList({ questions }) {
             setSearch(e.target.value);
             setExpandedId(null); // Collapse all when searching
           }}
-          placeholder="Search questions..."
+          placeholder="Search by title or question number..."
           className="w-full pl-9 pr-4 py-2.5 text-sm border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
           aria-label="Search questions"
         />
