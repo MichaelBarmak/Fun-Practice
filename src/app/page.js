@@ -15,6 +15,9 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl font-bold mb-3 leading-tight">
             Probability Questions
           </h1>
+          <p className="text-indigo-100 text-base sm:text-lg max-w-xl">
+            Test your intuition, check your answers, and deepen your understanding.
+          </p>
         </div>
       </div>
 
