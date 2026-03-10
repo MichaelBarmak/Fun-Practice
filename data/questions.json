@@ -76,19 +76,5 @@
     "question": "Say we have 998 distinct integers from 1 to 1000. Find a clever way to find the two missing integers.",
     "answerType": "theory",
     "solution": "We use two standard summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{2} + \\frac{n}{6}$$\n\nLet $x$ and $y$ be the two missing integers, and let $a_1, \\ldots, a_{998}$ be the given integers. Define:\n$$S_1 = a_1 + \\cdots + a_{998}, \\qquad S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nThen:\n$$S_1 + x + y = \\frac{1000 \\cdot 1001}{2}$$\n$$S_2 + x^2 + y^2 = \\frac{1000^3}{3} + \\frac{1000^2}{2} + \\frac{1000}{6}$$\n\nFrom the first equation we know $x + y$. From the second we know $x^2 + y^2$. Since:\n$$x^2 + y^2 = (x+y)^2 - 2xy$$\n\nwe can solve for $xy$. Knowing both $x + y$ and $xy$, we recover $x$ and $y$ as the two roots of:\n$$t^2 - (x+y)\\,t + xy = 0 \\qquad \\blacksquare$$"
-  },
-  {
-    "id": 7,
-    "title": "Unique Bag",
-    "category": "Summation",
-    "difficulty": "Medium",
-    "source": "Green Book",
-    "isNew": true,
-    "preview": "20 bags of coins — 19 weigh 5g each, one weighs 4g or 6g. What is the minimum number of scale measurements needed?",
-    "question": "There are 20 bags of coins (of the same size and shape). All the coins in 19 of the bags weigh 5 grams. The coins in the other bag either all weigh 6 grams, or all weigh 4 grams.\n\nYou have a digital scale. What is the minimum number of measurements you need to determine the bag with lighter/heavier coins?\n\nEnter an exact integer answer.",
-    "answerType": "numeric",
-    "correctAnswer": 1,
-    "tolerance": 0,
-    "solution": "Number the bags $1$ to $20$. Take $i$ coins from bag $i$, for each $i = 1, \\ldots, 20$. Weigh them all together and call the total weight $S$.\n\nSuppose the unique bag is number $i_0$. Then:\n$$S = 1{\\times}5 + 2{\\times}5 + \\cdots + (i_0-1){\\times}5 + i_0{\\times}(5 \\pm 1) + (i_0+1){\\times}5 + \\cdots + 20{\\times}5$$\n$$= (1 + 2 + \\cdots + 20) \\times 5 \\pm i_0 = \\frac{20 \\cdot 21}{2} \\times 5 \\pm i_0 = 1050 \\pm i_0$$\n\nTherefore:\n$$|S - 1050| = i_0$$\n\nA single weighing tells us both which bag is unique and whether its coins are heavier or lighter. $\\blacksquare$"
   }
 ]
