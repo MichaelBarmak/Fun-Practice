@@ -75,7 +75,7 @@
     "preview": "You have 998 distinct integers from 1 to 1000. Find a clever way to identify the two missing ones.",
     "question": "Say we have 998 distinct integers from 1 to 1000. Find a clever way to find the two missing integers.",
     "answerType": "theory",
-    "solution": "We use two standard summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{2} + \\frac{n}{6}$$\n\nLet $x$ and $y$ be the two missing integers, and let $a_1, \\ldots, a_{998}$ be the given integers. Define:\n$$S_1 = a_1 + \\cdots + a_{998}, \\qquad S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nThen:\n$$S_1 + x + y = \\frac{1000 \\cdot 1001}{2}$$\n$$S_2 + x^2 + y^2 = \\frac{1000^3}{3} + \\frac{1000^2}{2} + \\frac{1000}{6}$$\n\nFrom the first equation we know $x + y$. From the second we know $x^2 + y^2$. Since:\n$$x^2 + y^2 = (x+y)^2 - 2xy$$\n\nwe can solve for $xy$. Knowing both $x + y$ and $xy$, we recover $x$ and $y$ as the two roots of:\n$$t^2 - (x+y)\\,t + xy = 0 \\qquad \\blacksquare$$"
+    "solution": "We use a couple of summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n\nAnd\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{3} + \\frac{n}{6}$$\n\nDenote $x$ and $y$ to be the two missing integers, and $a_1, \\ldots, a_{998}$ to be the distinct given integers. Moreover, denote\n$$S_1 = a_1 + \\cdots + a_{998}$$\nand\n$$S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nWe get that\n$$S_1 + x + y = 1 + 2 + \\cdots + 1000 = \\frac{1000(1000+1)}{2}$$\n\nAnd\n$$S_2 + x^2 + y^2 = 1^2 + \\cdots + 1000^2 = \\frac{1000^3}{3} + \\frac{1000^2}{3} + \\frac{1000}{6}$$\n\nThis is a simple system of two equations in the two variables $x$ and $y$."
   },
   {
     "id": 7,
