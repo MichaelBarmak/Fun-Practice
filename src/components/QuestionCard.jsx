@@ -171,15 +171,13 @@ export default function QuestionCard({
             </div>
           )}
 
-          {/* ── Show Solution button ── */}
-          {!solutionVisible && (
-            <button
-              onClick={handleRevealSolution}
-              className="text-sm text-indigo-600 font-medium hover:underline focus:outline-none"
-            >
-              Show Solution
-            </button>
-          )}
+          {/* ── Show / Hide Solution button ── */}
+          <button
+            onClick={solutionVisible ? () => setSolutionVisible(false) : handleRevealSolution}
+            className="text-sm text-indigo-600 font-medium hover:underline focus:outline-none"
+          >
+            {solutionVisible ? 'Hide Solution' : 'Show Solution'}
+          </button>
 
           {/* ── Solution panel ── */}
           {solutionVisible && (
