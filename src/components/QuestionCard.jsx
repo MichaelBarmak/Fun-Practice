@@ -11,6 +11,7 @@ const DIFFICULTY_STYLES = {
 };
 
 const CATEGORY_STYLE = 'bg-indigo-100 text-indigo-700';
+const SOURCE_STYLE = 'bg-violet-100 text-violet-700';
 
 export default function QuestionCard({
   question,
@@ -95,6 +96,11 @@ export default function QuestionCard({
             <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${DIFFICULTY_STYLES[question.difficulty] ?? 'bg-slate-100 text-slate-600'}`}>
               {question.difficulty}
             </span>
+            {question.source && (
+              <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${SOURCE_STYLE}`}>
+                {question.source}
+              </span>
+            )}
           </div>
 
           {!isExpanded && (

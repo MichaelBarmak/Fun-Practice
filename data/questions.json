@@ -4,6 +4,7 @@
     "title": "Expected Intersections",
     "category": "Expectations",
     "difficulty": "Medium",
+    "source": "Green Book",
     "isNew": false,
     "preview": "Three random chords are drawn on a unit circle. What is the expected number of intersections?",
     "question": "On a unit circle we draw three straight lines (chords), each connecting two random points on the circumference. What is the expected number of intersections between these lines?\n\nEnter an exact integer answer.",
@@ -17,6 +18,7 @@
     "title": "Wolves and a Sheep",
     "category": "Problem Simplification",
     "difficulty": "Medium",
+    "source": "Green Book",
     "isNew": false,
     "preview": "1000 wolves and 1 sheep on an island. A wolf that eats the sheep becomes a sheep. Will the sheep be eaten?",
     "question": "One thousand magical wolves and one sheep are located on a deserted island with no other animals.\n\nThe rules are as follows:\n1. The sheep can only eat grass. A wolf can eat grass but prefers to eat sheep.\n2. If the sheep is eaten, only one wolf eats it.\n3. Once a wolf eats a sheep, it immediately becomes a sheep itself.\n4. Every wolf wants, above all, to survive.\n5. Wolves are perfectly rational.\n\nWill the sheep be eaten?",
@@ -24,5 +26,19 @@
     "options": ["Yes", "No"],
     "correctAnswer": "No",
     "solution": "Let $n$ be the number of wolves. A wolf will eat the sheep only if doing so does not lead to its own death. We analyze small cases:\n\n$n = 0$: No wolves, the sheep survives.\n\n$n = 1$: The wolf eats the sheep, becomes a sheep, and no wolves remain — it survives. So the wolf eats the sheep.\n\n$n = 2$: If one wolf eats the sheep, the situation becomes $n = 1$. By the previous case, the new sheep (the wolf that ate) would be eaten. So neither wolf eats the sheep.\n\n$n = 3$: If a wolf eats the sheep, the situation becomes $n = 2$. By the previous case, the sheep is safe. So the wolf that eats survives — one wolf eats the sheep.\n\nThe pattern is:\n$$n = 0 \\Rightarrow \\text{sheep survives}$$\n$$n = 1 \\Rightarrow \\text{sheep eaten}$$\n$$n = 2 \\Rightarrow \\text{sheep survives}$$\n$$n = 3 \\Rightarrow \\text{sheep eaten}$$\n\nThe sheep is eaten if and only if $n$ is odd.\n\nSince $n = 1000$ is even, the sheep will not be eaten.\n\n$\\boxed{\\text{The sheep survives.}}$"
+  },
+  {
+    "id": 3,
+    "title": "Card Game",
+    "category": "Logic Reasoning",
+    "difficulty": "Easy",
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "Pairs of cards are drawn from a 52-card deck. Red-red goes to your pile, black-black to the dealer's. What is the probability you win?",
+    "question": "We play the following game with a standard shuffled deck of 52 cards.\n\nAt each step, a pair of cards is drawn (without replacement) from the deck.\n• If both cards are red, they are placed in your pile.\n• If both cards are black, they are placed in the dealer's pile.\n• Otherwise, the cards are discarded.\n\nAfter all cards are drawn, if your pile is larger than the dealer's pile, you win.\n\nWhat is the probability that you win this game?\n\nExpress as an exact decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0,
+    "tolerance": 0,
+    "solution": "Let $A$ be the number of red-red pairs, $B$ the number of black-black pairs, and $C$ the number of mixed pairs.\n\nThere are 26 red cards and 26 black cards in the deck.\n\nEvery red card belongs either to a red-red pair or a mixed pair:\n$$2A + C = 26$$\n\nEvery black card belongs either to a black-black pair or a mixed pair:\n$$2B + C = 26$$\n\nSubtracting the two equations:\n$$2A - 2B = 0 \\implies A = B$$\n\nYour pile contains exactly $2A$ cards and the dealer's pile contains exactly $2B$ cards. Since $A = B$ always, the two piles are always equal in size — regardless of how the cards happen to be paired.\n\nTherefore your pile can never be strictly larger than the dealer's pile.\n\n$$\\boxed{P(\\text{win}) = 0}$$"
   }
 ]
