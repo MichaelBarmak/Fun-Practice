@@ -90,5 +90,19 @@
     "correctAnswer": 1,
     "tolerance": 0,
     "solution": "Number the bags $1$ to $20$. Take $i$ coins from bag $i$, for each $i = 1, \\ldots, 20$. Weigh them all together and call the total weight $S$.\n\nSuppose the unique bag is number $i_0$. Then:\n$$S = 1{\\times}5 + 2{\\times}5 + \\cdots + (i_0-1){\\times}5 + i_0{\\times}(5 \\pm 1) + (i_0+1){\\times}5 + \\cdots + 20{\\times}5$$\n$$= (1 + 2 + \\cdots + 20) \\times 5 \\pm i_0 = \\frac{20 \\cdot 21}{2} \\times 5 \\pm i_0 = 1050 \\pm i_0$$\n\nTherefore:\n$$|S - 1050| = i_0$$\n\nA single weighing tells us both which bag is unique and whether its coins are heavier or lighter. $\\blacksquare$"
+  },
+  {
+    "id": 8,
+    "title": "Handshakes",
+    "category": "Pigeon Hole Principle",
+    "difficulty": "Medium",
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "You shake hands with 30 people in a room. Can you know for certainty that two of them shook hands with exactly the same number of people?",
+    "question": "You enter a room with 30 people and shake hands with every one of them. You know that some of them shook hands among each other, but you do not know how many.\n\nCan you know for certainty that there are at least two people who shook hands with exactly the same number of people?",
+    "answerType": "multiple_choice",
+    "options": ["Yes", "No"],
+    "correctAnswer": "Yes",
+    "solution": "There are a total of 31 people in the room. Each of the 30 people already in the room shook hands with at least one person, since they all shook hands with you. Therefore each of them shook hands with between 1 and 30 people.\n\nThus there are 31 people but only 30 possible numbers of handshakes. By the pigeonhole principle, at least two people must have shaken hands with exactly the same number of people.\n\nFinal answer: $\\boxed{\\text{Yes}}$"
   }
 ]
