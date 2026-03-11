@@ -150,5 +150,19 @@
     "correctAnswer": 0.5,
     "tolerance": 0,
     "solution": "Denote the following events:\n\n$E_1 =$ $A$'s first $n$ tosses have more heads than all of $B$'s tosses,\n\n$E_2 =$ $A$'s first $n$ tosses have the same number of heads as $B$'s tosses,\n\n$E_3 =$ $A$'s first $n$ tosses have fewer heads than all of $B$'s tosses.\n\nBy symmetry,\n$$\\mathbb{P}(E_1) = \\mathbb{P}(E_3)$$\n\nHence\n$$1 = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)$$\n\nDenote by $E$ the event that $A$ gets more heads than $B$. Then\n$$\\mathbb{P}(E) = \\mathbb{P}(E \\mid E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E \\mid E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E \\mid E_3)\\mathbb{P}(E_3)$$\n\nLet us analyze each summand.\n\nAssuming $E_1$, no matter what $A$ gets on the $(n+1)$-th toss, they win. So\n$$\\mathbb{P}(E \\mid E_1) = 1$$\n\nAssuming $E_2$, $A$ wins if and only if they get heads on the $(n+1)$-th toss. So\n$$\\mathbb{P}(E \\mid E_2) = \\frac{1}{2}$$\n\nAssuming $E_3$, $A$ can never win, since at best they can equal the number of heads in $B$'s tosses. Hence\n$$\\mathbb{P}(E \\mid E_3) = 0$$\n\nPlugging everything in, we get\n$$\\mathbb{P}(E) = 1 \\cdot \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2) + 0 \\cdot \\mathbb{P}(E_3) = \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2)$$\n\nTherefore,\n$$\\mathbb{P}(E) = \\frac{1}{2}\\bigl(2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)\\bigr) = \\frac{1}{2}$$\n\n$$\\boxed{\\mathbb{P}(A \\text{ wins}) = \\frac{1}{2}}$$"
+  },
+  {
+    "id": 12,
+    "title": "Drunk Passenger",
+    "category": "Basic Probability",
+    "difficulty": "Medium",
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "A drunk passenger picks a random seat on a 150-seat plane. What is the probability the last passenger sits in their own seat?",
+    "question": "Suppose a plane has 150 seats, all booked. Suppose passenger $n$ is assigned to seat $\\#n$ for any $n = 1, \\ldots, 150$.\n\nAt boarding time, the first passenger is drunk, so they pick a random seat. The rest of the passengers are sober, and pick their assigned seat if it is not taken, and otherwise pick a random seat from the ones that are still available.\n\nWhat is the probability that the 150-th passenger will end up in their seat?\n\nExpress your answer as a decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.5,
+    "tolerance": 0,
+    "solution": "For any seat $i$, denote the random variable $\\tau_i$ to be the number of the passenger that ends up in seat $\\#i$.\n\nWe note that the 150-th passenger will end up in their seat if and only if seat $\\#1$ is occupied before seat $\\#150$. Formally,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150})$$\n\nBut by symmetry, since all seats are probabilistically the same,\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) = \\mathbb{P}(\\tau_{150} < \\tau_1)$$\n\nThese are complementary events, so\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) + \\mathbb{P}(\\tau_{150} < \\tau_1) = 1$$\n\nThus,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150}) = \\frac{1}{2}$$\n\nFinal answer: $\\boxed{\\dfrac{1}{2}}$"
   }
 ]
