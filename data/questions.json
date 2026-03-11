@@ -164,5 +164,19 @@
     "correctAnswer": 0.5,
     "tolerance": 0,
     "solution": "For any seat $i$, denote the random variable $\\tau_i$ to be the number of the passenger that ends up in seat $\\#i$.\n\nWe note that the 150-th passenger will end up in their seat if and only if seat $\\#1$ is occupied before seat $\\#150$. Formally,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150})$$\n\nBut by symmetry, since all seats are probabilistically the same,\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) = \\mathbb{P}(\\tau_{150} < \\tau_1)$$\n\nThese are complementary events, so\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) + \\mathbb{P}(\\tau_{150} < \\tau_1) = 1$$\n\nThus,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150}) = \\frac{1}{2}$$\n\nFinal answer: $\\boxed{\\dfrac{1}{2}}$"
+  },
+  {
+    "id": 13,
+    "title": "Standing Table",
+    "category": "Basic Probability",
+    "difficulty": "Medium",
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "3 random points on a circular table are chosen as legs. What is the probability the table can stand properly?",
+    "question": "We choose 3 random points on the circumference of a circular table to attach the legs of the table.\n\nWhat is the probability that the table can stand properly?\n\nExpress your answer as a decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.25,
+    "tolerance": 0,
+    "solution": "We note that the event that the table will not stand is exactly the event that all points lie within a semicircle. Denote this event by $E$.\n\nDenote the points by 1, 2 and 3. For each $i$, denote by $E_i$ the event that all points $j \\neq i$ lie on the semicircle whose left endpoint is point $i$.\n\nAlso, we note that\n$$E = \\bigcup_{i \\in \\{1,2,3\\}} E_i$$\nand\n$$E_i \\cap E_j = \\varnothing$$\nwhenever $i \\neq j$.\n\nTherefore, by symmetry,\n$$\\mathbb{P}(E) = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 3\\mathbb{P}(E_1)$$\n\nTo calculate $\\mathbb{P}(E_1)$, we note that this is exactly the probability that the two points 2 and 3 lie in the semicircle determined by point 1. Since each point independently has probability $\\frac{1}{2}$ to lie in that semicircle,\n$$\\mathbb{P}(E_1) = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n\nThus,\n$$\\mathbb{P}(E) = 3 \\cdot \\frac{1}{4} = \\frac{3}{4}$$\n\nSince this is the probability that the table does *not* stand properly, the desired probability is\n$$1 - \\frac{3}{4} = \\boxed{\\frac{1}{4}}$$"
   }
 ]
