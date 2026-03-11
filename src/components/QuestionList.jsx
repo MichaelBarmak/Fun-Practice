@@ -8,7 +8,7 @@ import { useSolvedQuestions } from '../hooks/useSolvedQuestions';
  * Client component that owns search, category filtering, and expand state.
  * Receives the full questions array from the server page component.
  */
-export default function QuestionList({ questions }) {
+export default function QuestionList({ questions, onStartInterview }) {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [expandedId, setExpandedId] = useState(null);
@@ -42,6 +42,20 @@ export default function QuestionList({ questions }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      {/* ── Interview simulation banner ── */}
+      <div className="mb-6 p-4 bg-indigo-50 border border-indigo-200 rounded-xl flex items-center justify-between gap-4">
+        <div>
+          <p className="text-sm font-semibold text-indigo-800">Ready to practice?</p>
+          <p className="text-xs text-indigo-600 mt-0.5">3 random questions, 5 minutes each — just like a real interview.</p>
+        </div>
+        <button
+          onClick={onStartInterview}
+          className="shrink-0 px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
+        >
+          Simulate 3 Questions Interview
+        </button>
+      </div>
+
       {/* ── Stats bar ── */}
       <div className="flex items-center justify-between mb-6 text-sm text-slate-500">
         <span>
