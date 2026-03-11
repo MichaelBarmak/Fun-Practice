@@ -46,7 +46,6 @@ export default function QuestionList({ questions, onStartInterview }) {
       <div className="mb-6 p-4 bg-indigo-50 border border-indigo-200 rounded-xl flex items-center justify-between gap-4">
         <div>
           <p className="text-sm font-semibold text-indigo-800">Ready to practice?</p>
-          <p className="text-xs text-indigo-600 mt-0.5">3 random questions, 5 minutes each — just like a real interview.</p>
         </div>
         <button
           onClick={onStartInterview}
