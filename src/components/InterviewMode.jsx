@@ -103,7 +103,7 @@ function IntroScreen({ onStart, onExit }) {
             </li>
             <li className="flex gap-3">
               <span className="text-indigo-500 font-bold shrink-0">2.</span>
-              Each question has a 5-minute timer. You may advance to the next question at any time, or wait for the timer to expire.
+              Each question has its own time limit. You may advance to the next question at any time, or wait for the timer to expire.
             </li>
             <li className="flex gap-3">
               <span className="text-indigo-500 font-bold shrink-0">3.</span>
