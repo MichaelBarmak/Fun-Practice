@@ -136,7 +136,7 @@ export default function QuestionCard({
                   value={userAnswer}
                   onChange={(e) => { setUserAnswer(e.target.value); setFeedback(null); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAnswer()}
-                  placeholder="Your answer (e.g. 0.5)"
+                  placeholder="e.g. 0.5 or 1/2"
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
                   aria-label="Your answer"
                 />

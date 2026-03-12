@@ -202,7 +202,7 @@ function QuestionScreen({ question, number, answer, onAnswer, timeLeft, isLast, 
                 type="text"
                 value={answer}
                 onChange={e => onAnswer(e.target.value)}
-                placeholder="Your answer (e.g. 0.5)"
+                placeholder="e.g. 0.5 or 1/2"
                 className="w-full max-w-xs px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
               />
             </div>
