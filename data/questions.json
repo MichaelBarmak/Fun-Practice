@@ -11,13 +11,14 @@
     "answerType": "numeric",
     "correctAnswer": 1,
     "tolerance": 0,
-    "solution": "Let $X_{i,j}$ be the indicator random variable of the event that line $i$ intersects line $j$, for $i \\neq j$ and $i, j \\in \\{1, 2, 3\\}$.\n\nThe total number of intersections is:\n$$N = X_{1,2} + X_{1,3} + X_{2,3}$$\n\nBy linearity of expectation:\n$$\\mathbb{E}[N] = \\mathbb{E}[X_{1,2}] + \\mathbb{E}[X_{1,3}] + \\mathbb{E}[X_{2,3}]$$\n\nBy symmetry:\n$$\\mathbb{E}[X_{1,2}] = \\mathbb{E}[X_{1,3}] = \\mathbb{E}[X_{2,3}]$$\n\nSo it suffices to compute $\\mathbb{E}[X_{1,2}]$.\n\nConsider the two chords determined by four random points on the circle, say $A, B, C, D$. There are exactly three ways to pair the four endpoints into two chords:\n$$(AB,\\ CD), \\quad (AC,\\ BD), \\quad (AD,\\ BC)$$\n\nExactly one of these pairings produces intersecting chords, so:\n$$\\mathbb{P}(X_{1,2} = 1) = \\frac{1}{3}$$\n\nSince $X_{1,2}$ is an indicator variable, $\\mathbb{E}[X_{1,2}] = \\dfrac{1}{3}$.\n\nTherefore:\n$$\\mathbb{E}[N] = \\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = 1$$"
+    "solution": "Let $X_{i,j}$ be the indicator random variable of the event that line $i$ intersects line $j$, for $i \\neq j$ and $i, j \\in \\{1, 2, 3\\}$.\n\nThe total number of intersections is:\n$$N = X_{1,2} + X_{1,3} + X_{2,3}$$\n\nBy linearity of expectation:\n$$\\mathbb{E}[N] = \\mathbb{E}[X_{1,2}] + \\mathbb{E}[X_{1,3}] + \\mathbb{E}[X_{2,3}]$$\n\nBy symmetry:\n$$\\mathbb{E}[X_{1,2}] = \\mathbb{E}[X_{1,3}] = \\mathbb{E}[X_{2,3}]$$\n\nSo it suffices to compute $\\mathbb{E}[X_{1,2}]$.\n\nConsider the two chords determined by four random points on the circle, say $A, B, C, D$. There are exactly three ways to pair the four endpoints into two chords:\n$$(AB,\\ CD), \\quad (AC,\\ BD), \\quad (AD,\\ BC)$$\n\nExactly one of these pairings produces intersecting chords, so:\n$$\\mathbb{P}(X_{1,2} = 1) = \\frac{1}{3}$$\n\nSince $X_{1,2}$ is an indicator variable, $\\mathbb{E}[X_{1,2}] = \\dfrac{1}{3}$.\n\nTherefore:\n$$\\mathbb{E}[N] = \\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = 1$$",
+    "timeLimit": 6
   },
   {
     "id": 2,
     "title": "Wolves and a Sheep",
     "category": "Problem Simplification",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "source": "Green Book",
     "isNew": false,
     "preview": "1000 wolves and 1 sheep on an island. A wolf that eats the sheep becomes a sheep. Will the sheep be eaten?",
@@ -28,13 +29,14 @@
       "No"
     ],
     "correctAnswer": "No",
-    "solution": "Let $n$ be the number of wolves. A wolf will eat the sheep only if doing so does not lead to its own death. We analyze small cases:\n\n$n = 0$: No wolves, the sheep survives.\n\n$n = 1$: The wolf eats the sheep, becomes a sheep, and no wolves remain — it survives. So the wolf eats the sheep.\n\n$n = 2$: If one wolf eats the sheep, the situation becomes $n = 1$. By the previous case, the new sheep (the wolf that ate) would be eaten. So neither wolf eats the sheep.\n\n$n = 3$: If a wolf eats the sheep, the situation becomes $n = 2$. By the previous case, the sheep is safe. So the wolf that eats survives — one wolf eats the sheep.\n\nThe pattern is:\n$$n = 0 \\Rightarrow \\text{sheep survives}$$\n$$n = 1 \\Rightarrow \\text{sheep eaten}$$\n$$n = 2 \\Rightarrow \\text{sheep survives}$$\n$$n = 3 \\Rightarrow \\text{sheep eaten}$$\n\nThe sheep is eaten if and only if $n$ is odd.\n\nSince $n = 1000$ is even, the sheep will not be eaten.\n\n$\\boxed{\\text{The sheep survives.}}$"
+    "solution": "Let $n$ be the number of wolves. A wolf will eat the sheep only if doing so does not lead to its own death. We analyze small cases:\n\n$n = 0$: No wolves, the sheep survives.\n\n$n = 1$: The wolf eats the sheep, becomes a sheep, and no wolves remain — it survives. So the wolf eats the sheep.\n\n$n = 2$: If one wolf eats the sheep, the situation becomes $n = 1$. By the previous case, the new sheep (the wolf that ate) would be eaten. So neither wolf eats the sheep.\n\n$n = 3$: If a wolf eats the sheep, the situation becomes $n = 2$. By the previous case, the sheep is safe. So the wolf that eats survives — one wolf eats the sheep.\n\nThe pattern is:\n$$n = 0 \\Rightarrow \\text{sheep survives}$$\n$$n = 1 \\Rightarrow \\text{sheep eaten}$$\n$$n = 2 \\Rightarrow \\text{sheep survives}$$\n$$n = 3 \\Rightarrow \\text{sheep eaten}$$\n\nThe sheep is eaten if and only if $n$ is odd.\n\nSince $n = 1000$ is even, the sheep will not be eaten.\n\n$\\boxed{\\text{The sheep survives.}}$",
+    "timeLimit": 13
   },
   {
     "id": 3,
     "title": "Card Game",
     "category": "Logic Reasoning",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "source": "Green Book",
     "isNew": true,
     "preview": "Pairs of cards are drawn from a 52-card deck. Red-red goes to your pile, black-black to the dealer's. What is the probability you win?",
@@ -42,49 +44,53 @@
     "answerType": "numeric",
     "correctAnswer": 0,
     "tolerance": 0,
-    "solution": "Let $A$ be the number of red-red pairs, $B$ the number of black-black pairs, and $C$ the number of mixed pairs.\n\nThere are 26 red cards and 26 black cards in the deck.\n\nEvery red card belongs either to a red-red pair or a mixed pair:\n$$2A + C = 26$$\n\nEvery black card belongs either to a black-black pair or a mixed pair:\n$$2B + C = 26$$\n\nSubtracting the two equations:\n$$2A - 2B = 0 \\implies A = B$$\n\nYour pile contains exactly $2A$ cards and the dealer's pile contains exactly $2B$ cards. Since $A = B$ always, the two piles are always equal in size — regardless of how the cards happen to be paired.\n\nTherefore your pile can never be strictly larger than the dealer's pile.\n\n$$\\boxed{P(\\text{win}) = 0}$$"
+    "solution": "Let $A$ be the number of red-red pairs, $B$ the number of black-black pairs, and $C$ the number of mixed pairs.\n\nThere are 26 red cards and 26 black cards in the deck.\n\nEvery red card belongs either to a red-red pair or a mixed pair:\n$$2A + C = 26$$\n\nEvery black card belongs either to a black-black pair or a mixed pair:\n$$2B + C = 26$$\n\nSubtracting the two equations:\n$$2A - 2B = 0 \\implies A = B$$\n\nYour pile contains exactly $2A$ cards and the dealer's pile contains exactly $2B$ cards. Since $A = B$ always, the two piles are always equal in size — regardless of how the cards happen to be paired.\n\nTherefore your pile can never be strictly larger than the dealer's pile.\n\n$$\\boxed{P(\\text{win}) = 0}$$",
+    "timeLimit": 10
   },
   {
     "id": 4,
     "title": "Coin Piles",
     "category": "Logic Reasoning",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "source": "Green Book",
     "isNew": true,
     "preview": "1000 coins on a table: 980 tails up, 20 heads up. Split them into two piles with equal numbers of heads.",
     "question": "We toss 1000 coins on a table. 980 have tails up and the other 20 have heads up.\n\nFind a way to split the coins into two piles such that both piles have the same number of heads.",
     "answerType": "theory",
-    "solution": "Take any 20 coins and place them in the first pile. The remaining 980 coins form the second pile.\n\nSuppose the first pile contains $m$ coins with heads up. Then it contains $20 - m$ coins with tails up.\n\nSince there are exactly 20 heads among all 1000 coins, the second pile must contain $20 - m$ coins with heads up.\n\nNow flip every coin in the first pile. The $m$ heads become tails and the $20 - m$ tails become heads. Therefore, after flipping, the first pile contains $20 - m$ heads.\n\nThus both piles contain exactly $20 - m$ heads. $\\blacksquare$"
+    "solution": "Take any 20 coins and place them in the first pile. The remaining 980 coins form the second pile.\n\nSuppose the first pile contains $m$ coins with heads up. Then it contains $20 - m$ coins with tails up.\n\nSince there are exactly 20 heads among all 1000 coins, the second pile must contain $20 - m$ coins with heads up.\n\nNow flip every coin in the first pile. The $m$ heads become tails and the $20 - m$ tails become heads. Therefore, after flipping, the first pile contains $20 - m$ heads.\n\nThus both piles contain exactly $20 - m$ heads. $\\blacksquare$",
+    "timeLimit": 6
   },
   {
     "id": 5,
     "title": "Wise Men",
     "category": "Logic Reasoning",
-    "difficulty": "Medium",
+    "difficulty": "Hard",
     "source": "Green Book",
     "isNew": true,
     "preview": "100 wise men, a glass, and a sultan. Find a strategy to guarantee freedom with 100% certainty.",
     "question": "A sultan has captured 100 wise men. In a closed room there is a glass currently standing bottom down.\n\nEvery minute the sultan calls a random wise man to the room to see the glass, with the option to flip it, and then leave the room. The wise man also has the option to tell the sultan that all of the wise men have been called at least once. If the wise man is correct, everyone goes free. Otherwise, the sultan puts everyone to death.\n\nFind a strategy that lets the wise men go free with 100% certainty. Once the game begins, the wise men cannot communicate in any way and cannot hear or see one another.",
     "answerType": "theory",
-    "solution": "Before the game begins, the wise men choose one of them to be the spokesman. The strategy is as follows:\n\n1. Whenever the spokesman is called and the glass is standing bottom up, he flips it to bottom down. Otherwise he does nothing.\n2. Whenever a non-spokesman is called, he flips the glass only if it is standing bottom down and he has never flipped it before.\n3. The spokesman keeps a count of the number of times he flips the glass.\n4. Once the spokesman's count reaches 99, he tells the sultan that all men have been called.\n\nEach non-spokesman flips the glass exactly once — the first time he sees it bottom down. This signals that a new man has visited the room.\n\nWhenever the spokesman encounters the glass bottom up, he flips it back and increments his count by one.\n\nSince every non-spokesman eventually gets called (with probability 1), each will at some point flip the glass exactly once. The spokesman's count therefore reaches exactly 99 when and only when all 99 non-spokesmen have visited — at which point he can safely declare that all 100 wise men have been called. $\\blacksquare$"
+    "solution": "Before the game begins, the wise men choose one of them to be the spokesman. The strategy is as follows:\n\n1. Whenever the spokesman is called and the glass is standing bottom up, he flips it to bottom down. Otherwise he does nothing.\n2. Whenever a non-spokesman is called, he flips the glass only if it is standing bottom down and he has never flipped it before.\n3. The spokesman keeps a count of the number of times he flips the glass.\n4. Once the spokesman's count reaches 99, he tells the sultan that all men have been called.\n\nEach non-spokesman flips the glass exactly once — the first time he sees it bottom down. This signals that a new man has visited the room.\n\nWhenever the spokesman encounters the glass bottom up, he flips it back and increments his count by one.\n\nSince every non-spokesman eventually gets called (with probability 1), each will at some point flip the glass exactly once. The spokesman's count therefore reaches exactly 99 when and only when all 99 non-spokesmen have visited — at which point he can safely declare that all 100 wise men have been called. $\\blacksquare$",
+    "timeLimit": 16
   },
   {
     "id": 6,
     "title": "Missing Integers",
     "category": "Summation",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "source": "Green Book",
     "isNew": true,
     "preview": "You have 998 distinct integers from 1 to 1000. Find a clever way to identify the two missing ones.",
     "question": "Say we have 998 distinct integers from 1 to 1000. Find a clever way to find the two missing integers.",
     "answerType": "theory",
-    "solution": "We use a couple of summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n\nAnd\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{3} + \\frac{n}{6}$$\n\nDenote $x$ and $y$ to be the two missing integers, and $a_1, \\ldots, a_{998}$ to be the distinct given integers. Moreover, denote\n$$S_1 = a_1 + \\cdots + a_{998}$$\nand\n$$S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nWe get that\n$$S_1 + x + y = 1 + 2 + \\cdots + 1000 = \\frac{1000(1000+1)}{2}$$\n\nAnd\n$$S_2 + x^2 + y^2 = 1^2 + \\cdots + 1000^2 = \\frac{1000^3}{3} + \\frac{1000^2}{3} + \\frac{1000}{6}$$\n\nThis is a simple system of two equations in the two variables $x$ and $y$."
+    "solution": "We use a couple of summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n\nAnd\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{3} + \\frac{n}{6}$$\n\nDenote $x$ and $y$ to be the two missing integers, and $a_1, \\ldots, a_{998}$ to be the distinct given integers. Moreover, denote\n$$S_1 = a_1 + \\cdots + a_{998}$$\nand\n$$S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nWe get that\n$$S_1 + x + y = 1 + 2 + \\cdots + 1000 = \\frac{1000(1000+1)}{2}$$\n\nAnd\n$$S_2 + x^2 + y^2 = 1^2 + \\cdots + 1000^2 = \\frac{1000^3}{3} + \\frac{1000^2}{3} + \\frac{1000}{6}$$\n\nThis is a simple system of two equations in the two variables $x$ and $y$.",
+    "timeLimit": 4
   },
   {
     "id": 7,
     "title": "Unique Bag",
     "category": "Summation",
-    "difficulty": "Medium",
+    "difficulty": "Easy",
     "source": "Green Book",
     "isNew": true,
     "preview": "20 bags of coins — 19 weigh 5g each, one weighs 4g or 6g. What is the minimum number of scale measurements needed?",
@@ -92,7 +98,8 @@
     "answerType": "numeric",
     "correctAnswer": 1,
     "tolerance": 0,
-    "solution": "Number the bags $1$ to $20$. Take $i$ coins from bag $i$, for each $i = 1, \\ldots, 20$. Weigh them all together and call the total weight $S$.\n\nSuppose the unique bag is number $i_0$. Then:\n$$S = 1{\\times}5 + 2{\\times}5 + \\cdots + (i_0-1){\\times}5 + i_0{\\times}(5 \\pm 1) + (i_0+1){\\times}5 + \\cdots + 20{\\times}5$$\n$$= (1 + 2 + \\cdots + 20) \\times 5 \\pm i_0 = \\frac{20 \\cdot 21}{2} \\times 5 \\pm i_0 = 1050 \\pm i_0$$\n\nTherefore:\n$$|S - 1050| = i_0$$\n\nA single weighing tells us both which bag is unique and whether its coins are heavier or lighter. $\\blacksquare$"
+    "solution": "Number the bags $1$ to $20$. Take $i$ coins from bag $i$, for each $i = 1, \\ldots, 20$. Weigh them all together and call the total weight $S$.\n\nSuppose the unique bag is number $i_0$. Then:\n$$S = 1{\\times}5 + 2{\\times}5 + \\cdots + (i_0-1){\\times}5 + i_0{\\times}(5 \\pm 1) + (i_0+1){\\times}5 + \\cdots + 20{\\times}5$$\n$$= (1 + 2 + \\cdots + 20) \\times 5 \\pm i_0 = \\frac{20 \\cdot 21}{2} \\times 5 \\pm i_0 = 1050 \\pm i_0$$\n\nTherefore:\n$$|S - 1050| = i_0$$\n\nA single weighing tells us both which bag is unique and whether its coins are heavier or lighter. $\\blacksquare$",
+    "timeLimit": 4
   },
   {
     "id": 8,
@@ -109,7 +116,8 @@
       "No"
     ],
     "correctAnswer": "Yes",
-    "solution": "There are a total of 31 people in the room. Each of the 30 people already in the room shook hands with at least one person, since they all shook hands with you. Therefore each of them shook hands with between 1 and 30 people.\n\nThus there are 31 people but only 30 possible numbers of handshakes. By the pigeonhole principle, at least two people must have shaken hands with exactly the same number of people.\n\nFinal answer: $\\boxed{\\text{Yes}}$"
+    "solution": "There are a total of 31 people in the room. Each of the 30 people already in the room shook hands with at least one person, since they all shook hands with you. Therefore each of them shook hands with between 1 and 30 people.\n\nThus there are 31 people but only 30 possible numbers of handshakes. By the pigeonhole principle, at least two people must have shaken hands with exactly the same number of people.\n\nFinal answer: $\\boxed{\\text{Yes}}$",
+    "timeLimit": 4
   },
   {
     "id": 9,
@@ -123,7 +131,8 @@
     "answerType": "numeric",
     "correctAnswer": 49,
     "tolerance": 0,
-    "solution": "For simplicity, label the hat colors by the integers $0, 1, 2, 3, 4$.\n\nOrder the prisoners by the order in which they will shout their guesses. For $i = 1, \\ldots, 50$, let $h_i$ denote the number corresponding to prisoner $i$'s hat. For each prisoner $i$, define\n$$s_i = \\sum_{\\substack{j=1 \\\\ j \\neq i}}^{50} h_j$$\nwhich is the sum of the hat numbers that prisoner $i$ can see.\n\nThe strategy will be as follows:\n\nThe first prisoner announces\n$$g_1 \\equiv s_1 \\pmod{5}$$\nThis guess may be wrong, but it encodes information for the remaining prisoners.\n\nNow, each prisoner $n = 2, 3, \\ldots, 50$ can compute\n$$g_n \\equiv s_n \\pmod{5}$$\n\nWrite $s_i = 5t_i + g_i$ for some integer $t_i$. Now observe that\n$$s_n - s_1 = h_1 - h_n$$\nBut also\n$$s_n - s_1 = 5(t_n - t_1) + g_n - g_1$$\nThus\n$$h_1 - h_n \\equiv g_n - g_1 \\pmod{5}$$\n\nSince prisoner $n$ knows $g_1$, $g_n$, and sees $h_1$, they can compute\n$$h_n \\equiv h_1 - (g_n - g_1) \\pmod{5}$$\n\nThus prisoner $n$ can determine their own hat color exactly.\n\nTo finish, the first prisoner may guess incorrectly, but all other prisoners determine their hat colors correctly. Hence\n\n$\\boxed{\\text{At least 49 prisoners are guaranteed to be saved.}}$"
+    "solution": "For simplicity, label the hat colors by the integers $0, 1, 2, 3, 4$.\n\nOrder the prisoners by the order in which they will shout their guesses. For $i = 1, \\ldots, 50$, let $h_i$ denote the number corresponding to prisoner $i$'s hat. For each prisoner $i$, define\n$$s_i = \\sum_{\\substack{j=1 \\\\ j \\neq i}}^{50} h_j$$\nwhich is the sum of the hat numbers that prisoner $i$ can see.\n\nThe strategy will be as follows:\n\nThe first prisoner announces\n$$g_1 \\equiv s_1 \\pmod{5}$$\nThis guess may be wrong, but it encodes information for the remaining prisoners.\n\nNow, each prisoner $n = 2, 3, \\ldots, 50$ can compute\n$$g_n \\equiv s_n \\pmod{5}$$\n\nWrite $s_i = 5t_i + g_i$ for some integer $t_i$. Now observe that\n$$s_n - s_1 = h_1 - h_n$$\nBut also\n$$s_n - s_1 = 5(t_n - t_1) + g_n - g_1$$\nThus\n$$h_1 - h_n \\equiv g_n - g_1 \\pmod{5}$$\n\nSince prisoner $n$ knows $g_1$, $g_n$, and sees $h_1$, they can compute\n$$h_n \\equiv h_1 - (g_n - g_1) \\pmod{5}$$\n\nThus prisoner $n$ can determine their own hat color exactly.\n\nTo finish, the first prisoner may guess incorrectly, but all other prisoners determine their hat colors correctly. Hence\n\n$\\boxed{\\text{At least 49 prisoners are guaranteed to be saved.}}$",
+    "timeLimit": 20
   },
   {
     "id": 10,
@@ -135,7 +144,8 @@
     "preview": "Prove that a natural number is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "question": "Let $n \\in \\mathbb{N}$. Prove that $n$ is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "answerType": "theory",
-    "solution": "Say\n$$n = a_0 + 10a_1 + 10^2 a_2 + \\cdots + 10^m a_m$$\nfor some $m \\in \\mathbb{N}$ and $a_i \\in \\{0, 1, \\ldots, 9\\}$ for any $i = 0, 1, \\ldots, m$.\n\nWe note that\n$$n - (a_0 + \\cdots + a_m) = a_0 - a_0 + (10-1)a_1 + (10^2-1)a_2 + \\cdots + (10^m - 1)a_m$$\n\nSince $10^i - 1$ is divisible by 9 for any $i = 0, 1, \\ldots$, it follows that\n$$n - (a_0 + \\cdots + a_m) \\equiv 0 \\pmod{9}$$\n\nThus\n$$n \\equiv a_0 + \\cdots + a_m \\pmod{9}$$\n\nTherefore $n$ is divisible by 9 if and only if the sum of its digits is divisible by 9."
+    "solution": "Say\n$$n = a_0 + 10a_1 + 10^2 a_2 + \\cdots + 10^m a_m$$\nfor some $m \\in \\mathbb{N}$ and $a_i \\in \\{0, 1, \\ldots, 9\\}$ for any $i = 0, 1, \\ldots, m$.\n\nWe note that\n$$n - (a_0 + \\cdots + a_m) = a_0 - a_0 + (10-1)a_1 + (10^2-1)a_2 + \\cdots + (10^m - 1)a_m$$\n\nSince $10^i - 1$ is divisible by 9 for any $i = 0, 1, \\ldots$, it follows that\n$$n - (a_0 + \\cdots + a_m) \\equiv 0 \\pmod{9}$$\n\nThus\n$$n \\equiv a_0 + \\cdots + a_m \\pmod{9}$$\n\nTherefore $n$ is divisible by 9 if and only if the sum of its digits is divisible by 9.",
+    "timeLimit": 4
   },
   {
     "id": 11,
@@ -149,7 +159,8 @@
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0,
-    "solution": "Denote the following events:\n\n$E_1 =$ $A$'s first $n$ tosses have more heads than all of $B$'s tosses,\n\n$E_2 =$ $A$'s first $n$ tosses have the same number of heads as $B$'s tosses,\n\n$E_3 =$ $A$'s first $n$ tosses have fewer heads than all of $B$'s tosses.\n\nBy symmetry,\n$$\\mathbb{P}(E_1) = \\mathbb{P}(E_3)$$\n\nHence\n$$1 = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)$$\n\nDenote by $E$ the event that $A$ gets more heads than $B$. Then\n$$\\mathbb{P}(E) = \\mathbb{P}(E \\mid E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E \\mid E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E \\mid E_3)\\mathbb{P}(E_3)$$\n\nLet us analyze each summand.\n\nAssuming $E_1$, no matter what $A$ gets on the $(n+1)$-th toss, they win. So\n$$\\mathbb{P}(E \\mid E_1) = 1$$\n\nAssuming $E_2$, $A$ wins if and only if they get heads on the $(n+1)$-th toss. So\n$$\\mathbb{P}(E \\mid E_2) = \\frac{1}{2}$$\n\nAssuming $E_3$, $A$ can never win, since at best they can equal the number of heads in $B$'s tosses. Hence\n$$\\mathbb{P}(E \\mid E_3) = 0$$\n\nPlugging everything in, we get\n$$\\mathbb{P}(E) = 1 \\cdot \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2) + 0 \\cdot \\mathbb{P}(E_3) = \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2)$$\n\nTherefore,\n$$\\mathbb{P}(E) = \\frac{1}{2}\\bigl(2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)\\bigr) = \\frac{1}{2}$$\n\n$$\\boxed{\\mathbb{P}(A \\text{ wins}) = \\frac{1}{2}}$$"
+    "solution": "Denote the following events:\n\n$E_1 =$ $A$'s first $n$ tosses have more heads than all of $B$'s tosses,\n\n$E_2 =$ $A$'s first $n$ tosses have the same number of heads as $B$'s tosses,\n\n$E_3 =$ $A$'s first $n$ tosses have fewer heads than all of $B$'s tosses.\n\nBy symmetry,\n$$\\mathbb{P}(E_1) = \\mathbb{P}(E_3)$$\n\nHence\n$$1 = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)$$\n\nDenote by $E$ the event that $A$ gets more heads than $B$. Then\n$$\\mathbb{P}(E) = \\mathbb{P}(E \\mid E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E \\mid E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E \\mid E_3)\\mathbb{P}(E_3)$$\n\nLet us analyze each summand.\n\nAssuming $E_1$, no matter what $A$ gets on the $(n+1)$-th toss, they win. So\n$$\\mathbb{P}(E \\mid E_1) = 1$$\n\nAssuming $E_2$, $A$ wins if and only if they get heads on the $(n+1)$-th toss. So\n$$\\mathbb{P}(E \\mid E_2) = \\frac{1}{2}$$\n\nAssuming $E_3$, $A$ can never win, since at best they can equal the number of heads in $B$'s tosses. Hence\n$$\\mathbb{P}(E \\mid E_3) = 0$$\n\nPlugging everything in, we get\n$$\\mathbb{P}(E) = 1 \\cdot \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2) + 0 \\cdot \\mathbb{P}(E_3) = \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2)$$\n\nTherefore,\n$$\\mathbb{P}(E) = \\frac{1}{2}\\bigl(2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)\\bigr) = \\frac{1}{2}$$\n\n$$\\boxed{\\mathbb{P}(A \\text{ wins}) = \\frac{1}{2}}$$",
+    "timeLimit": 6
   },
   {
     "id": 12,
@@ -163,7 +174,8 @@
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0,
-    "solution": "For any seat $i$, denote the random variable $\\tau_i$ to be the number of the passenger that ends up in seat $\\#i$.\n\nWe note that the 150-th passenger will end up in their seat if and only if seat $\\#1$ is occupied before seat $\\#150$. Formally,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150})$$\n\nBut by symmetry, since all seats are probabilistically the same,\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) = \\mathbb{P}(\\tau_{150} < \\tau_1)$$\n\nThese are complementary events, so\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) + \\mathbb{P}(\\tau_{150} < \\tau_1) = 1$$\n\nThus,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150}) = \\frac{1}{2}$$\n\nFinal answer: $\\boxed{\\dfrac{1}{2}}$"
+    "solution": "For any seat $i$, denote the random variable $\\tau_i$ to be the number of the passenger that ends up in seat $\\#i$.\n\nWe note that the 150-th passenger will end up in their seat if and only if seat $\\#1$ is occupied before seat $\\#150$. Formally,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150})$$\n\nBut by symmetry, since all seats are probabilistically the same,\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) = \\mathbb{P}(\\tau_{150} < \\tau_1)$$\n\nThese are complementary events, so\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) + \\mathbb{P}(\\tau_{150} < \\tau_1) = 1$$\n\nThus,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150}) = \\frac{1}{2}$$\n\nFinal answer: $\\boxed{\\dfrac{1}{2}}$",
+    "timeLimit": 6
   },
   {
     "id": 13,
@@ -177,7 +189,8 @@
     "answerType": "numeric",
     "correctAnswer": 0.25,
     "tolerance": 0,
-    "solution": "We note that the event that the table will not stand is exactly the event that all points lie within a semicircle. Denote this event by $E$.\n\nDenote the points by 1, 2 and 3. For each $i$, denote by $E_i$ the event that all points $j \\neq i$ lie on the semicircle whose left endpoint is point $i$.\n\nAlso, we note that\n$$E = \\bigcup_{i \\in \\{1,2,3\\}} E_i$$\nand\n$$E_i \\cap E_j = \\varnothing$$\nwhenever $i \\neq j$.\n\nTherefore, by symmetry,\n$$\\mathbb{P}(E) = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 3\\mathbb{P}(E_1)$$\n\nTo calculate $\\mathbb{P}(E_1)$, we note that this is exactly the probability that the two points 2 and 3 lie in the semicircle determined by point 1. Since each point independently has probability $\\frac{1}{2}$ to lie in that semicircle,\n$$\\mathbb{P}(E_1) = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n\nThus,\n$$\\mathbb{P}(E) = 3 \\cdot \\frac{1}{4} = \\frac{3}{4}$$\n\nSince this is the probability that the table does *not* stand properly, the desired probability is\n$$1 - \\frac{3}{4} = \\boxed{\\frac{1}{4}}$$"
+    "solution": "We note that the event that the table will not stand is exactly the event that all points lie within a semicircle. Denote this event by $E$.\n\nDenote the points by 1, 2 and 3. For each $i$, denote by $E_i$ the event that all points $j \\neq i$ lie on the semicircle whose left endpoint is point $i$.\n\nAlso, we note that\n$$E = \\bigcup_{i \\in \\{1,2,3\\}} E_i$$\nand\n$$E_i \\cap E_j = \\varnothing$$\nwhenever $i \\neq j$.\n\nTherefore, by symmetry,\n$$\\mathbb{P}(E) = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 3\\mathbb{P}(E_1)$$\n\nTo calculate $\\mathbb{P}(E_1)$, we note that this is exactly the probability that the two points 2 and 3 lie in the semicircle determined by point 1. Since each point independently has probability $\\frac{1}{2}$ to lie in that semicircle,\n$$\\mathbb{P}(E_1) = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n\nThus,\n$$\\mathbb{P}(E) = 3 \\cdot \\frac{1}{4} = \\frac{3}{4}$$\n\nSince this is the probability that the table does *not* stand properly, the desired probability is\n$$1 - \\frac{3}{4} = \\boxed{\\frac{1}{4}}$$",
+    "timeLimit": 6
   },
   {
     "id": 14,
@@ -191,7 +204,8 @@
     "answerType": "numeric",
     "correctAnswer": 8,
     "tolerance": 0,
-    "solution": "Let $T_n$ be the number of ways the frog can jump to stone $n$. We evaluate $T_n$ recursively.\n\nClearly $T_1 = 1$ and $T_2 = 2$, since the frog can jump either\n$$0 \\to 2$$\nor\n$$0 \\to 1 \\to 2$$\n\nSuppose $n \\geq 2$. We note that\n$$T_n = \\#\\{\\text{ways in which the frog jumped from stone } n-1 \\text{ to } n\\} + \\#\\{\\text{ways in which the frog jumped from stone } n-2 \\text{ to } n\\}$$\n\nBut in that case,\n$$T_n = T_{n-1} + T_{n-2}$$\n\nThus,\n$$T_3 = 2 + 1 = 3$$\n$$T_4 = 3 + 2 = 5$$\n$$T_5 = 5 + 3 = 8$$\n\nFinal answer: $\\boxed{8}$"
+    "solution": "Let $T_n$ be the number of ways the frog can jump to stone $n$. We evaluate $T_n$ recursively.\n\nClearly $T_1 = 1$ and $T_2 = 2$, since the frog can jump either\n$$0 \\to 2$$\nor\n$$0 \\to 1 \\to 2$$\n\nSuppose $n \\geq 2$. We note that\n$$T_n = \\#\\{\\text{ways in which the frog jumped from stone } n-1 \\text{ to } n\\} + \\#\\{\\text{ways in which the frog jumped from stone } n-2 \\text{ to } n\\}$$\n\nBut in that case,\n$$T_n = T_{n-1} + T_{n-2}$$\n\nThus,\n$$T_3 = 2 + 1 = 3$$\n$$T_4 = 3 + 2 = 5$$\n$$T_5 = 5 + 3 = 8$$\n\nFinal answer: $\\boxed{8}$",
+    "timeLimit": 3
   },
   {
     "id": 15,
@@ -199,7 +213,7 @@
     "category": "Basic Probability",
     "difficulty": "Medium",
     "source": "Green Book",
-    "timeLimit": 8,
+    "timeLimit": 10,
     "isNew": true,
     "preview": "A billiard tournament has 2ⁿ players with ranked skills. What is the probability the two best players meet in the final?",
     "question": "A billiard competition has $2^n$ players with skills\n$$s_1 < s_2 < \\cdots < s_{2^n}$$\n\nEach game is deterministic, and the winner is always the player with the higher skill score. In each round, all the players are split into pairs, and the winners proceed to the next round until the final.\n\nWhat is the probability, in terms of $n$, that the two best players meet in the final?\n\nIn the answer box, type the answer for the case $n = 4$. Round to 4 decimal places.",
