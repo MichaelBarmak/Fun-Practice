@@ -234,5 +234,20 @@
     "question": "You have a $p$-coin in your hand. That is, a coin that lands heads with probability $p$ for some fixed $0 < p < 1$.\n\nGenerate even odds using this coin.",
     "answerType": "theory",
     "solution": "When flipping the coin twice, we get\n\n$$mathbb{P}(\text{heads, heads}) = p^2$$\n$$mathbb{P}(\text{heads, tails}) = p(1-p)$$\n$$mathbb{P}(\text{tails, heads}) = (1-p)p$$\n$$mathbb{P}(\text{tails, tails}) = (1-p)^2$$\n\nEasy claim: if we flip the coin twice again and again, eventually we will obtain either heads–tails or tails–heads.\n\n**Proof.** For any $n in mathbb{N}$, the probability of not landing heads–tails or tails–heads after $n$ trials is\n\n$$(p^2 + (1-p)^2)^n.$$\n\nTaking $n \to infty$, we get\n\n$$(p^2 + (1-p)^2)^n \to 0.$$\n\nHence the probability of never obtaining heads–tails or tails–heads is 0.\n\nThus we can flip the coin twice repeatedly until we obtain either heads–tails or tails–heads.\n\nSince these two outcomes have equal probability, we obtain a fair outcome."
+  },
+  {
+    "id": 17,
+    "title": "Dart Order",
+    "category": "Basic Probability",
+    "difficulty": "Easy",
+    "source": "Green Book",
+    "timeLimit": 2.5,
+    "isNew": true,
+    "preview": "You throw 3 darts at a board. What is the probability that the scores form an increasing sequence?",
+    "question": "You throw 3 darts at a board. Assume the score of each dart is determined by the exact distance of the dart from the center of the board. What is the probability that the scores of the darts form an increasing sequence?",
+    "answerType": "numeric",
+    "correctAnswer": 0.16666666666666666,
+    "tolerance": 0.001,
+    "solution": "Denote by $X_1, X_2, X_3$ the scores of the darts. By symmetry, for any bijection $sigma : {1,2,3} \to {1,2,3}$ it holds that\n\n$$mathbb{P}(X_1 < X_2 < X_3) = mathbb{P}(X_{sigma(1)} < X_{sigma(2)} < X_{sigma(3)}).$$\n\nThere are 6 bijections on ${1,2,3}$. Therefore\n\n$$1 = sum_{sigma} mathbb{P}(X_{sigma(1)} < X_{sigma(2)} < X_{sigma(3)}) = sum_{sigma} mathbb{P}(X_1 < X_2 < X_3) = 6,mathbb{P}(X_1 < X_2 < X_3),$$\n\nwhen the summand is over bijections $sigma : {1,2,3} \to {1,2,3}$. Thus\n\n$$mathbb{P}(X_1 < X_2 < X_3) = \frac{1}{6}.$$"
   }
 ]
