@@ -178,5 +178,19 @@
     "correctAnswer": 0.25,
     "tolerance": 0,
     "solution": "We note that the event that the table will not stand is exactly the event that all points lie within a semicircle. Denote this event by $E$.\n\nDenote the points by 1, 2 and 3. For each $i$, denote by $E_i$ the event that all points $j \\neq i$ lie on the semicircle whose left endpoint is point $i$.\n\nAlso, we note that\n$$E = \\bigcup_{i \\in \\{1,2,3\\}} E_i$$\nand\n$$E_i \\cap E_j = \\varnothing$$\nwhenever $i \\neq j$.\n\nTherefore, by symmetry,\n$$\\mathbb{P}(E) = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 3\\mathbb{P}(E_1)$$\n\nTo calculate $\\mathbb{P}(E_1)$, we note that this is exactly the probability that the two points 2 and 3 lie in the semicircle determined by point 1. Since each point independently has probability $\\frac{1}{2}$ to lie in that semicircle,\n$$\\mathbb{P}(E_1) = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n\nThus,\n$$\\mathbb{P}(E) = 3 \\cdot \\frac{1}{4} = \\frac{3}{4}$$\n\nSince this is the probability that the table does *not* stand properly, the desired probability is\n$$1 - \\frac{3}{4} = \\boxed{\\frac{1}{4}}$$"
+  },
+  {
+    "id": 14,
+    "title": "Jumping Frog",
+    "category": "Recursion",
+    "difficulty": "Easy",
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "A frog on stone 0 wants to reach stone 5, jumping 1 or 2 stones at a time. How many ways can it get there?",
+    "question": "There is a line of stones in a river, numbered 0 to 5.\nA frog is standing on stone 0 and a bug is on stone 5.\nThe frog can jump either one or two stones forward on each jump.\n\nHow many ways can the frog reach the bug?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 8,
+    "tolerance": 0,
+    "solution": "Let $T_n$ be the number of ways the frog can jump to stone $n$. We evaluate $T_n$ recursively.\n\nClearly $T_1 = 1$ and $T_2 = 2$, since the frog can jump either\n$$0 \\to 2$$\nor\n$$0 \\to 1 \\to 2$$\n\nSuppose $n \\geq 2$. We note that\n$$T_n = \\#\\{\\text{ways in which the frog jumped from stone } n-1 \\text{ to } n\\} + \\#\\{\\text{ways in which the frog jumped from stone } n-2 \\text{ to } n\\}$$\n\nBut in that case,\n$$T_n = T_{n-1} + T_{n-2}$$\n\nThus,\n$$T_3 = 2 + 1 = 3$$\n$$T_4 = 3 + 2 = 5$$\n$$T_5 = 5 + 3 = 8$$\n\nFinal answer: $\\boxed{8}$"
   }
 ]
