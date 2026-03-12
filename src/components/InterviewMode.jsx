@@ -21,7 +21,7 @@ export default function InterviewMode({ questions, onExit }) {
   const [selected, setSelected] = useState([]);
   const [idx, setIdx] = useState(0);
   const [answers, setAnswers] = useState(['', '', '']);
-  const [timeLeft, setTimeLeft] = useState(DURATION);
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_DURATION);
 
   function start() {
     const shuffled = [...questions].sort(() => Math.random() - 0.5);
