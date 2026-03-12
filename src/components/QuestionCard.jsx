@@ -101,6 +101,11 @@ export default function QuestionCard({
                 {question.source}
               </span>
             )}
+            {question.timeLimit && (
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">
+                ⏱ {question.timeLimit} min
+              </span>
+            )}
           </div>
 
           {!isExpanded && (

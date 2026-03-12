@@ -192,5 +192,20 @@
     "correctAnswer": 8,
     "tolerance": 0,
     "solution": "Let $T_n$ be the number of ways the frog can jump to stone $n$. We evaluate $T_n$ recursively.\n\nClearly $T_1 = 1$ and $T_2 = 2$, since the frog can jump either\n$$0 \\to 2$$\nor\n$$0 \\to 1 \\to 2$$\n\nSuppose $n \\geq 2$. We note that\n$$T_n = \\#\\{\\text{ways in which the frog jumped from stone } n-1 \\text{ to } n\\} + \\#\\{\\text{ways in which the frog jumped from stone } n-2 \\text{ to } n\\}$$\n\nBut in that case,\n$$T_n = T_{n-1} + T_{n-2}$$\n\nThus,\n$$T_3 = 2 + 1 = 3$$\n$$T_4 = 3 + 2 = 5$$\n$$T_5 = 5 + 3 = 8$$\n\nFinal answer: $\\boxed{8}$"
+  },
+  {
+    "id": 15,
+    "title": "Billiard Match",
+    "category": "Basic Probability",
+    "difficulty": "Medium",
+    "source": "Green Book",
+    "timeLimit": 8,
+    "isNew": true,
+    "preview": "A billiard tournament has 2ⁿ players with ranked skills. What is the probability the two best players meet in the final?",
+    "question": "A billiard competition has $2^n$ players with skills\n$$s_1 < s_2 < \\cdots < s_{2^n}$$\n\nEach game is deterministic, and the winner is always the player with the higher skill score. In each round, all the players are split into pairs, and the winners proceed to the next round until the final.\n\nWhat is the probability, in terms of $n$, that the two best players meet in the final?\n\nIn the answer box, type the answer for the case $n = 4$. Round to 4 decimal places.",
+    "answerType": "numeric",
+    "correctAnswer": 0.5333,
+    "tolerance": 0.001,
+    "solution": "Denote $T = (V, E)$ to be the full binary tree that represents the matches of the entire competition. $T$ has height $n$ and has $2^n$ leaves.\n\nThus, given a random assignment of leaves to players, the only way the two best players meet in the final is if their lowest common ancestor is the root of the tree.\n\nIn that case, the best player can be assigned to any leaf, and the second-best player has $2^{n-1}$ options out of $2^n - 1$ available leaves.\n\nTherefore, the generalized answer is\n$$\\frac{2^{n-1}}{2^n - 1}$$\n\nFor $n = 4$ we get\n$$\\frac{2^3}{2^4 - 1} = \\frac{8}{15} \\approx 0.5333$$"
   }
 ]

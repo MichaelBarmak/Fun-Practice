@@ -4,7 +4,11 @@ import { useState, useEffect } from 'react';
 import MathText from './MathText';
 import { checkAnswer } from '../utils/answerChecker';
 
-const DURATION = 5 * 60; // 300 seconds
+const DEFAULT_DURATION = 5 * 60; // 300 seconds
+
+function getDuration(question) {
+  return question?.timeLimit ? question.timeLimit * 60 : DEFAULT_DURATION;
+}
 
 function formatTime(s) {
   const m = Math.floor(s / 60);
@@ -21,10 +25,11 @@ export default function InterviewMode({ questions, onExit }) {
 
   function start() {
     const shuffled = [...questions].sort(() => Math.random() - 0.5);
-    setSelected(shuffled.slice(0, 3));
+    const three = shuffled.slice(0, 3);
+    setSelected(three);
     setIdx(0);
     setAnswers(['', '', '']);
-    setTimeLeft(DURATION);
+    setTimeLeft(getDuration(three[0]));
     setPhase('question');
   }
 
@@ -34,7 +39,7 @@ export default function InterviewMode({ questions, onExit }) {
     if (timeLeft <= 0) {
       if (idx < 2) {
         setIdx(i => i + 1);
-        setTimeLeft(DURATION);
+        setTimeLeft(getDuration(selected[idx + 1]));
       } else {
         setPhase('results');
       }
@@ -47,7 +52,7 @@ export default function InterviewMode({ questions, onExit }) {
   function advance() {
     if (idx < 2) {
       setIdx(i => i + 1);
-      setTimeLeft(DURATION);
+      setTimeLeft(getDuration(selected[idx + 1]));
     } else {
       setPhase('results');
     }
