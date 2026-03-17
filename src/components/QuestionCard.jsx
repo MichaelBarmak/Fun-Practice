@@ -51,7 +51,7 @@ export default function QuestionCard({
 
   return (
     <div
-      className={`bg-white rounded-xl border transition-shadow duration-200 overflow-hidden
+      className={`bg-white rounded-xl border transition-shadow duration-200
         ${isExpanded ? 'border-indigo-300 shadow-md' : 'border-slate-200 hover:shadow-sm'}`}
     >
       {/* ── Card header ── */}
@@ -120,7 +120,7 @@ export default function QuestionCard({
       </button>
 
       {/* ── Expandable detail panel ── */}
-      <div className={`overflow-hidden ${isExpanded ? 'accordion-open' : 'accordion-closed'}`}>
+      <div className={`${isExpanded ? 'overflow-x-auto accordion-open' : 'overflow-hidden accordion-closed'}`}>
         <div className="px-5 pb-6 pt-1 border-t border-slate-100">
           {/* Full question text */}
           <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
