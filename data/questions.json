@@ -279,5 +279,20 @@
     "correctAnswer": 0.20634920634920634,
     "tolerance": 0.001,
     "solution": "Denote the following random variables:\n\n$T_r$ – the number of the balls that were taken out once there are no more red balls in the bag.\n\n$T_b$ and $T_g$ are defined respectively for the colors blue and green.\n\nSo formally, we're looking for\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g)$$\n\nWe note that\n\n$$\\{T_r < T_b \\text{ and } T_r < T_g\\} = \\{T_r < T_b < T_g\\} \\sqcup \\{T_r < T_g < T_b\\}$$\n\nThus\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\mathbb{P}(T_r < T_b < T_g) + \\mathbb{P}(T_r < T_g < T_b)$$\n\nNow, we use conditional probability to have\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\mathbb{P}(T_r < T_b \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45) = \\mathbb{P}(T_b = 44 \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45)$$\n\nWe have that\n\n$$\\mathbb{P}(T_g = 45) = \\mathbb{P}(\\text{last ball pulled is green}) = \\frac{10}{45}$$\n\nsince each of the balls is equally likely to be the last ball being pulled.\n\nNow, in the event $(T_b = 44 \\mid T_g = 45)$, we can just ignore the green balls and ask what's the probability that from a bag of 20 red balls and 15 blue balls, the last ball pulled is blue. Thus, similarly:\n\n$$\\mathbb{P}(T_b = 44 \\mid T_g = 45) = \\frac{15}{35}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\frac{10}{45} \\cdot \\frac{15}{35} = \\frac{2}{21}$$\n\nBy the same logic:\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\mathbb{P}(T_g = 44 \\mid T_b = 45) \\cdot \\mathbb{P}(T_b = 45)$$\n\nWe have\n\n$$\\mathbb{P}(T_b = 45) = \\frac{15}{45}$$\n\nAnd\n\n$$\\mathbb{P}(T_g = 44 \\mid T_b = 45) = \\frac{10}{30}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\frac{15}{45} \\cdot \\frac{10}{30} = \\frac{1}{9}$$\n\nHence\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\frac{2}{21} + \\frac{1}{9} = \\frac{13}{63}$$"
+  },
+  {
+    "id": 20,
+    "title": "Coin In a Bag",
+    "category": "Conditional Probability",
+    "difficulty": "Medium",
+    "source": "Green Book",
+    "timeLimit": 7,
+    "isNew": true,
+    "preview": "Avi and Benny take turns flipping a coin. The first to flip Heads right after another Heads wins. What is the probability Avi wins?",
+    "question": "Two players, Avi and Benny, play a game. First, Avi flips a fair coin, then Benny, then Avi, and so on.\n\nThe flips are recorded, and the first player to land Heads immediately after another Heads wins. What is the probability that Avi wins?",
+    "answerType": "numeric",
+    "correctAnswer": 0.4,
+    "tolerance": 0.001,
+    "solution": "A basic stochastic process argument gives that with probability 1, eventually either Avi or Benny will win.\n\nDenote by $A$ the event that Avi wins, and $B$ the event that Benny wins.\n\nThus we have, by the law of total and conditional probability:\n\n$$\\mathbb{P}(A) = \\mathbb{P}(A \\mid \\text{first flip is heads}) \\cdot \\frac{1}{2} + \\mathbb{P}(A \\mid \\text{first flip is tails}) \\cdot \\frac{1}{2}$$\n\nNow, the event $(A \\mid \\text{first flip is tails})$ is symmetric to the event $B$, so:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is tails}) = \\mathbb{P}(B) = 1 - \\mathbb{P}(A)$$\n\nSecondly, using conditional probability:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is heads}) \\cdot \\mathbb{P}(\\text{second flip is heads})$$\n$$+ \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is tails}) \\cdot \\mathbb{P}(\\text{second flip is tails})$$\n\nNow, we examine the event $(A \\mid \\text{first flip is heads})$. With probability $\\frac{1}{2}$, the second toss lands heads and Avi loses, and if the second toss lands tails, then we are back to the same situation as the start of the game.\n\nThus:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = 0 \\cdot \\frac{1}{2} + \\mathbb{P}(A) \\cdot \\frac{1}{2} = \\frac{\\mathbb{P}(A)}{2}$$\n\nSo together we have:\n\n$$\\mathbb{P}(A) = \\frac{1}{2} \\cdot \\frac{\\mathbb{P}(A)}{2} + \\frac{1}{2} \\cdot (1 - \\mathbb{P}(A))$$\n\nWhich gives:\n\n$$\\mathbb{P}(A) = \\frac{2}{5}$$"
   }
 ]
