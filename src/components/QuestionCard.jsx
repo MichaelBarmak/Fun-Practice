@@ -51,6 +51,7 @@ export default function QuestionCard({
 
   return (
     <div
+      id={`question-${question.id}`}
       className={`bg-white rounded-xl border transition-shadow duration-200
         ${isExpanded ? 'border-indigo-300 shadow-md' : 'border-slate-200 hover:shadow-sm'}`}
     >

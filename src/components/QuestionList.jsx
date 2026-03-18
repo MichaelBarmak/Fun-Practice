@@ -15,6 +15,16 @@ export default function QuestionList({ questions, onStartInterview }) {
 
   const { solvedIds, markSolved } = useSolvedQuestions();
 
+  function pickRandom() {
+    const random = questions[Math.floor(Math.random() * questions.length)];
+    setSearch('');
+    setSelectedCategory('All');
+    setExpandedId(random.id);
+    setTimeout(() => {
+      document.getElementById(`question-${random.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+  }
+
   // Build unique sorted category list from the data
   const categories = useMemo(() => {
     const cats = [...new Set(questions.map((q) => q.category))].sort();
@@ -47,12 +57,20 @@ export default function QuestionList({ questions, onStartInterview }) {
         <div>
           <p className="text-sm font-semibold text-indigo-800">Ready to practice?</p>
         </div>
-        <button
-          onClick={onStartInterview}
-          className="shrink-0 px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
-        >
-          Simulate 3 Questions Interview
-        </button>
+        <div className="flex gap-2 shrink-0">
+          <button
+            onClick={pickRandom}
+            className="px-4 py-2 bg-white border border-indigo-300 text-indigo-700 text-sm font-semibold rounded-lg hover:bg-indigo-50 transition-colors whitespace-nowrap"
+          >
+            Random Question
+          </button>
+          <button
+            onClick={onStartInterview}
+            className="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
+          >
+            Simulate 3 Questions Interview
+          </button>
+        </div>
       </div>
 
       {/* ── Stats bar ── */}
