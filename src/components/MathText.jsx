@@ -18,10 +18,10 @@ export default function MathText({ text, className = '' }) {
     <span className={className}>
       {segments.map((seg, i) => {
         if (seg.type === 'text') {
-          // Preserve newlines as line breaks
+          // Preserve newlines as line breaks, and render **bold**
           return seg.value.split('\n').map((line, j, arr) => (
             <span key={`${i}-${j}`}>
-              {line}
+              {renderBold(line)}
               {j < arr.length - 1 && <br />}
             </span>
           ));
@@ -46,6 +46,19 @@ export default function MathText({ text, className = '' }) {
       })}
     </span>
   );
+}
+
+/**
+ * Render a plain-text line, converting **bold** markers to <strong> elements.
+ */
+function renderBold(line) {
+  const parts = line.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
 }
 
 /**

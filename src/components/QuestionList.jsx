@@ -53,20 +53,18 @@ export default function QuestionList({ questions, onStartInterview }) {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       {/* ── Interview simulation banner ── */}
-      <div className="mb-6 p-4 bg-indigo-50 border border-indigo-200 rounded-xl flex items-center justify-between gap-4">
-        <div>
-          <p className="text-sm font-semibold text-indigo-800">Ready to practice?</p>
-        </div>
-        <div className="flex gap-2 shrink-0">
+      <div className="mb-6 p-4 bg-indigo-50 border border-indigo-200 rounded-xl flex flex-col gap-3">
+        <p className="text-sm font-semibold text-indigo-800">Ready to practice?</p>
+        <div className="flex flex-col gap-2">
           <button
             onClick={pickRandom}
-            className="px-4 py-2 bg-white border border-indigo-300 text-indigo-700 text-sm font-semibold rounded-lg hover:bg-indigo-50 transition-colors whitespace-nowrap"
+            className="w-full px-4 py-2.5 bg-white border border-indigo-300 text-indigo-700 text-sm font-semibold rounded-lg hover:bg-indigo-50 transition-colors"
           >
             Random Question
           </button>
           <button
             onClick={onStartInterview}
-            className="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
+            className="w-full px-4 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Simulate 3 Questions Interview
           </button>
