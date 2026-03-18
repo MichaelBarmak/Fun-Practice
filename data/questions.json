@@ -320,5 +320,20 @@
     "question": "You own $j$ shares of stock $A$ and wish to hedge them by shorting a different stock $B$.\n\nLet:\n- $r_A$ — return of stock $A$, and $r_B$ of $B$ accordingly.\n- $\\sigma_A^2$ — variance of stock $A$'s return, and $\\sigma_B^2$ of $B$ accordingly.\n- $\\rho$ — their correlation coefficient.\n\nHow many shares of stock $B$ should you short to minimize the variance of the hedged position?",
     "answerType": "theory",
     "solution": "Say we short $h$ shares of $B$. Then\n$$\\text{Var}(jr_A - hr_B) = j^2\\sigma_A^2 - 2jh\\rho\\sigma_A\\sigma_B + h^2\\sigma_B^2.$$\n\nNow it remains to minimize this term with respect to $h$.\n\nSince it is a second-order polynomial in $h$, the task is easy and the answer is\n$$\\hat{h} = j\\rho\\,\\frac{\\sigma_A}{\\sigma_B}.$$"
+  },
+  {
+    "id": 23,
+    "title": "Dice Game",
+    "category": "Expected Value",
+    "difficulty": "Medium",
+    "timeLimit": 7,
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "Roll a die until it lands on 4, 5, or 6. You are paid the sum of all rolls. What is the expected payoff?",
+    "question": "You play the following game:\n\nYou roll a die repeatedly until it lands on 4, 5, or 6, and then you are paid the sum of the rolls.\n\nWhat is the expected payoff?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 7,
+    "tolerance": 0,
+    "solution": "Denote the random variables:\n$X$ — the total payoff.\n$Y$ — the outcome of the first roll.\n\nBy the law of total expectation:\n$$\\mathbb{E}(X) = \\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}]\\,\\mathbb{P}(Y \\in \\{4,5,6\\}) + \\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}]\\,\\mathbb{P}(Y \\in \\{1,2,3\\}).$$\n\nIt is easy to see that\n$$\\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}] = \\mathbb{E}(Y \\mid Y \\in \\{4,5,6\\}) = 5.$$\n\nAnd, since $Y$ is $\\{1,2,3\\}$-measurable, conditioning on $Y \\in \\{1,2,3\\}$, the expected payoff of the game minus $Y$ is just the expected payoff from a fresh game. Thus,\n$$\\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}] = \\mathbb{E}(Y \\mid Y \\in \\{1,2,3\\}) + \\mathbb{E}(X) = 2 + \\mathbb{E}(X).$$\n\nPlugging in:\n$$\\mathbb{E}(X) = 5 \\cdot \\frac{1}{2} + (2 + \\mathbb{E}(X)) \\cdot \\frac{1}{2}.$$\n\nSolving,\n$$\\mathbb{E}(X) = 7.$$"
   }
 ]
