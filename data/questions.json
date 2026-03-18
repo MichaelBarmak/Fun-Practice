@@ -308,5 +308,17 @@
     "part2Answer": 2,
     "part2Tolerance": 0,
     "solution": "**Part 1**\n\nWrite\n$$p = 0.p_1p_2p_3\\cdots$$\nas a binary representation, that is, $p \\in (0,1)$, $p_i \\in \\{0,1\\}$ for all $i \\in \\mathbb{N}$, and\n$$p = \\sum_{n=1}^{\\infty} 2^{-n}p_n,$$\nwhere we choose a representation that does not end with infinitely many 1's.\n\nWe use the coin to generate a random number. Flip the coin repeatedly. Define, in binary representation,\n$$x = 0.x_1x_2x_3\\cdots$$\nsuch that for each $n \\in \\mathbb{N}$, $x_n = 1$ if the $n$-th flip is heads, and $x_n = 0$ otherwise.\n\nIt holds that $x \\sim \\text{Uniform}(0,1)$, since\n$$\\mathbb{P}(x < p) = \\mathbb{P}\\!\\left(\\bigcup_{n \\in \\mathbb{N}} \\{x_1 = p_1, \\ldots, x_{n-1} = p_{n-1},\\, x_n < p_n\\}\\right)$$\n$$= \\sum_{n \\in \\mathbb{N}} \\mathbb{P}(x_1 = p_1)\\cdots\\mathbb{P}(x_{n-1} = p_{n-1})\\,\\mathbb{P}(x_n < p_n) = \\sum_{n=1}^{\\infty} 2^{-n}p_n = p.$$\n\nThus $\\mathbb{P}(x < p) = p$. We define **success** as the event $x < p$.\n\n**Part 2**\n\nOnce $p$ is fixed, we do not need an infinite number of flips to determine whether $x < p$. Let\n$$N = \\min\\{n \\in \\mathbb{N} : x_n \\neq p_n\\}.$$\nThis is the number of flips needed. For any $n \\in \\mathbb{N}$,\n$$\\mathbb{P}(N \\geq n) = \\mathbb{P}(x_1 = p_1, \\ldots, x_n = p_n) = 2^{-n}.$$\nHence\n$$N \\sim \\text{Geom}\\!\\left(\\tfrac{1}{2}\\right),$$\nand therefore\n$$\\mathbb{E}[N] = 2.$$"
+  },
+  {
+    "id": 22,
+    "title": "Optimal Hedge",
+    "category": "Probability",
+    "difficulty": "Easy",
+    "timeLimit": 6,
+    "isNew": true,
+    "preview": "You own j shares of stock A and want to hedge by shorting stock B. How many shares of B should you short to minimize variance?",
+    "question": "You own $j$ shares of stock $A$ and wish to hedge them by shorting a different stock $B$.\n\nLet:\n- $r_A$ — return of stock $A$, and $r_B$ of $B$ accordingly.\n- $\\sigma_A^2$ — variance of stock $A$'s return, and $\\sigma_B^2$ of $B$ accordingly.\n- $\\rho$ — their correlation coefficient.\n\nHow many shares of stock $B$ should you short to minimize the variance of the hedged position?",
+    "answerType": "theory",
+    "solution": "Say we short $h$ shares of $B$. Then\n$$\\text{Var}(jr_A - hr_B) = j^2\\sigma_A^2 - 2jh\\rho\\sigma_A\\sigma_B + h^2\\sigma_B^2.$$\n\nNow it remains to minimize this term with respect to $h$.\n\nSince it is a second-order polynomial in $h$, the task is easy and the answer is\n$$\\hat{h} = j\\rho\\,\\frac{\\sigma_A}{\\sigma_B}.$$"
   }
 ]

@@ -11,6 +11,7 @@ import { useSolvedQuestions } from '../hooks/useSolvedQuestions';
 export default function QuestionList({ questions, onStartInterview }) {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [expandedId, setExpandedId] = useState(null);
 
   const { solvedIds, markSolved } = useSolvedQuestions();
@@ -19,6 +20,7 @@ export default function QuestionList({ questions, onStartInterview }) {
     const random = questions[Math.floor(Math.random() * questions.length)];
     setSearch('');
     setSelectedCategory('All');
+    setSelectedDifficulty('All');
     setExpandedId(random.id);
     setTimeout(() => {
       document.getElementById(`question-${random.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -31,7 +33,7 @@ export default function QuestionList({ questions, onStartInterview }) {
     return ['All', ...cats];
   }, [questions]);
 
-  // Filter questions based on search text and selected category
+  // Filter questions based on search text, category, and difficulty
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     const isNumberSearch = /^\d+$/.test(q);
@@ -40,15 +42,16 @@ export default function QuestionList({ questions, onStartInterview }) {
         !q ||
         (isNumberSearch && item.id === parseInt(q)) ||
         item.title.toLowerCase().includes(q);
-
       const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
-
-      return matchesSearch && matchesCategory;
+      const matchesDifficulty =
+        selectedDifficulty === 'All' || item.difficulty === selectedDifficulty;
+      return matchesSearch && matchesCategory && matchesDifficulty;
     });
-  }, [questions, search, selectedCategory]);
+  }, [questions, search, selectedCategory, selectedDifficulty]);
 
   const solvedCount = solvedIds.length;
+  const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
@@ -76,7 +79,7 @@ export default function QuestionList({ questions, onStartInterview }) {
         <span>
           <span className="font-semibold text-slate-700">{filtered.length}</span>{' '}
           {filtered.length === 1 ? 'question' : 'questions'}
-          {(search || selectedCategory !== 'All') && ' matching'}
+          {(search || selectedCategory !== 'All' || selectedDifficulty !== 'All') && ' matching'}
         </span>
         <span>
           <span className="font-semibold text-emerald-600">{solvedCount}</span> /{' '}
@@ -111,6 +114,23 @@ export default function QuestionList({ questions, onStartInterview }) {
         )}
       </div>
 
+      {/* ── Difficulty filter pills ── */}
+      <div className="flex gap-2 flex-wrap mb-3">
+        {difficulties.map((d) => (
+          <button
+            key={d}
+            onClick={() => { setSelectedDifficulty(d); setExpandedId(null); }}
+            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              selectedDifficulty === d
+                ? 'bg-slate-700 text-white'
+                : 'bg-white border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800'
+            }`}
+          >
+            {d}
+          </button>
+        ))}
+      </div>
+
       {/* ── Category filter pills ── */}
       <div className="flex gap-2 flex-wrap mb-8">
         {categories.map((cat) => (
@@ -137,7 +157,7 @@ export default function QuestionList({ questions, onStartInterview }) {
           <p className="text-4xl mb-3">?</p>
           <p className="font-medium">No questions match your search.</p>
           <button
-            onClick={() => { setSearch(''); setSelectedCategory('All'); }}
+            onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
             className="mt-3 text-sm text-indigo-500 hover:underline"
           >
             Clear filters
