@@ -347,5 +347,20 @@
     "question": "Wald's equality is the following statement:\n\nLet $(X_n)_{n \\in \\mathbb{N}}$ be i.i.d. random variables, and let $N$ be a positive integer-valued random variable, independent of $(X_n)_{n \\in \\mathbb{N}}$. Suppose $\\mathbb{E}(X_1), \\mathbb{E}(N) < \\infty$, then\n$$\\mathbb{E}(X_1 + \\cdots + X_N) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nProve this equality assuming $X_1 \\geq 0$.",
     "answerType": "theory",
     "solution": "Denote $S_n = X_1 + \\cdots + X_n$ for any $n \\in \\mathbb{N}$, and let $I_n$ be the indicator of the event $\\{n \\leq N\\}$.\n\nWe have that\n$$S_N = \\sum_{n=1}^{\\infty} X_n I_n.$$\n\nThen, by the monotone convergence theorem,\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n I_n).$$\n\nSince $I_n$ is independent of $X_n$, we have\n$$\\mathbb{E}(X_n I_n) = \\mathbb{E}(X_n)\\mathbb{E}(I_n).$$\n\nSo we get\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n)\\mathbb{E}(I_n) = \\mathbb{E}(X_1) \\sum_{n=1}^{\\infty} \\mathbb{E}(I_n) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nWhere the last equality is again by the monotone convergence theorem."
+  },
+  {
+    "id": 25,
+    "title": "Drunk Man",
+    "category": "Martingales",
+    "difficulty": "Hard",
+    "timeLimit": 20,
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "A drunk man starts at the 6th meter of a 10-meter bridge, stepping left or right with equal probability. What is the expected number of steps to reach either end?",
+    "question": "A drunk man is on the 6th meter of a 10-meter-long bridge. Each minute he takes a 1-meter step to the right with probability $\\frac{1}{2}$, and to the left with probability $\\frac{1}{2}$.\n\nWhat is the expected number of steps he takes to reach either end of the bridge?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 24,
+    "tolerance": 0,
+    "solution": "For simplicity, let the drunk man start at point 0 and wish to reach either point $-6$ or $4$.\n\nLet $S_n$ be his position after $n$ steps. Then both $S_n$ and $S_n^2 - n$ are martingales.\n\nLet\n$$N = \\min\\{n : S_n \\in \\{-6, 4\\}\\}.$$\n\n$N$ is a stopping time, and a martingale stopped at a stopping time is a martingale. Thus both $S_N$ and $S_N^2 - N$ are martingales.\n\nLet $p_\\alpha = \\mathbb{P}(S_N = \\alpha)$. By the optional stopping theorem applied to $S_N$:\n$$0 = S_0 = \\mathbb{E}(S_N) = p_4 \\cdot 4 + (1 - p_4) \\cdot (-6).$$\n\nSolving: $p_4 = \\dfrac{6}{10} = \\dfrac{3}{5}$.\n\nApplying the optional stopping theorem to $S_N^2 - N$:\n$$0 = S_0^2 - 0 = \\mathbb{E}(S_N^2 - N) = \\mathbb{E}(S_N^2) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot 4^2 + (1-p_4) \\cdot (-6)^2 - \\mathbb{E}(N).$$\n\nPlugging in $p_4 = \\frac{3}{5}$:\n$$\\mathbb{E}(N) = \\frac{3}{5} \\cdot 16 + \\frac{2}{5} \\cdot 36 = \\frac{48 + 72}{5} = 24.$$\n\n$$\\boxed{\\mathbb{E}(N) = 24}$$"
   }
 ]
