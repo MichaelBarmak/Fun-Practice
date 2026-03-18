@@ -362,5 +362,20 @@
     "correctAnswer": 24,
     "tolerance": 0,
     "solution": "For simplicity, let us say the drunk man starts at point 0, and wishes to reach either point $-6$ or $4$.\n\nLet $S_n$ be his position after $n$ steps. Then we have that both $S_n$ and $S_n^2 - n$ are martingales.\n\nMoreover, let\n$$N = \\min\\{n : S_n \\in \\{-6, 4\\}\\}.$$\n\nThen it is a stopping time, and a martingale stopped at a stopping time is a martingale. That is, both $S_N$ and $S_N^2 - N$ are martingales.\n\nLet\n$$p_\\alpha = \\mathbb{P}(S_N = \\alpha).$$\n\nThen\n$$0 = S_0 = \\mathbb{E}(S_N) = p_4 \\cdot \\mathbb{E}(S_N \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N \\mid S_N = -6) = p_4 \\cdot 4 + (1 - p_4) \\cdot (-6).$$\n\nAnd\n$$0 = S_0^2 - 0 = \\mathbb{E}(S_N^2 - N) = \\mathbb{E}(S_N^2) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot \\mathbb{E}(S_N^2 \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N^2 \\mid S_N = -6) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot 4^2 + p_{-6} \\cdot (-6)^2 - \\mathbb{E}(N).$$\n\nSolving this system of equations, we get that\n$$\\mathbb{E}(N) = 24.$$"
+  },
+  {
+    "id": 26,
+    "title": "Brownian Correlation",
+    "category": "Brownian Motion",
+    "difficulty": "Easy",
+    "timeLimit": 7,
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "Let (Bt) be a Brownian motion. Calculate Cor(Bt, Bt²).",
+    "question": "Let $(B_t)_{t \\in (0,\\infty)}$ be a (one-dimensional) Brownian motion. Calculate $\\mathrm{Cor}(B_t, B_t^2)$.\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 0,
+    "tolerance": 0,
+    "solution": "Since $B_t \\sim \\mathcal{N}(0, t)$, we have $\\mathbb{E}(B_t) = 0$.\n\nMoreover, since\n$$f(u) = \\frac{1}{\\sqrt{2\\pi t}} \\exp\\!\\left(-\\frac{u^2}{2t}\\right)$$\nis the density function of $B_t$, and\n$$\\mathbb{E}(B_t^3) = \\int_{\\mathbb{R}} u^3 f(u)\\, du$$\nis a finite integral of an odd function, it is clearly 0. Thus\n$$\\mathrm{Cor}(B_t, B_t^2) = \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(\\mathbb{E}(B_t B_t^2) - \\mathbb{E}(B_t)\\mathbb{E}(B_t^2)\\right)$$\n$$= \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(0 - 0 \\cdot \\mathbb{E}(B_t^2)\\right) = 0.$$"
   }
 ]
