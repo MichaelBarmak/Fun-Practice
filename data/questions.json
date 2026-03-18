@@ -335,5 +335,17 @@
     "correctAnswer": 7,
     "tolerance": 0,
     "solution": "Denote the random variables:\n$X$ — the total payoff.\n$Y$ — the outcome of the first roll.\n\nBy the law of total expectation:\n$$\\mathbb{E}(X) = \\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}]\\,\\mathbb{P}(Y \\in \\{4,5,6\\}) + \\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}]\\,\\mathbb{P}(Y \\in \\{1,2,3\\}).$$\n\nIt is easy to see that\n$$\\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}] = \\mathbb{E}(Y \\mid Y \\in \\{4,5,6\\}) = 5.$$\n\nAnd, since $Y$ is $\\{1,2,3\\}$-measurable, conditioning on $Y \\in \\{1,2,3\\}$, the expected payoff of the game minus $Y$ is just the expected payoff from a fresh game. Thus,\n$$\\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}] = \\mathbb{E}(Y \\mid Y \\in \\{1,2,3\\}) + \\mathbb{E}(X) = 2 + \\mathbb{E}(X).$$\n\nPlugging in:\n$$\\mathbb{E}(X) = 5 \\cdot \\frac{1}{2} + (2 + \\mathbb{E}(X)) \\cdot \\frac{1}{2}.$$\n\nSolving,\n$$\\mathbb{E}(X) = 7.$$"
+  },
+  {
+    "id": 24,
+    "title": "Wald's Equality",
+    "category": "Expected Value",
+    "difficulty": "Hard",
+    "timeLimit": 20,
+    "isNew": true,
+    "preview": "Let (Xn) be i.i.d. and N an independent positive integer-valued random variable. Prove that E(X1 + ... + XN) = E(X1)E(N), assuming X1 ≥ 0.",
+    "question": "Wald's equality is the following statement:\n\nLet $(X_n)_{n \\in \\mathbb{N}}$ be i.i.d. random variables, and let $N$ be a positive integer-valued random variable, independent of $(X_n)_{n \\in \\mathbb{N}}$. Suppose $\\mathbb{E}(X_1), \\mathbb{E}(N) < \\infty$, then\n$$\\mathbb{E}(X_1 + \\cdots + X_N) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nProve this equality assuming $X_1 \\geq 0$.",
+    "answerType": "theory",
+    "solution": "Denote $S_n = X_1 + \\cdots + X_n$ for any $n \\in \\mathbb{N}$, and let $I_n$ be the indicator of the event $\\{n \\leq N\\}$.\n\nWe have that\n$$S_N = \\sum_{n=1}^{\\infty} X_n I_n.$$\n\nThen, by the monotone convergence theorem,\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n I_n).$$\n\nSince $I_n$ is independent of $X_n$, we have\n$$\\mathbb{E}(X_n I_n) = \\mathbb{E}(X_n)\\mathbb{E}(I_n).$$\n\nSo we get\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n)\\mathbb{E}(I_n) = \\mathbb{E}(X_1) \\sum_{n=1}^{\\infty} \\mathbb{E}(I_n) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nWhere the last equality is again by the monotone convergence theorem."
   }
 ]
