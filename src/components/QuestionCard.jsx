@@ -22,6 +22,8 @@ export default function QuestionCard({
 }) {
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState(null); // null | 'correct' | 'incorrect'
+  const [part2Answer, setPart2Answer] = useState('');
+  const [part2Feedback, setPart2Feedback] = useState(null);
   const [solutionVisible, setSolutionVisible] = useState(false);
 
   function handleCheckAnswer(answer) {
@@ -40,10 +42,25 @@ export default function QuestionCard({
     onSolve();
   }
 
+  function handleCheckPart2() {
+    const cleaned = part2Answer.replace(/,/g, '').trim();
+    const userValue = parseFloat(cleaned);
+    if (isNaN(userValue)) { setPart2Feedback('incorrect'); return; }
+    const tolerance = question.part2Tolerance ?? 0;
+    if (Math.abs(userValue - question.part2Answer) <= tolerance) {
+      setPart2Feedback('correct');
+      onSolve();
+    } else {
+      setPart2Feedback('incorrect');
+    }
+  }
+
   function handleToggle() {
     if (isExpanded) {
       setUserAnswer('');
       setFeedback(null);
+      setPart2Answer('');
+      setPart2Feedback(null);
       setSolutionVisible(false);
     }
     onToggle();
@@ -180,6 +197,32 @@ export default function QuestionCard({
                 })}
               </div>
               <Feedback feedback={feedback} />
+            </div>
+          )}
+
+          {/* ── Part 2 numeric answer (for mixed theory+numeric questions) ── */}
+          {question.part2Answer !== undefined && (
+            <div className="mb-4">
+              <p className="text-sm font-semibold text-slate-600 mb-2">Your answer for Part 2:</p>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={part2Answer}
+                  onChange={(e) => { setPart2Answer(e.target.value); setPart2Feedback(null); }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleCheckPart2()}
+                  placeholder="Enter a number"
+                  className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
+                  aria-label="Part 2 answer"
+                />
+                <button
+                  onClick={handleCheckPart2}
+                  disabled={!part2Answer.trim()}
+                  className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                >
+                  Check
+                </button>
+              </div>
+              <Feedback feedback={part2Feedback} />
             </div>
           )}
 
