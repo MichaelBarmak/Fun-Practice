@@ -150,7 +150,7 @@
   {
     "id": 11,
     "title": "Coin Toss Game",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
     "isNew": true,
@@ -165,7 +165,7 @@
   {
     "id": 12,
     "title": "Drunk Passenger",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
     "isNew": true,
@@ -180,7 +180,7 @@
   {
     "id": 13,
     "title": "Standing Table",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
     "isNew": true,
@@ -210,7 +210,7 @@
   {
     "id": 15,
     "title": "Billiard Match",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 10,
@@ -225,7 +225,7 @@
   {
     "id": 16,
     "title": "Fair Probability",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Easy",
     "source": "Green Book",
     "timeLimit": 3,
@@ -238,7 +238,7 @@
   {
     "id": 17,
     "title": "Darts Order",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Easy",
     "source": "Green Book",
     "timeLimit": 2.5,
@@ -253,7 +253,7 @@
   {
     "id": 18,
     "title": "Amoeba Population",
-    "category": "Basic Probability",
+    "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 6,
@@ -294,5 +294,17 @@
     "correctAnswer": 0.4,
     "tolerance": 0.001,
     "solution": "A basic stochastic process argument gives that with probability 1, eventually either Avi or Benny will win.\n\nDenote by $A$ the event that Avi wins, and $B$ the event that Benny wins.\n\nThus we have, by the law of total and conditional probability:\n\n$$\\mathbb{P}(A) = \\mathbb{P}(A \\mid \\text{first flip is heads}) \\cdot \\frac{1}{2} + \\mathbb{P}(A \\mid \\text{first flip is tails}) \\cdot \\frac{1}{2}$$\n\nNow, the event $(A \\mid \\text{first flip is tails})$ is symmetric to the event $B$, so:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is tails}) = \\mathbb{P}(B) = 1 - \\mathbb{P}(A)$$\n\nSecondly, using conditional probability:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is heads}) \\cdot \\mathbb{P}(\\text{second flip is heads})$$\n$$+ \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is tails}) \\cdot \\mathbb{P}(\\text{second flip is tails})$$\n\nNow, we examine the event $(A \\mid \\text{first flip is heads})$. With probability $\\frac{1}{2}$, the second toss lands heads and Avi loses, and if the second toss lands tails, then we are back to the same situation as the start of the game.\n\nThus:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = 0 \\cdot \\frac{1}{2} + \\mathbb{P}(A) \\cdot \\frac{1}{2} = \\frac{\\mathbb{P}(A)}{2}$$\n\nSo together we have:\n\n$$\\mathbb{P}(A) = \\frac{1}{2} \\cdot \\frac{\\mathbb{P}(A)}{2} + \\frac{1}{2} \\cdot (1 - \\mathbb{P}(A))$$\n\nWhich gives:\n\n$$\\mathbb{P}(A) = \\frac{2}{5}$$"
+  },
+  {
+    "id": 21,
+    "title": "p-Experiment",
+    "category": "Probability",
+    "difficulty": "Hard",
+    "timeLimit": 17,
+    "isNew": true,
+    "preview": "Given a fair coin and 0 < p < 1, design an experiment with P(Success) = p. On average, how many flips are needed?",
+    "question": "Let $0 < p < 1$. You have a fair coin.\n\n**Part 1**\n\nCome up with a probabilistic experiment. Clearly describe what constitutes a success and a failure such that\n$$\\mathbb{P}(\\text{Success}) = p.$$\n\n**Part 2**\n\nOn average, how many times do you need to flip the coin?",
+    "answerType": "theory",
+    "solution": "**Part 1**\n\nWrite\n$$p = 0.p_1p_2p_3\\cdots$$\nas a binary representation, that is, $p \\in (0,1)$, $p_i \\in \\{0,1\\}$ for all $i \\in \\mathbb{N}$, and\n$$p = \\sum_{n=1}^{\\infty} 2^{-n}p_n,$$\nwhere we choose a representation that does not end with infinitely many 1's.\n\nWe use the coin to generate a random number. Flip the coin repeatedly. Define, in binary representation,\n$$x = 0.x_1x_2x_3\\cdots$$\nsuch that for each $n \\in \\mathbb{N}$, $x_n = 1$ if the $n$-th flip is heads, and $x_n = 0$ otherwise.\n\nIt holds that $x \\sim \\text{Uniform}(0,1)$, since\n$$\\mathbb{P}(x < p) = \\mathbb{P}\\!\\left(\\bigcup_{n \\in \\mathbb{N}} \\{x_1 = p_1, \\ldots, x_{n-1} = p_{n-1},\\, x_n < p_n\\}\\right)$$\n$$= \\sum_{n \\in \\mathbb{N}} \\mathbb{P}(x_1 = p_1)\\cdots\\mathbb{P}(x_{n-1} = p_{n-1})\\,\\mathbb{P}(x_n < p_n) = \\sum_{n=1}^{\\infty} 2^{-n}p_n = p.$$\n\nThus $\\mathbb{P}(x < p) = p$. We define **success** as the event $x < p$.\n\n**Part 2**\n\nOnce $p$ is fixed, we do not need an infinite number of flips to determine whether $x < p$. Let\n$$N = \\min\\{n \\in \\mathbb{N} : x_n \\neq p_n\\}.$$\nThis is the number of flips needed. For any $n \\in \\mathbb{N}$,\n$$\\mathbb{P}(N \\geq n) = \\mathbb{P}(x_1 = p_1, \\ldots, x_n = p_n) = 2^{-n}.$$\nHence\n$$N \\sim \\text{Geom}\\!\\left(\\tfrac{1}{2}\\right),$$\nand therefore\n$$\\mathbb{E}[N] = 2.$$"
   }
 ]
