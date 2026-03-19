@@ -390,5 +390,20 @@
     "question": "Let $(B_t)_{t \\in (0,\\infty)}$ be a (one-dimensional) Brownian motion with no drift. Say $B_0 = 0$. For any $s \\in \\mathbb{R}$, denote\n$$t_s = \\inf\\{t \\geq 0 \\mid B_t = s\\}.$$\n\nCalculate\n$$\\mathbb{P}(t_a < t_{-b})$$\nfor arbitrary $a, b > 0$.",
     "answerType": "theory",
     "solution": "Denote\n$$t_{a,-b} = \\inf\\{t \\geq 0 \\mid B_t \\in \\{a, -b\\}\\}.$$\n\nSince $t_{a,-b}$ is a stopping time and $B_t$ is a martingale, by the optional stopping theorem we have\n$$\\mathbb{E}(B_{t_{a,-b}}) = \\mathbb{E}(B_0) = 0.$$\n\nMoreover,\n$$B_{t_{a,-b}} = a\\,\\mathbf{1}_{\\{t_a < t_{-b}\\}} - b\\,\\mathbf{1}_{\\{t_{-b} < t_a\\}}.$$\n\nThus,\n$$0 = \\mathbb{E}(B_{t_{a,-b}})$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,\\mathbb{P}(t_{-b} < t_a)$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,(1 - \\mathbb{P}(t_a < t_{-b})).$$\n\nSolving,\n$$\\mathbb{P}(t_a < t_{-b}) = \\frac{b}{a+b}.$$"
+  },
+  {
+    "id": 28,
+    "title": "Odd Tosses",
+    "category": "Problem Simplification",
+    "difficulty": "Medium",
+    "timeLimit": 8,
+    "source": "Citadel",
+    "isNew": true,
+    "preview": "You flip a fair coin until it lands heads three times. What is the probability that the total number of flips is odd?",
+    "question": "You flip a fair coin until it lands heads three times (not necessarily in a row).\n\nWhat is the probability that the total number of flips is odd?\n\nExpress your answer as a fraction or decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.5185185185185185,
+    "tolerance": 0.001,
+    "solution": "We first simplify the question to the case of obtaining the first head after an odd number of flips.\n\nLet $N_1$ be the number of flips until the first head. Then\n$$N_1 \\sim \\mathrm{Geom}\\!\\left(\\tfrac{1}{2}\\right).$$\n\nThus\n$$\\mathbb{P}(N_1 \\text{ is odd}) = \\sum_{n=1}^{\\infty} \\mathbb{P}(N_1 = 2n-1) = \\sum_{n=1}^{\\infty} \\frac{1}{2^{2n-1}} = \\frac{2}{3}.$$\n\nSimilarly, define $N_2$ to be the number of flips until the second head, counting only the flips after the first head. Define $N_3$ analogously.\n\nNote that $N_1, N_2, N_3$ are i.i.d.\n\nThus, we are looking for $\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd})$. By symmetry,\n$$\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd}) = \\mathbb{P}(N_1, N_2, N_3 \\text{ are all odd}) + 3\\,\\mathbb{P}(N_1 \\text{ is odd},\\ N_2, N_3 \\text{ are even})$$\n$$= \\mathbb{P}(N_1 \\text{ is odd})^3 + 3\\,\\mathbb{P}(N_1 \\text{ is odd})\\,\\mathbb{P}(N_2 \\text{ is even})^2$$\n$$= \\left(\\frac{2}{3}\\right)^3 + 3 \\cdot \\frac{2}{3} \\cdot \\left(1 - \\frac{2}{3}\\right)^2 = \\frac{14}{27}.$$"
   }
 ]
