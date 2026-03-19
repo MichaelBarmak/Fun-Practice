@@ -55,7 +55,7 @@
     "source": "Green Book",
     "isNew": true,
     "preview": "1000 coins on a table: 980 tails up, 20 heads up. Split them into two piles with equal numbers of heads.",
-    "question": "We toss 1000 coins on a table. 980 have tails up and the other 20 have heads up.\n\nFind a way to split the coins into two piles such that both piles have the same number of heads.",
+    "question": "You have 1000 coins on a table. Exactly 20 show heads, and the remaining 980 show tails.\n\nWhile your eyes are covered, divide the coins into two piles so that the two piles contain the same number of heads.",
     "answerType": "theory",
     "solution": "Take any 20 coins and place them in the first pile. The remaining 980 coins form the second pile.\n\nSuppose the first pile contains $m$ coins with heads up. Then it contains $20 - m$ coins with tails up.\n\nSince there are exactly 20 heads among all 1000 coins, the second pile must contain $20 - m$ coins with heads up.\n\nNow flip every coin in the first pile. The $m$ heads become tails and the $20 - m$ tails become heads. Therefore, after flipping, the first pile contains $20 - m$ heads.\n\nThus both piles contain exactly $20 - m$ heads. $\\blacksquare$",
     "timeLimit": 6
