@@ -377,5 +377,18 @@
     "correctAnswer": 0,
     "tolerance": 0,
     "solution": "Since $B_t \\sim \\mathcal{N}(0, t)$, we have $\\mathbb{E}(B_t) = 0$.\n\nMoreover, since\n$$f(u) = \\frac{1}{\\sqrt{2\\pi t}} \\exp\\!\\left(-\\frac{u^2}{2t}\\right)$$\nis the density function of $B_t$, and\n$$\\mathbb{E}(B_t^3) = \\int_{\\mathbb{R}} u^3 f(u)\\, du$$\nis a finite integral of an odd function, it is clearly 0. Thus\n$$\\mathrm{Cor}(B_t, B_t^2) = \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(\\mathbb{E}(B_t B_t^2) - \\mathbb{E}(B_t)\\mathbb{E}(B_t^2)\\right)$$\n$$= \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(0 - 0 \\cdot \\mathbb{E}(B_t^2)\\right) = 0.$$"
+  },
+  {
+    "id": 27,
+    "title": "Hitting Time",
+    "category": "Brownian Motion",
+    "difficulty": "Hard",
+    "timeLimit": 15,
+    "source": "Green Book",
+    "isNew": true,
+    "preview": "Let (Bt) be a Brownian motion with B0 = 0. For a, b > 0, calculate P(ta < t−b), where ts = inf{t ≥ 0 | Bt = s}.",
+    "question": "Let $(B_t)_{t \\in (0,\\infty)}$ be a (one-dimensional) Brownian motion with no drift. Say $B_0 = 0$. For any $s \\in \\mathbb{R}$, denote\n$$t_s = \\inf\\{t \\geq 0 \\mid B_t = s\\}.$$\n\nCalculate\n$$\\mathbb{P}(t_a < t_{-b})$$\nfor arbitrary $a, b > 0$.",
+    "answerType": "theory",
+    "solution": "Denote\n$$t_{a,-b} = \\inf\\{t \\geq 0 \\mid B_t \\in \\{a, -b\\}\\}.$$\n\nSince $t_{a,-b}$ is a stopping time and $B_t$ is a martingale, by the optional stopping theorem we have\n$$\\mathbb{E}(B_{t_{a,-b}}) = \\mathbb{E}(B_0) = 0.$$\n\nMoreover,\n$$B_{t_{a,-b}} = a\\,\\mathbf{1}_{\\{t_a < t_{-b}\\}} - b\\,\\mathbf{1}_{\\{t_{-b} < t_a\\}}.$$\n\nThus,\n$$0 = \\mathbb{E}(B_{t_{a,-b}})$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,\\mathbb{P}(t_{-b} < t_a)$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,(1 - \\mathbb{P}(t_a < t_{-b})).$$\n\nSolving,\n$$\\mathbb{P}(t_a < t_{-b}) = \\frac{b}{a+b}.$$"
   }
 ]
