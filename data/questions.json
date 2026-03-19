@@ -258,12 +258,12 @@
     "source": "Green Book",
     "timeLimit": 6,
     "isNew": true,
-    "preview": "A single amoeba dies, stays, or splits into two with equal probability. What is the probability the population eventually dies out?",
-    "question": "Suppose there is a single amoeba in a lake. Every minute, with equal probability, it either dies, stays the same, or splits into two.\n\nAssume that all descendants of the amoeba behave in the same way.\n\nWhat is the probability that the amoeba population will eventually die out?",
+    "preview": "A single amoeba dies (prob 1/4), stays (prob 1/4), or splits into two (prob 1/2). What is the probability the population eventually dies out?",
+    "question": "Suppose there is a single amoeba in a lake. Every minute, it:\n- dies with probability $\\frac{1}{4}$,\n- stays the same with probability $\\frac{1}{4}$,\n- splits into two with probability $\\frac{1}{2}$.\n\nAssume that all descendants of the amoeba behave in the same way.\n\nWhat is the probability that the amoeba population will eventually die out?\n\nExpress your answer as a decimal.",
     "answerType": "numeric",
-    "correctAnswer": 1,
+    "correctAnswer": 0.5,
     "tolerance": 0,
-    "solution": "Let us denote the events:\n\n$E$ = the amoeba population eventually dies out\n\n$E_1$ = the first amoeba dies\n\n$E_2$ = the first amoeba stays the same\n\n$E_3$ = the first amoeba splits into two\n\nThus,\n\n$$\\mathbb{P}(E) = \\mathbb{P}(E|E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E|E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E|E_3)\\mathbb{P}(E_3).$$\n\nSince each event has probability $1/3$,\n\n$$\\mathbb{P}(E) = \\frac{\\mathbb{P}(E|E_1) + \\mathbb{P}(E|E_2) + \\mathbb{P}(E|E_3)}{3}.$$\n\nNow note that\n\n$$\\mathbb{P}(E|E_1) = 1.$$\n\nAlso,\n\n$$\\mathbb{P}(E|E_2) = \\mathbb{P}(E),$$\n\nbecause the situation is identical to the initial one.\n\nFinally,\n\n$$\\mathbb{P}(E|E_3) = \\mathbb{P}(E)^2,$$\n\nsince both descendants must independently die out.\n\nLet $x = \\mathbb{P}(E)$. Then\n\n$$x = \\frac{1 + x + x^2}{3}.$$\n\nThus\n\n$$x^2 - 2x + 1 = 0,$$\n\nand therefore\n\n$$x = 1.$$"
+    "solution": "Let us denote the events:\n\n$E$ = the amoeba population eventually dies out\n\n$E_1$ = the first amoeba dies\n\n$E_2$ = the first amoeba stays the same\n\n$E_3$ = the first amoeba splits into two\n\nThus,\n$$\\mathbb{P}(E) = \\mathbb{P}(E|E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E|E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E|E_3)\\mathbb{P}(E_3).$$\n\nSince the probabilities are $\\frac{1}{4}, \\frac{1}{4}, \\frac{1}{2}$ respectively,\n$$\\mathbb{P}(E) = \\frac{1}{4}\\mathbb{P}(E|E_1) + \\frac{1}{4}\\mathbb{P}(E|E_2) + \\frac{1}{2}\\mathbb{P}(E|E_3).$$\n\nNow note that\n$$\\mathbb{P}(E|E_1) = 1.$$\n\nAlso,\n$$\\mathbb{P}(E|E_2) = \\mathbb{P}(E),$$\nbecause the situation is identical to the initial one.\n\nFinally,\n$$\\mathbb{P}(E|E_3) = \\mathbb{P}(E)^2,$$\nsince both descendants must independently die out.\n\nLet $x = \\mathbb{P}(E)$. Then\n$$x = \\frac{1}{4} + \\frac{1}{4}x + \\frac{1}{2}x^2.$$\n\nThus\n$$2x^2 - 3x + 1 = 0,$$\n\nand therefore, the final answer is\n$$x = \\frac{1}{2}.$$"
   },
   {
     "id": 19,
