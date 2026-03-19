@@ -182,7 +182,7 @@
     "title": "Standing Table",
     "category": "Probability",
     "difficulty": "Medium",
-    "source": "Green Book",
+    "source": "Citadel",
     "isNew": true,
     "preview": "3 random points on a circular table are chosen as legs. What is the probability the table can stand properly?",
     "question": "We choose 3 random points on the circumference of a circular table to attach the legs of the table.\n\nWhat is the probability that the table can stand properly?\n\nExpress your answer as a decimal.",
