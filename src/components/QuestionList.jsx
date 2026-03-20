@@ -12,6 +12,7 @@ export default function QuestionList({ questions, onStartInterview }) {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
+  const [selectedSource, setSelectedSource] = useState('All');
   const [expandedId, setExpandedId] = useState(null);
 
   const { solvedIds, markSolved } = useSolvedQuestions();
@@ -21,6 +22,7 @@ export default function QuestionList({ questions, onStartInterview }) {
     setSearch('');
     setSelectedCategory('All');
     setSelectedDifficulty('All');
+    setSelectedSource('All');
     setExpandedId(random.id);
     setTimeout(() => {
       document.getElementById(`question-${random.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -31,6 +33,12 @@ export default function QuestionList({ questions, onStartInterview }) {
   const categories = useMemo(() => {
     const cats = [...new Set(questions.map((q) => q.category))].sort();
     return ['All', ...cats];
+  }, [questions]);
+
+  // Build unique sorted source list from the data
+  const sources = useMemo(() => {
+    const srcs = [...new Set(questions.map((q) => q.source).filter(Boolean))].sort();
+    return ['All', ...srcs];
   }, [questions]);
 
   // Filter questions based on search text, category, and difficulty
@@ -46,9 +54,11 @@ export default function QuestionList({ questions, onStartInterview }) {
         selectedCategory === 'All' || item.category === selectedCategory;
       const matchesDifficulty =
         selectedDifficulty === 'All' || item.difficulty === selectedDifficulty;
-      return matchesSearch && matchesCategory && matchesDifficulty;
+      const matchesSource =
+        selectedSource === 'All' || item.source === selectedSource;
+      return matchesSearch && matchesCategory && matchesDifficulty && matchesSource;
     });
-  }, [questions, search, selectedCategory, selectedDifficulty]);
+  }, [questions, search, selectedCategory, selectedDifficulty, selectedSource]);
 
   const solvedCount = solvedIds.length;
   const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
@@ -79,7 +89,7 @@ export default function QuestionList({ questions, onStartInterview }) {
         <span>
           <span className="font-semibold text-slate-700">{filtered.length}</span>{' '}
           {filtered.length === 1 ? 'question' : 'questions'}
-          {(search || selectedCategory !== 'All' || selectedDifficulty !== 'All') && ' matching'}
+          {(search || selectedCategory !== 'All' || selectedDifficulty !== 'All' || selectedSource !== 'All') && ' matching'}
         </span>
         <span>
           <span className="font-semibold text-emerald-600">{solvedCount}</span> /{' '}
@@ -131,6 +141,23 @@ export default function QuestionList({ questions, onStartInterview }) {
         ))}
       </div>
 
+      {/* ── Source filter pills ── */}
+      <div className="flex gap-2 flex-wrap mb-3">
+        {sources.map((src) => (
+          <button
+            key={src}
+            onClick={() => { setSelectedSource(src); setExpandedId(null); }}
+            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              selectedSource === src
+                ? 'bg-violet-600 text-white'
+                : 'bg-white border border-slate-300 text-slate-600 hover:border-violet-300 hover:text-violet-600'
+            }`}
+          >
+            {src}
+          </button>
+        ))}
+      </div>
+
       {/* ── Category filter pills ── */}
       <div className="flex gap-2 flex-wrap mb-8">
         {categories.map((cat) => (
@@ -157,7 +184,7 @@ export default function QuestionList({ questions, onStartInterview }) {
           <p className="text-4xl mb-3">?</p>
           <p className="font-medium">No questions match your search.</p>
           <button
-            onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
+            onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); setSelectedSource('All'); }}
             className="mt-3 text-sm text-indigo-500 hover:underline"
           >
             Clear filters
