@@ -405,5 +405,19 @@
     "correctAnswer": 0.5185185185185185,
     "tolerance": 0.001,
     "solution": "We first simplify the question to the case of obtaining the first head after an odd number of flips.\n\nLet $N_1$ be the number of flips until the first head. Then\n$$N_1 \\sim \\mathrm{Geo}\\!\\left(\\tfrac{1}{2}\\right).$$\n\nThus\n$$\\mathbb{P}(N_1 \\text{ is odd}) = \\sum_{n=1}^{\\infty} \\mathbb{P}(N_1 = 2n-1) = \\sum_{n=1}^{\\infty} \\frac{1}{2^{2n-1}} = \\frac{2}{3}.$$\n\nSimilarly, define $N_2$ to be the number of flips until the second head, counting only the flips after the first head. Define $N_3$ analogously.\n\nNote that $N_1, N_2, N_3$ are i.i.d.\n\nThus, we are looking for $\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd})$. By symmetry,\n$$\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd}) = \\mathbb{P}(N_1, N_2, N_3 \\text{ are all odd}) + 3\\,\\mathbb{P}(N_1 \\text{ is odd},\\ N_2, N_3 \\text{ are even})$$\n$$= \\mathbb{P}(N_1 \\text{ is odd})^3 + 3\\,\\mathbb{P}(N_1 \\text{ is odd})\\,\\mathbb{P}(N_2 \\text{ is even})^2$$\n$$= \\left(\\frac{2}{3}\\right)^3 + 3 \\cdot \\frac{2}{3} \\cdot \\left(1 - \\frac{2}{3}\\right)^2 = \\frac{14}{27}.$$"
+  },
+  {
+    "id": 29,
+    "title": "All Faces of a Dice",
+    "category": "Expected Value",
+    "difficulty": "Medium",
+    "timeLimit": 12,
+    "isNew": true,
+    "preview": "You roll a fair die again and again until all possible outcomes are achieved. What is the expected number of rolls?",
+    "question": "You roll a fair die again and again until all possible outcomes (1 through 6) are achieved.\n\nWhat is the expected number of rolls?",
+    "answerType": "numeric",
+    "correctAnswer": 14.7,
+    "tolerance": 0.05,
+    "solution": "For any $i = 1, \\ldots, 6$, let $X_i$ be the number of rolls until landing a new number for the first time, excluding all the rolls until the $(i-1)$-th new number.\n\nThe total number of rolls until all faces are seen is:\n$$X_1 + X_2 + \\cdots + X_6$$\n\nNote that after seeing $i-1$ distinct faces, there are $6-(i-1) = 7-i$ faces remaining out of 6, so:\n$$X_i \\sim \\mathrm{Geo}\\!\\left(\\frac{7-i}{6}\\right)$$\n\nThus, by linearity of expectation:\n$$\\mathbb{E}(X_1 + \\cdots + X_6) = \\sum_{i=1}^{6} \\frac{6}{7-i} = 6\\sum_{i=1}^{6} \\frac{1}{i} = 6\\left(1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\frac{1}{6}\\right) = 14.7$$"
   }
 ]
