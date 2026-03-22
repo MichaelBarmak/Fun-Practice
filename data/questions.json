@@ -433,5 +433,19 @@
     "correctAnswer": 0.2,
     "tolerance": 0.001,
     "solution": "Denote $X = \\min\\{X_1, \\ldots, X_n\\}$. For any $x \\in [0,1]$:\n$$\\mathbb{P}(X \\leq x) = 1 - \\mathbb{P}(X > x) = 1 - \\mathbb{P}(X_1 > x, \\ldots, X_n > x)$$\n$$= 1 - \\mathbb{P}(X_1 > x) \\cdots \\mathbb{P}(X_n > x) = 1 - (1-x)^n$$\n\nSo the CDF of $X$ is:\n$$F_X(x) = 1 - (1-x)^n$$\n\nAnd the PDF is:\n$$f_X(x) = F_X'(x) = n(1-x)^{n-1}$$\n\nThus:\n$$\\mathbb{E}(X) = \\int_0^1 x f_X(x)\\, dx = \\int_0^1 x \\cdot n(1-x)^{n-1}\\, dx = \\frac{1}{n+1}$$\n\nThe last equality follows from the Beta function integral.\n\nFor $n = 4$:\n$$\\mathbb{E}(\\min\\{X_1, X_2, X_3, X_4\\}) = \\frac{1}{5} = 0.2$$"
+  },
+  {
+    "id": 31,
+    "title": "Expected Distance",
+    "category": "Expected Value",
+    "difficulty": "Easy",
+    "timeLimit": 8,
+    "isNew": true,
+    "preview": "Let X, Y ~ Uniform(0,1) be i.i.d. Calculate E(|X - Y|).",
+    "question": "Let $X, Y \\sim \\mathrm{Uniform}(0,1)$ be i.i.d. Calculate\n$$\\mathbb{E}(|X - Y|).$$",
+    "answerType": "numeric",
+    "correctAnswer": 0.3333333333333333,
+    "tolerance": 0.001,
+    "solution": "The joint PDF of $(X, Y)$ is:\n$$f_{X,Y}(x,y) = f_X(x) f_Y(y) = 1, \\quad (x,y) \\in [0,1]^2$$\n\nThen:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^1 |x-y|\\, dy\\, dx$$\n\nWe split the domain into two regions, $y \\leq x$ and $y \\geq x$:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^x (x-y)\\, dy\\, dx + \\int_0^1 \\int_x^1 (y-x)\\, dy\\, dx$$\n\nFor the first term:\n$$\\int_0^x (x-y)\\, dy = \\left[xy - \\frac{y^2}{2}\\right]_0^x = \\frac{x^2}{2}$$\n$$\\int_0^1 \\frac{x^2}{2}\\, dx = \\frac{1}{6}$$\n\nFor the second term:\n$$\\int_x^1 (y-x)\\, dy = \\left[\\frac{y^2}{2} - xy\\right]_x^1 = \\frac{1}{2} - x + \\frac{x^2}{2}$$\n$$\\int_0^1 \\left(\\frac{1}{2} - x + \\frac{x^2}{2}\\right) dx = \\frac{1}{6}$$\n\nTherefore:\n$$\\mathbb{E}(|X-Y|) = \\frac{1}{6} + \\frac{1}{6} = \\frac{1}{3}$$"
   }
 ]
