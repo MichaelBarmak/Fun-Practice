@@ -4,7 +4,7 @@
     "title": "Expected Intersections",
     "category": "Expected Value",
     "difficulty": "Medium",
-    "source": "Green Book",
+    "source": "HRT",
     "isNew": false,
     "preview": "Three random chords are drawn on a unit circle. What is the expected number of intersections?",
     "question": "On a unit circle we draw three straight lines (chords), each connecting two random points on the circumference. What is the expected number of intersections between these lines?\n\nEnter an exact integer answer.",
