@@ -455,11 +455,11 @@
     "difficulty": "Medium",
     "timeLimit": 7,
     "isNew": true,
-    "preview": "You draw cards one by one without replacement from a shuffled deck. What is the expected number of cards drawn before the first Jack?",
-    "question": "You draw a card, one by one, without replacement from a shuffled standard deck of 52 cards.\n\nWhat is the expected number of cards you need to draw before the first Jack?\n\nProvide a numerical answer.",
+    "preview": "You draw cards one by one without replacement from a shuffled deck. What is the expected number of cards you need to draw before the first Jack?",
+    "question": "You draw a card, one by one, without replacement from a shuffled standard deck of cards.\n\nWhat is the expected number of cards you need to draw before the first Jack?\n\nProvide a numerical answer.",
     "answerType": "numeric",
     "correctAnswer": 9.6,
     "tolerance": 0.001,
-    "solution": "Consider laying down all 52 cards in a row. The four Jacks split the remaining 48 non-Jack cards into five groups:\n\n$$X_1 = \\text{cards before the 1st Jack}$$\n$$X_2 = \\text{cards between the 1st and 2nd Jack}$$\n$$X_3, X_4, X_5 \\text{ defined analogously}$$\n\nBy symmetry, $\\mathbb{E}(X_i)$ is the same for all $i$. Since the total number of non-Jack cards is 48:\n$$\\mathbb{E}(X_1 + X_2 + X_3 + X_4 + X_5) = 48$$\n\nBy linearity of expectation:\n$$5\\,\\mathbb{E}(X_1) = 48$$\n\nUsing the fact that the full deck has 52 cards (48 non-Jacks + 4 Jacks):\n$$52 = \\mathbb{E}(X_1 + \\cdots + X_5 + 4) = 5\\,\\mathbb{E}(X_1) + 4$$\n\nSolving:\n$$\\mathbb{E}(X_1) = \\frac{52 - 4}{5} = \\frac{48}{5} = 9.6$$"
+    "solution": "Let us lay down the deck of cards in a row, starting from right to left. The four Jacks split the pile into five groups:\n\n$$X_1 = \\text{the number of cards left to the first Jack}$$\n$$X_2 = \\text{the number of cards right to the first Jack and left to the second Jack}$$\n\nLikewise, we define $X_3$, $X_4$, and $X_5$.\n\nBy symmetry, $\\mathbb{E}(X_i)$ is independent of $i$, and moreover, by counting together all the cards and using linearity of expectation:\n$$52 = \\mathbb{E}(52) = \\mathbb{E}(X_1 + \\cdots + X_5 + 4) = 5\\,\\mathbb{E}(X_1) + 4$$\n\nSo:\n$$\\mathbb{E}(X_1) = \\frac{52 - 4}{5} = 9.6$$"
   }
 ]
