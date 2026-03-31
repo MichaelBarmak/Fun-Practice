@@ -489,5 +489,19 @@
     "correctAnswer": 4,
     "tolerance": 0,
     "solution": "Let $X$ be the score of player A and $Y$ of player B.\n\n**Case 1: $X > 5$**\n\nSince $Y \\leq 5 < X$, player A always wins:\n$$\\mathbb{E}(P \\mid X > 5) = \\mathbb{E}(X \\mid X > 5) = \\frac{1}{5}(6+7+8+9+10) = 8$$\n\nand $\\mathbb{P}(X > 5) = \\frac{1}{2}$.\n\n**Case 2: $X \\leq 5$**\n\nConditioned on $X \\leq 5$, both $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$. By symmetry:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5)$$\n\nClearly $\\mathbb{P}(X = Y \\mid X \\leq 5) = \\frac{1}{5}$, so:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5) = \\frac{1 - \\frac{1}{5}}{2} = 0.4$$\n\nExpanding $\\mathbb{E}(P \\mid X \\leq 5)$:\n$$\\mathbb{E}(P \\mid X \\leq 5) = \\mathbb{E}(X \\mid X \\leq 5, X > Y) \\cdot 0.4 + \\mathbb{E}(-Y \\mid X \\leq 5, X < Y) \\cdot 0.4 + 0 \\cdot \\mathbb{P}(X = Y \\mid X \\leq 5)$$\n\nSince $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$ given $X \\leq 5$, by symmetry:\n$$\\mathbb{E}(X \\mid X \\leq 5, X > Y) = \\mathbb{E}(Y \\mid X \\leq 5, X < Y)$$\n\nHence $\\mathbb{E}(P \\mid X \\leq 5) = 0$.\n\n**Combining:**\n$$\\mathbb{E}(P) = \\frac{1}{2}\\bigl(\\mathbb{E}(P \\mid X \\leq 5) + \\mathbb{E}(P \\mid X > 5)\\bigr) = \\frac{1}{2}(0 + 8) = 4$$"
+  },
+  {
+    "id": 35,
+    "title": "ArgMax",
+    "category": "Probability",
+    "difficulty": "Hard",
+    "timeLimit": 12,
+    "isNew": true,
+    "preview": "X ≥ 0 a.s. with E(X) = 2 and Var(X) = 5. What is the maximum probability that X = 0?",
+    "question": "Say $X$ is a random variable with $X \\geq 0$ a.s. Suppose\n$$\\mathbb{E}(X) = 2 \\quad \\text{and} \\quad \\text{Var}(X) = 5.$$\n\nWhat is the maximum probability that $X = 0$?\n\nExpress your answer as a fraction or decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.5555555555555556,
+    "tolerance": 0.001,
+    "solution": "From the variance formula:\n$$5 = \\text{Var}(X) = \\mathbb{E}(X^2) - \\mathbb{E}(X)^2 = \\mathbb{E}(X^2) - 4$$\n\nso $\\mathbb{E}(X^2) = 9$.\n\nLet $A = \\{X > 0\\}$. By the Cauchy–Schwarz inequality:\n$$(\\mathbb{E}(X \\mathbf{1}_A))^2 \\leq \\mathbb{E}(X^2)\\,\\mathbb{E}(\\mathbf{1}_A^2) = \\mathbb{E}(X^2)\\,\\mathbb{P}(A) = 9\\,\\mathbb{P}(A)$$\n\nSince $X \\geq 0$ a.s., we have $X = X\\mathbf{1}_A$, so:\n$$4 = (\\mathbb{E}(X))^2 \\leq 9\\,\\mathbb{P}(A)$$\n\nThus $\\mathbb{P}(A) \\geq \\dfrac{4}{9}$, and hence:\n$$\\mathbb{P}(X = 0) = 1 - \\mathbb{P}(A) \\leq \\frac{5}{9}$$\n\n**The bound is tight.** Take $X \\sim \\frac{9}{2} \\cdot \\text{Ber}\\!\\left(\\frac{4}{9}\\right)$:\n$$\\mathbb{P}(X = x) = \\begin{cases} \\dfrac{5}{9}, & x = 0 \\\\ \\dfrac{4}{9}, & x = \\dfrac{9}{2} \\end{cases}$$\n\nOne can verify $\\mathbb{E}(X) = \\frac{4}{9} \\cdot \\frac{9}{2} = 2$ and $\\text{Var}(X) = 5$, confirming the maximum is achieved.\n\n$$\\mathbb{P}(X = 0)_{\\max} = \\frac{5}{9}$$"
   }
 ]
