@@ -475,5 +475,19 @@
     "correctAnswer": 4.916666666666667,
     "tolerance": 0.001,
     "solution": "Denote $M$ to be the highest roll. By the tail-sum formula:\n$$\\mathbb{E}(M) = \\sum_{m=1}^{\\infty} \\mathbb{P}(M \\geq m)$$\n\nClearly,\n$$\\mathbb{P}(M \\geq m) = 1, \\quad \\forall\\, m = 1, 2, 3$$\nand\n$$\\mathbb{P}(M \\geq m) = 0, \\quad \\forall\\, m \\geq 7$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\mathbb{P}(M \\geq 4) + \\mathbb{P}(M \\geq 5) + \\mathbb{P}(M \\geq 6)$$\n\nFor any $4 \\leq i \\leq 6$, denote $\\tau_i$ to be the number of the first roll to give $i$. By symmetry, for any bijection $\\sigma : \\{3,4,5,6\\} \\to \\{3,4,5,6\\}$:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\mathbb{P}(\\tau_{\\sigma(3)} < \\tau_{\\sigma(4)} < \\tau_{\\sigma(5)} < \\tau_{\\sigma(6)})$$\n\nSince there are $4! = 24$ bijections and they partition the probability space:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\frac{1}{24}$$\n\n**Computing $\\mathbb{P}(M \\geq 4)$:** $\\{M < 4\\} = \\{M = 3\\}$ requires $\\tau_3$ to come first among $\\{\\tau_3, \\tau_4, \\tau_5, \\tau_6\\}$. There are $3! = 6$ such bijections out of 24, so:\n$$\\mathbb{P}(M < 4) = \\frac{6}{24} = \\frac{1}{4} \\implies \\mathbb{P}(M \\geq 4) = \\frac{3}{4}$$\n\n**Computing $\\mathbb{P}(M \\geq 5)$:** To have $M < 5$, the first value among $\\{3, 5, 6\\}$ must be 3. By symmetry:\n$$\\mathbb{P}(M < 5) = \\frac{1}{3} \\implies \\mathbb{P}(M \\geq 5) = \\frac{2}{3}$$\n\n**Computing $\\mathbb{P}(M \\geq 6)$:** To have $M < 6$, the first value among $\\{3, 6\\}$ must be 3. Therefore:\n$$\\mathbb{P}(M < 6) = \\frac{1}{2} \\implies \\mathbb{P}(M \\geq 6) = \\frac{1}{2}$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\frac{3}{4} + \\frac{2}{3} + \\frac{1}{2} = 3 + \\frac{9 + 8 + 6}{12} = 3 + \\frac{23}{12} = \\frac{59}{12}$$"
+  },
+  {
+    "id": 34,
+    "title": "Unfair Game",
+    "category": "Expected Value",
+    "difficulty": "Medium",
+    "timeLimit": 12,
+    "isNew": true,
+    "preview": "Player A has a 10-sided die, player B has a 5-sided die. The higher roll wins and gets paid the value of their die. What is the expected payoff for player A?",
+    "question": "Player A has a 10-sided fair die and player B has a 5-sided fair die. They both roll their dice. The player with the higher score wins and gets paid the value of their die by the loser.\n\nWhat is the expected payoff for player A?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 4,
+    "tolerance": 0,
+    "solution": "Let $X$ be the score of player A and $Y$ of player B.\n\n**Case 1: $X > 5$**\n\nSince $Y \\leq 5 < X$, player A always wins:\n$$\\mathbb{E}(P \\mid X > 5) = \\mathbb{E}(X \\mid X > 5) = \\frac{1}{5}(6+7+8+9+10) = 8$$\n\nand $\\mathbb{P}(X > 5) = \\frac{1}{2}$.\n\n**Case 2: $X \\leq 5$**\n\nConditioned on $X \\leq 5$, both $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$. By symmetry:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5)$$\n\nClearly $\\mathbb{P}(X = Y \\mid X \\leq 5) = \\frac{1}{5}$, so:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5) = \\frac{1 - \\frac{1}{5}}{2} = 0.4$$\n\nExpanding $\\mathbb{E}(P \\mid X \\leq 5)$:\n$$\\mathbb{E}(P \\mid X \\leq 5) = \\mathbb{E}(X \\mid X \\leq 5, X > Y) \\cdot 0.4 + \\mathbb{E}(-Y \\mid X \\leq 5, X < Y) \\cdot 0.4 + 0 \\cdot \\mathbb{P}(X = Y \\mid X \\leq 5)$$\n\nSince $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$ given $X \\leq 5$, by symmetry:\n$$\\mathbb{E}(X \\mid X \\leq 5, X > Y) = \\mathbb{E}(Y \\mid X \\leq 5, X < Y)$$\n\nHence $\\mathbb{E}(P \\mid X \\leq 5) = 0$.\n\n**Combining:**\n$$\\mathbb{E}(P) = \\frac{1}{2}\\bigl(\\mathbb{E}(P \\mid X \\leq 5) + \\mathbb{E}(P \\mid X > 5)\\bigr) = \\frac{1}{2}(0 + 8) = 4$$"
   }
 ]
