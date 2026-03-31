@@ -435,6 +435,20 @@
     "solution": "Denote $X = \\min\\{X_1, \\ldots, X_n\\}$. For any $x \\in [0,1]$:\n$$\\mathbb{P}(X \\leq x) = 1 - \\mathbb{P}(X > x) = 1 - \\mathbb{P}(X_1 > x, \\ldots, X_n > x)$$\n$$= 1 - \\mathbb{P}(X_1 > x) \\cdots \\mathbb{P}(X_n > x) = 1 - (1-x)^n$$\n\nSo the CDF of $X$ is:\n$$F_X(x) = 1 - (1-x)^n$$\n\nAnd the PDF is:\n$$f_X(x) = F_X'(x) = n(1-x)^{n-1}$$\n\nThus:\n$$\\mathbb{E}(X) = \\int_0^1 x f_X(x)\\, dx = \\int_0^1 x \\cdot n(1-x)^{n-1}\\, dx = \\frac{1}{n+1}$$\n\nThe last equality follows from the Beta function integral.\n\nFor $n = 4$:\n$$\\mathbb{E}(\\min\\{X_1, X_2, X_3, X_4\\}) = \\frac{1}{5} = 0.2$$"
   },
   {
+    "id": 32,
+    "title": "Expected First",
+    "category": "Expected Value",
+    "difficulty": "Medium",
+    "timeLimit": 7,
+    "isNew": true,
+    "preview": "You draw cards one by one without replacement from a shuffled deck. What is the expected number of cards drawn before the first Jack?",
+    "question": "You draw a card, one by one, without replacement from a shuffled standard deck of 52 cards.\n\nWhat is the expected number of cards you need to draw before the first Jack?\n\nProvide a numerical answer.",
+    "answerType": "numeric",
+    "correctAnswer": 9.6,
+    "tolerance": 0.001,
+    "solution": "Consider laying down all 52 cards in a row. The four Jacks split the remaining 48 non-Jack cards into five groups:\n\n$$X_1 = \\text{cards before the 1st Jack}$$\n$$X_2 = \\text{cards between the 1st and 2nd Jack}$$\n$$X_3, X_4, X_5 \\text{ defined analogously}$$\n\nBy symmetry, $\\mathbb{E}(X_i)$ is the same for all $i$. Since the total number of non-Jack cards is 48:\n$$\\mathbb{E}(X_1 + X_2 + X_3 + X_4 + X_5) = 48$$\n\nBy linearity of expectation:\n$$5\\,\\mathbb{E}(X_1) = 48$$\n\nUsing the fact that the full deck has 52 cards (48 non-Jacks + 4 Jacks):\n$$52 = \\mathbb{E}(X_1 + \\cdots + X_5 + 4) = 5\\,\\mathbb{E}(X_1) + 4$$\n\nSolving:\n$$\\mathbb{E}(X_1) = \\frac{52 - 4}{5} = \\frac{48}{5} = 9.6$$"
+  },
+  {
     "id": 31,
     "title": "Expected Distance",
     "category": "Expected Value",
