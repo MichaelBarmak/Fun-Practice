@@ -531,5 +531,19 @@
     "correctAnswer": 0.05,
     "tolerance": 0.001,
     "solution": "**Solution 1 (Symmetry)**\n\nDenote $\\tau_i$ to be the roll number on which face $i$ first appears. We extend the experiment until all 6 faces appear (this happens in finitely many rolls with probability 1).\n\nBy symmetry, all $6! = 720$ orderings of $\\tau_1 < \\tau_2 < \\cdots < \\tau_6$ are equally likely, so:\n$$\\mathbb{P}(\\tau_{\\sigma(1)} < \\tau_{\\sigma(2)} < \\cdots < \\tau_{\\sigma(6)}) = \\frac{1}{720}$$\n\nWe want all of $\\{1,2,3\\}$ to appear before the experiment stops, i.e. before any of $\\{4,5,6\\}$ appears. This requires $\\sigma(\\{1,2,3\\}) = \\{1,2,3\\}$ — both sets are $\\sigma$-invariant. There are $3! \\cdot 3! = 36$ such bijections, so:\n$$\\mathbb{P} = \\frac{36}{720} = \\boxed{\\frac{1}{20}}$$\n\n---\n\n**Solution 2 (State Recursion)**\n\nDefine states by the number of distinct values from $\\{1,2,3\\}$ seen so far:\n- $S_0$: none seen, $S_1$: one seen, $S_2$: two seen, $S_{\\text{win}}$: all three seen, $S_{\\text{loss}}$: stopped early.\n\nLet $P_i = \\mathbb{P}(\\text{reach } S_{\\text{win}} \\mid \\text{start at } S_i)$.\n\n**From $S_0$:** Roll lands in $\\{1,2,3\\}$ (prob $\\frac{1}{2}$) $\\to S_1$, or in $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_0 = \\frac{1}{2}P_1$$\n\n**From $S_1$:** Roll repeats seen value (prob $\\frac{1}{6}$) $\\to S_1$, hits new value from $\\{1,2,3\\}$ (prob $\\frac{1}{3}$) $\\to S_2$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_1 = \\frac{1}{6}P_1 + \\frac{1}{3}P_2 \\implies \\frac{5}{6}P_1 = \\frac{1}{3}P_2$$\n\n**From $S_2$:** Roll repeats seen value (prob $\\frac{1}{3}$) $\\to S_2$, hits last unseen value (prob $\\frac{1}{6}$) $\\to S_{\\text{win}}$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_2 = \\frac{1}{3}P_2 + \\frac{1}{6} \\implies P_2 = \\frac{1}{4}$$\n\nSolving back:\n$$P_1 = \\frac{1}{10}, \\quad P_0 = \\frac{1}{2} \\cdot \\frac{1}{10} = \\boxed{\\frac{1}{20}}$$"
+  },
+  {
+    "id": 38,
+    "title": "Divisibility By 6",
+    "category": "Probability",
+    "difficulty": "Easy",
+    "timeLimit": 5,
+    "isNew": true,
+    "preview": "You roll a fair die 10 times. What is the probability that the sum of all the outcomes is divisible by 6?",
+    "question": "You roll a fair die 10 times. What is the probability that the sum of all the outcomes is divisible by 6?\n\nExpress your answer as a fraction or decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.16666666666666666,
+    "tolerance": 0.001,
+    "solution": "Let $X_1, \\ldots, X_{10}$ be the outcomes of the ten die rolls, and define\n$$S_n = X_1 + \\cdots + X_n.$$\n\nWe want to compute $\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6})$.\n\nCondition on the value of $S_9 \\pmod{6}$:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6})\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}).$$\n\nIf $S_9 \\equiv t \\pmod{6}$, then $S_{10} = S_9 + X_{10} \\equiv 0 \\pmod{6}$ requires $X_{10} \\equiv -t \\pmod{6}$. Hence\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}) = \\mathbb{P}(X_{10} \\equiv -t \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}).$$\n\nSince $X_{10}$ is independent of $S_9$, this equals $\\mathbb{P}(X_{10} \\equiv -t \\pmod{6})$.\n\nA fair die is uniformly distributed modulo 6, since\n$$1, 2, 3, 4, 5, 6 \\equiv 1, 2, 3, 4, 5, 0 \\pmod{6}.$$\n\nTherefore, for every $t \\in \\{0, 1, \\ldots, 5\\}$,\n$$\\mathbb{P}(X_{10} \\equiv -t \\pmod{6}) = \\frac{1}{6}.$$\n\nSubstituting back:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\frac{1}{6}\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6} \\sum_{t=0}^{5} \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6}.$$\n\nTherefore,\n$$\\boxed{\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\frac{1}{6}.}$$"
   }
 ]
