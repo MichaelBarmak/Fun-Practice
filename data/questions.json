@@ -559,5 +559,20 @@
     "correctAnswer": 6,
     "tolerance": 0,
     "solution": "Denote by $N$ the minimum number of cuts required.\n\nFirst, it is clear that\n$$N \\leq 6,$$\nsince even without repositioning, 6 cuts are enough.\n\nNow consider the small cube located at the very center of the original $3 \\times 3 \\times 3$ cube. Initially, this center cube shares a face with each of its 6 neighboring cubes.\n\nIn order for the center cube to be completely separated, each of these 6 face-to-face connections must be cut.\n\nA single straight cut can pass through the center cube in only one direction, and therefore can separate at most one of these 6 connections involving the center cube.\n\nHence, at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities, we obtain\n$$\\boxed{N = 6}$$"
+  },
+  {
+    "id": 40,
+    "title": "3 Light Bulbs",
+    "category": "Expected Value",
+    "difficulty": "Medium",
+    "timeLimit": 12,
+    "isNew": true,
+    "source": "Jane Street",
+    "preview": "There are 3 light bulbs that are off. Each minute, we randomly choose a light bulb and switch its state. What is the expected number of minutes until all bulbs are off again?",
+    "question": "There are 3 light bulbs that are off. Each minute, we randomly choose a light bulb and switch its state (off to on, or on to off).\n\nWhat is the expected number of minutes that pass till the first time all bulbs are off again?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 8,
+    "tolerance": 0,
+    "solution": "Let $X_i$ be the number of light bulbs that are on after minute $i$.\n\nSo we look for $\\mathbb{E}(N_0)$, where\n$$N_i := \\min\\{n > 0 : X_n = 0\\} \\mid X_0 = i, \\quad \\forall i = 0, 1, 2, 3.$$\n\nThen we have\n$$\\mathbb{E}(N_0) = \\mathbb{E}(N_0 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1) = \\mathbb{E}(N_1 + 1) = \\mathbb{E}(N_1) + 1.$$\n\nAnd\n$$\\mathbb{E}(N_1) = \\mathbb{E}(N_1 \\mid X_1 = 0)\\, \\mathbb{P}(X_1 = 0 \\mid X_0 = 1) + \\mathbb{E}(N_1 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 1)$$\n$$= \\mathbb{E}(1 \\mid X_1 = 0) \\cdot \\frac{1}{3} + \\mathbb{E}(N_2 + 1) \\cdot \\frac{2}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_2).$$\n\nAnd\n$$\\mathbb{E}(N_2) = \\mathbb{E}(N_2 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1 \\mid X_0 = 2) + \\mathbb{E}(N_2 \\mid X_1 = 3)\\, \\mathbb{P}(X_1 = 3 \\mid X_0 = 2)$$\n$$= \\mathbb{E}(N_1 + 1) \\cdot \\frac{2}{3} + \\mathbb{E}(N_3 + 1) \\cdot \\frac{1}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_1) + \\frac{1}{3}\\mathbb{E}(N_3).$$\n\nAnd\n$$\\mathbb{E}(N_3) = \\mathbb{E}(N_3 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 3) = \\mathbb{E}(N_2 + 1) = \\mathbb{E}(N_2) + 1.$$\n\nSolving this, we get\n$$\\boxed{\\mathbb{E}(N_0) = 8.}$$"
   }
 ]
