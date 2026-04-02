@@ -545,5 +545,19 @@
     "correctAnswer": 0.16666666666666666,
     "tolerance": 0.001,
     "solution": "Let $X_1, \\ldots, X_{10}$ be the outcomes of the ten die rolls, and define\n$$S_n = X_1 + \\cdots + X_n.$$\n\nWe want to compute $\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6})$.\n\nCondition on the value of $S_9 \\pmod{6}$:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6})\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}).$$\n\nIf $S_9 \\equiv t \\pmod{6}$, then $S_{10} = S_9 + X_{10} \\equiv 0 \\pmod{6}$ requires $X_{10} \\equiv -t \\pmod{6}$. Hence\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}) = \\mathbb{P}(X_{10} \\equiv -t \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}).$$\n\nSince $X_{10}$ is independent of $S_9$, this equals $\\mathbb{P}(X_{10} \\equiv -t \\pmod{6})$.\n\nA fair die is uniformly distributed modulo 6, since\n$$1, 2, 3, 4, 5, 6 \\equiv 1, 2, 3, 4, 5, 0 \\pmod{6}.$$\n\nTherefore, for every $t \\in \\{0, 1, \\ldots, 5\\}$,\n$$\\mathbb{P}(X_{10} \\equiv -t \\pmod{6}) = \\frac{1}{6}.$$\n\nSubstituting back:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\frac{1}{6}\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6} \\sum_{t=0}^{5} \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6}.$$\n\nTherefore,\n$$\\boxed{\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\frac{1}{6}.}$$"
+  },
+  {
+    "id": 39,
+    "title": "Rubik's Cube",
+    "category": "Brain Teaser",
+    "difficulty": "Easy",
+    "timeLimit": 7,
+    "isNew": true,
+    "preview": "You have a 3×3×3 Rubik's cube. After each cut you may reposition the pieces. What is the minimum number of straight cuts to separate all 27 small cubes?",
+    "question": "Suppose you have a $3 \\times 3 \\times 3$ Rubik's cube. If you want to separate all 27 small cubes, you can do so with 6 straight cuts without reordering any of the pieces.\n\nNow suppose that after each cut you are allowed to reposition the separated pieces. What is the minimum number of cuts required in order to separate all 27 small cubes?\n\nEnter an exact integer answer.",
+    "answerType": "numeric",
+    "correctAnswer": 6,
+    "tolerance": 0,
+    "solution": "Denote by $N$ the minimum number of cuts required.\n\n**Upper bound:** Without any repositioning, 6 cuts suffice (2 cuts per axis), so $N \\leq 6$.\n\n**Lower bound:** Consider the small cube at the very center of the $3 \\times 3 \\times 3$ cube. It shares a face with each of its 6 neighboring cubes.\n\nFor the center cube to be completely separated, all 6 of these face-to-face connections must be cut. A single straight cut passes through the center cube in only one direction, so it can sever at most one of these 6 connections. Hence at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities:\n$$\\boxed{N = 6}$$"
   }
 ]
