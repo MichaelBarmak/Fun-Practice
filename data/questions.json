@@ -558,6 +558,6 @@
     "answerType": "numeric",
     "correctAnswer": 6,
     "tolerance": 0,
-    "solution": "Denote by $N$ the minimum number of cuts required.\n\n**Upper bound:** Without any repositioning, 6 cuts suffice (2 cuts per axis), so $N \\leq 6$.\n\n**Lower bound:** Consider the small cube at the very center of the $3 \\times 3 \\times 3$ cube. It shares a face with each of its 6 neighboring cubes.\n\nFor the center cube to be completely separated, all 6 of these face-to-face connections must be cut. A single straight cut passes through the center cube in only one direction, so it can sever at most one of these 6 connections. Hence at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities:\n$$\\boxed{N = 6}$$"
+    "solution": "Denote by $N$ the minimum number of cuts required.\n\nFirst, it is clear that\n$$N \\leq 6,$$\nsince even without repositioning, 6 cuts are enough.\n\nNow consider the small cube located at the very center of the original $3 \\times 3 \\times 3$ cube. Initially, this center cube shares a face with each of its 6 neighboring cubes.\n\nIn order for the center cube to be completely separated, each of these 6 face-to-face connections must be cut.\n\nA single straight cut can pass through the center cube in only one direction, and therefore can separate at most one of these 6 connections involving the center cube.\n\nHence, at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities, we obtain\n$$\\boxed{N = 6}$$"
   }
 ]
