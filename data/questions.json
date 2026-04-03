@@ -659,5 +659,17 @@
     "question": "Suppose there are infinitely many blindfolded prisoners, labeled $1, 2, 3, \\ldots$. Each prisoner is assigned either a black or a white hat. At a certain moment, all blindfolds are removed simultaneously, and each prisoner can see the hats of all other prisoners, but not their own.\n\nThe prisoners are not allowed to communicate in any way. Each prisoner must simultaneously submit a guess of the color of their own hat.\n\nIf only finitely many prisoners guess incorrectly, then all prisoners are freed.\n\nAssume standard mathematical axioms, and that each prisoner has unlimited memory and can perform arbitrary computations instantly.\n\nGive a strategy that guarantees this outcome.",
     "answerType": "theory",
     "solution": "This is a set-theoretic construction.\n\nAssign the value 0 to the color black and 1 to the color white. In this way, any assignment of hats corresponds to a binary sequence.\n\nDefine an equivalence relation on the set of infinite binary sequences by declaring two sequences equivalent if and only if they differ in only finitely many coordinates.\n\nBy the Axiom of Choice, there exists a set of representatives\n$$\\{X_i \\mid i \\in I\\},$$\nwhere each $X_i$ is a binary sequence, and each equivalence class contains exactly one representative.\n\nLet $Y$ denote the actual sequence corresponding to the hat assignment.\n\nEach prisoner determines the unique representative $X_i$ such that $Y$ is equivalent to $X_i$, and guesses their own hat according to the corresponding coordinate of $X_i$.\n\nSince $Y$ and $X_i$ differ in only finitely many coordinates, only finitely many prisoners will guess incorrectly. $\\blacksquare$"
+  },
+  {
+    "id": 47,
+    "title": "Induction",
+    "category": "Logic Reasoning",
+    "difficulty": "Hard",
+    "timeLimit": 15,
+    "createdAt": "2026-04-03",
+    "preview": "Let P_n be a statement for each n ∈ ℕ. Suppose P_1 is true and P_k ⟹ P_{k+1} for every k. Prove that P_n is true for every n ∈ ℕ, and state your assumptions.",
+    "question": "**Theorem:**\n\nLet $P_n$ be a mathematical statement for each $n \\in \\mathbb{N}$.\n\nSuppose that $P_1$ is true, and that for every $k \\in \\mathbb{N}$, the implication\n$$P_k \\implies P_{k+1}$$\nis true.\n\nThen $P_n$ is true for every $n \\in \\mathbb{N}$.\n\nProve this claim, and state your assumptions.",
+    "answerType": "theory",
+    "solution": "**Proof:**\n\nWe assume that $\\mathbb{N}$ is well-ordered, and hence every nonempty subset $A \\subseteq \\mathbb{N}$ has a minimal element.\n\nDefine\n$$A = \\{n \\in \\mathbb{N} \\mid P_n \\text{ is false}\\}.$$\n\nWe will prove that $A = \\varnothing$.\n\nSuppose, by contradiction, that $A \\neq \\varnothing$. Since $A \\subseteq \\mathbb{N}$ and $\\mathbb{N}$ is well-ordered, the set $A$ has a minimal element $n_0 \\in A$.\n\nSince $P_1$ is true, we must have $n_0 > 1$.\n\nBecause $n_0$ is the minimal element of $A$, it follows that $n_0 - 1 \\notin A$. Hence, $P_{n_0 - 1}$ is true.\n\nBy the induction step,\n$$P_{n_0 - 1} \\implies P_{n_0},$$\nso $P_{n_0}$ is true. This contradicts the fact that $n_0 \\in A$.\n\nTherefore,\n$$A = \\varnothing,$$\nand hence $P_n$ is true for every $n \\in \\mathbb{N}$. $\\blacksquare$"
   }
 ]
