@@ -16,9 +16,7 @@ const SOURCE_STYLE = 'bg-violet-100 text-violet-700';
 export default function QuestionCard({
   question,
   isExpanded,
-  isSolved,
   onToggle,
-  onSolve,
 }) {
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState(null); // null | 'correct' | 'incorrect'
@@ -31,7 +29,6 @@ export default function QuestionCard({
     const result = checkAnswer(question, input);
     if (result === true) {
       setFeedback('correct');
-      onSolve();
     } else {
       setFeedback('incorrect');
     }
@@ -39,7 +36,6 @@ export default function QuestionCard({
 
   function handleRevealSolution() {
     setSolutionVisible(true);
-    onSolve();
   }
 
   function handleCheckPart2() {
@@ -49,7 +45,6 @@ export default function QuestionCard({
     const tolerance = question.part2Tolerance ?? 0;
     if (Math.abs(userValue - question.part2Answer) <= tolerance) {
       setPart2Feedback('correct');
-      onSolve();
     } else {
       setPart2Feedback('incorrect');
     }
@@ -78,17 +73,6 @@ export default function QuestionCard({
         className="w-full text-left px-5 py-4 flex items-start gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-xl"
         aria-expanded={isExpanded}
       >
-        {/* Solved checkmark */}
-        <div className="mt-0.5 flex-shrink-0 w-5 h-5">
-          {isSolved ? (
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white text-xs font-bold" title="Solved">
-              ✓
-            </span>
-          ) : (
-            <span className="flex items-center justify-center w-5 h-5 rounded-full border-2 border-slate-300" />
-          )}
-        </div>
-
         {/* Title + meta */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1">

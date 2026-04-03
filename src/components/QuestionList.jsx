@@ -2,8 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import QuestionCard from './QuestionCard';
-import { useSolvedQuestions } from '../hooks/useSolvedQuestions';
-
 /**
  * Client component that owns search, category filtering, and expand state.
  * Receives the full questions array from the server page component.
@@ -14,8 +12,6 @@ export default function QuestionList({ questions, onStartInterview }) {
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [selectedSource, setSelectedSource] = useState('All');
   const [expandedId, setExpandedId] = useState(null);
-
-  const { solvedIds, markSolved } = useSolvedQuestions();
 
   function pickRandom() {
     const random = questions[Math.floor(Math.random() * questions.length)];
@@ -60,7 +56,6 @@ export default function QuestionList({ questions, onStartInterview }) {
     });
   }, [questions, search, selectedCategory, selectedDifficulty, selectedSource]);
 
-  const solvedCount = solvedIds.length;
   const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
 
   return (
@@ -90,10 +85,6 @@ export default function QuestionList({ questions, onStartInterview }) {
           <span className="font-semibold text-slate-700">{filtered.length}</span>{' '}
           {filtered.length === 1 ? 'question' : 'questions'}
           {(search || selectedCategory !== 'All' || selectedDifficulty !== 'All' || selectedSource !== 'All') && ' matching'}
-        </span>
-        <span>
-          <span className="font-semibold text-emerald-600">{solvedCount}</span> /{' '}
-          {questions.length} solved
         </span>
       </div>
 
@@ -197,11 +188,9 @@ export default function QuestionList({ questions, onStartInterview }) {
               key={q.id}
               question={q}
               isExpanded={expandedId === q.id}
-              isSolved={solvedIds.includes(q.id)}
               onToggle={() =>
                 setExpandedId((prev) => (prev === q.id ? null : q.id))
               }
-              onSolve={() => markSolved(q.id)}
             />
           ))}
         </div>
@@ -209,7 +198,7 @@ export default function QuestionList({ questions, onStartInterview }) {
 
       {/* ── Footer ── */}
       <p className="text-center text-xs text-slate-400 mt-12">
-        Progress saved in your browser. Questions updated regularly.
+        Questions updated regularly.
       </p>
     </div>
   );
