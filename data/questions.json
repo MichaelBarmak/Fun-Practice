@@ -619,5 +619,19 @@
     "tolerance": 0,
     "solution": "Let $X_1$ be the number of red balls taken before the first green ball, and $X_2$ the number of red balls taken after the first green ball and before the second green ball. Let\n$$X_3 = 15 - (X_1 + X_2)$$\nbe the number of red balls remaining once the second green ball is taken.\n\nClearly,\n$$X_1 + X_2 + X_3 = 15.$$\n\nConsider a uniformly random ordering of the 15 red balls and 2 green balls. The two green balls divide the sequence into three segments:\n- before the first green,\n- between the two green balls,\n- after the second green ball.\n\nThese three segments are symmetric, and therefore $X_1, X_2, X_3$ have the same distribution. In particular,\n$$\\mathbb{E}[X_1] = \\mathbb{E}[X_2] = \\mathbb{E}[X_3].$$\n\nTaking expectations, we get\n$$15 = \\mathbb{E}[X_1 + X_2 + X_3] = 3\\mathbb{E}[X_3].$$\n\nHence,\n$$\\mathbb{E}[X_3] = 5.$$\n\nTherefore, the expected number of red balls remaining in the bag is $\\boxed{5}$.",
     "createdAt": "2026-04-03"
+  },
+  {
+    "id": 44,
+    "title": "Random Sum",
+    "category": "Probability",
+    "difficulty": "Hard",
+    "timeLimit": 15,
+    "createdAt": "2026-04-03",
+    "preview": "Let X_n ~ Ber(1/n²) independently. Let S = Σ X_n. Find P(S < ∞).",
+    "question": "Let $X_n \\sim \\text{Ber}\\!\\left(\\frac{1}{n^2}\\right)$, for all $n \\in \\mathbb{N}$, independently. That is,\n$$\\mathbb{P}(X_n = x) = \\begin{cases} \\frac{1}{n^2}, & x = 1, \\\\ 1 - \\frac{1}{n^2}, & x = 0. \\end{cases}$$\n\nLet\n$$S = \\sum_{n=1}^{\\infty} X_n.$$\n\nFind $\\mathbb{P}(S < \\infty)$.",
+    "answerType": "numeric",
+    "correctAnswer": 1,
+    "tolerance": 0,
+    "solution": "Define the events\n$$A_n = \\{X_n = 1\\}.$$\n\nThen\n$$\\sum_{n=1}^{\\infty} \\mathbb{P}(A_n) = \\sum_{n=1}^{\\infty} \\frac{1}{n^2} < \\infty.$$\n\nBy the **Borel–Cantelli lemma**,\n$$\\mathbb{P}(A_n \\text{ infinitely often}) = 0.$$\n\nNow observe that since $X_n \\in \\{0, 1\\}$,\n$$\\{S = \\infty\\} = \\{A_n \\text{ infinitely often}\\}.$$\n\nHence,\n$$\\mathbb{P}(S = \\infty) = 0,$$\n\nand therefore\n$$\\boxed{\\mathbb{P}(S < \\infty) = 1}$$"
   }
 ]
