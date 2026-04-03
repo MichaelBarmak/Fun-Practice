@@ -24,8 +24,17 @@ export default function InterviewMode({ questions, onExit }) {
   const [timeLeft, setTimeLeft] = useState(DEFAULT_DURATION);
 
   function start() {
-    const shuffled = [...questions].sort(() => Math.random() - 0.5);
-    const three = shuffled.slice(0, 3);
+    function pickRandom(pool) {
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+    const easy   = questions.filter(q => q.difficulty === 'Easy');
+    const medium = questions.filter(q => q.difficulty === 'Medium');
+    const hard   = questions.filter(q => q.difficulty === 'Hard');
+    const three = [
+      pickRandom(easy),
+      pickRandom(medium),
+      pickRandom(hard),
+    ].filter(Boolean);
     setSelected(three);
     setIdx(0);
     setAnswers(['', '', '']);
@@ -99,7 +108,12 @@ function IntroScreen({ onStart, onExit }) {
           <ul className="space-y-4 text-slate-600 text-sm sm:text-base mb-8">
             <li className="flex gap-3">
               <span className="text-indigo-500 font-bold shrink-0">1.</span>
-              3 questions are randomly selected from the question bank.
+              <span>
+                3 questions are randomly selected in order of difficulty:{' '}
+                <span className="font-medium text-emerald-600">Easy</span>{' → '}
+                <span className="font-medium text-amber-500">Medium</span>{' → '}
+                <span className="font-medium text-rose-500">Hard</span>.
+              </span>
             </li>
             <li className="flex gap-3">
               <span className="text-indigo-500 font-bold shrink-0">2.</span>
