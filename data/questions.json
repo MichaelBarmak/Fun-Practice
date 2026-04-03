@@ -671,5 +671,19 @@
     "question": "**Theorem:**\n\nLet $P_n$ be a mathematical statement for each $n \\in \\mathbb{N}$.\n\nSuppose that $P_1$ is true, and that for every $k \\in \\mathbb{N}$, the implication\n$$P_k \\implies P_{k+1}$$\nis true.\n\nThen $P_n$ is true for every $n \\in \\mathbb{N}$.\n\nProve this claim, and state your assumptions.",
     "answerType": "theory",
     "solution": "**Proof:**\n\nWe assume that $\\mathbb{N}$ is well-ordered, and hence every nonempty subset $A \\subseteq \\mathbb{N}$ has a minimal element.\n\nDefine\n$$A = \\{n \\in \\mathbb{N} \\mid P_n \\text{ is false}\\}.$$\n\nWe will prove that $A = \\varnothing$.\n\nSuppose, by contradiction, that $A \\neq \\varnothing$. Since $A \\subseteq \\mathbb{N}$ and $\\mathbb{N}$ is well-ordered, the set $A$ has a minimal element $n_0 \\in A$.\n\nSince $P_1$ is true, we must have $n_0 > 1$.\n\nBecause $n_0$ is the minimal element of $A$, it follows that $n_0 - 1 \\notin A$. Hence, $P_{n_0 - 1}$ is true.\n\nBy the induction step,\n$$P_{n_0 - 1} \\implies P_{n_0},$$\nso $P_{n_0}$ is true. This contradicts the fact that $n_0 \\in A$.\n\nTherefore,\n$$A = \\varnothing,$$\nand hence $P_n$ is true for every $n \\in \\mathbb{N}$. $\\blacksquare$"
+  },
+  {
+    "id": 48,
+    "title": "Unit Circle Variance",
+    "category": "Statistics",
+    "difficulty": "Easy",
+    "timeLimit": 5,
+    "createdAt": "2026-04-03",
+    "preview": "Let (X, Y) be a random point chosen uniformly on the unit circle. Compute Var(Y).",
+    "question": "Let $(X, Y)$ be a random point chosen uniformly on the unit circle. Compute\n$$\\text{Var}(Y).$$",
+    "answerType": "numeric",
+    "correctAnswer": 0.5,
+    "tolerance": 0.001,
+    "solution": "By symmetry,\n$$\\mathbb{E}(X) = \\mathbb{E}(Y) = 0.$$\n\nTherefore,\n$$\\text{Var}(Y) = \\mathbb{E}(Y^2) - \\mathbb{E}(Y)^2 = \\mathbb{E}(Y^2).$$\n\nAgain by symmetry,\n$$\\mathbb{E}(X^2) = \\mathbb{E}(Y^2).$$\n\nSince\n$$X^2 + Y^2 = 1,$$\nwe have by linearity of expectation\n$$1 = \\mathbb{E}(X^2 + Y^2) = \\mathbb{E}(X^2) + \\mathbb{E}(Y^2) = 2\\mathbb{E}(Y^2).$$\n\nHence,\n$$\\text{Var}(Y) = \\frac{1}{2}. \\quad \\blacksquare$$"
   }
 ]
