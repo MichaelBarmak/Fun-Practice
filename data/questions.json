@@ -685,5 +685,19 @@
     "correctAnswer": 0.5,
     "tolerance": 0.001,
     "solution": "By symmetry,\n$$\\mathbb{E}(X) = \\mathbb{E}(Y) = 0.$$\n\nTherefore,\n$$\\text{Var}(Y) = \\mathbb{E}(Y^2) - \\mathbb{E}(Y)^2 = \\mathbb{E}(Y^2).$$\n\nAgain by symmetry,\n$$\\mathbb{E}(X^2) = \\mathbb{E}(Y^2).$$\n\nSince\n$$X^2 + Y^2 = 1,$$\nwe have by linearity of expectation\n$$1 = \\mathbb{E}(X^2 + Y^2) = \\mathbb{E}(X^2) + \\mathbb{E}(Y^2) = 2\\mathbb{E}(Y^2).$$\n\nHence,\n$$\\text{Var}(Y) = \\frac{1}{2}. \\quad \\blacksquare$$"
+  },
+  {
+    "id": 49,
+    "title": "Melon Mean Test",
+    "category": "Statistics",
+    "difficulty": "Easy",
+    "timeLimit": 5,
+    "createdAt": "2026-04-03",
+    "preview": "A farmer claims melon weights are N(1, 1/10). A friend says: buy 100 melons, and if the average is below 1, stop buying. Should you listen?",
+    "question": "You regularly buy many melons from a specific farmer. The farmer claims that the weight of each melon is independently distributed as\n$$\\mathcal{N}\\!\\left(1, \\frac{1}{10}\\right).$$\n\nYou only care about the mean weight of the melons you buy, in order to know whether you are being scammed.\n\nA friend suggests that you buy 100 melons and let $\\bar{M}$ denote their average weight.\n\nThey tell you that if\n$$\\bar{M} < 1,$$\nthen you should stop buying from this farmer.\n\nShould you listen to your friend?",
+    "answerType": "multiple_choice",
+    "options": ["Yes", "No"],
+    "correctAnswer": "No",
+    "solution": "Let $M_i$ be the weight of melon $i$, for $i = 1, \\ldots, 100$. Then\n$$M_1, \\ldots, M_{100} \\overset{\\text{iid}}{\\sim} \\mathcal{N}\\!\\left(1, \\frac{1}{10}\\right).$$\n\nDefine the sample mean\n$$\\bar{M} := \\frac{M_1 + \\cdots + M_{100}}{100}.$$\n\nSince the average of independent normal random variables is also normally distributed, we have\n$$\\bar{M} \\sim \\mathcal{N}\\!\\left(1, \\frac{1}{1000}\\right).$$\n\nIn particular,\n$$\\mathbb{E}[\\bar{M}] = 1.$$\n\nSince the normal distribution is symmetric about its mean,\n$$\\mathbb{P}(\\bar{M} < 1) = \\frac{1}{2}.$$\n\nThus, even if the farmer is honest, your friend's rule would incorrectly tell you to leave with probability $\\frac{1}{2}$.\n\nTherefore, your friend's suggestion should be politely declined. $\\blacksquare$"
   }
 ]
