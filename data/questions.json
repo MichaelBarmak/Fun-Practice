@@ -5,14 +5,14 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "source": "HRT",
-    "isNew": false,
     "preview": "Three random chords are drawn on a unit circle. What is the expected number of intersections?",
     "question": "On a unit circle we draw three straight lines (chords), each connecting two random points on the circumference. What is the expected number of intersections between these lines?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 1,
     "tolerance": 0,
     "solution": "Let $X_{i,j}$ be the indicator random variable of the event that line $i$ intersects line $j$, for $i \\neq j$ and $i, j \\in \\{1, 2, 3\\}$.\n\nThe total number of intersections is:\n$$N = X_{1,2} + X_{1,3} + X_{2,3}$$\n\nBy linearity of expectation:\n$$\\mathbb{E}[N] = \\mathbb{E}[X_{1,2}] + \\mathbb{E}[X_{1,3}] + \\mathbb{E}[X_{2,3}]$$\n\nBy symmetry:\n$$\\mathbb{E}[X_{1,2}] = \\mathbb{E}[X_{1,3}] = \\mathbb{E}[X_{2,3}]$$\n\nSo it suffices to compute $\\mathbb{E}[X_{1,2}]$.\n\nConsider the two chords determined by four random points on the circle, say $A, B, C, D$. There are exactly three ways to pair the four endpoints into two chords:\n$$(AB,\\ CD), \\quad (AC,\\ BD), \\quad (AD,\\ BC)$$\n\nExactly one of these pairings produces intersecting chords, so:\n$$\\mathbb{P}(X_{1,2} = 1) = \\frac{1}{3}$$\n\nSince $X_{1,2}$ is an indicator variable, $\\mathbb{E}[X_{1,2}] = \\dfrac{1}{3}$.\n\nTherefore:\n$$\\mathbb{E}[N] = \\frac{1}{3} + \\frac{1}{3} + \\frac{1}{3} = \\boxed{1}$$",
-    "timeLimit": 6
+    "timeLimit": 6,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 2,
@@ -20,7 +20,6 @@
     "category": "Problem Simplification",
     "difficulty": "Hard",
     "source": "Green Book",
-    "isNew": false,
     "preview": "1000 wolves and 1 sheep on an island. A wolf that eats the sheep becomes a sheep. Will the sheep be eaten?",
     "question": "One thousand magical wolves and one sheep are located on a deserted island with no other animals.\n\nThe rules are as follows:\n1. The sheep can only eat grass. A wolf can eat grass but prefers to eat sheep.\n2. If the sheep is eaten, only one wolf eats it.\n3. Once a wolf eats a sheep, it immediately becomes a sheep itself.\n4. Every wolf wants, above all, to survive.\n5. Wolves are perfectly rational.\n\nWill the sheep be eaten?",
     "answerType": "multiple_choice",
@@ -30,7 +29,8 @@
     ],
     "correctAnswer": "No",
     "solution": "Let $n$ be the number of wolves. A wolf will eat the sheep only if doing so does not lead to its own death. We analyze small cases:\n\n$n = 0$: No wolves, the sheep survives.\n\n$n = 1$: The wolf eats the sheep, becomes a sheep, and no wolves remain — it survives. So the wolf eats the sheep.\n\n$n = 2$: If one wolf eats the sheep, the situation becomes $n = 1$. By the previous case, the new sheep (the wolf that ate) would be eaten. So neither wolf eats the sheep.\n\n$n = 3$: If a wolf eats the sheep, the situation becomes $n = 2$. By the previous case, the sheep is safe. So the wolf that eats survives — one wolf eats the sheep.\n\nThe pattern is:\n$$n = 0 \\Rightarrow \\text{sheep survives}$$\n$$n = 1 \\Rightarrow \\text{sheep eaten}$$\n$$n = 2 \\Rightarrow \\text{sheep survives}$$\n$$n = 3 \\Rightarrow \\text{sheep eaten}$$\n\nThe sheep is eaten if and only if $n$ is odd.\n\nSince $n = 1000$ is even, the sheep will not be eaten.\n\n$\\boxed{\\text{The sheep survives.}}$",
-    "timeLimit": 13
+    "timeLimit": 13,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 3,
@@ -38,14 +38,14 @@
     "category": "Logic Reasoning",
     "difficulty": "Medium",
     "source": "Green Book",
-    "isNew": true,
     "preview": "Pairs of cards are drawn from a 52-card deck. Red-red goes to your pile, black-black to the dealer's. What is the probability you win?",
     "question": "We play the following game with a standard shuffled deck of 52 cards.\n\nAt each step, a pair of cards is drawn (without replacement) from the deck.\n• If both cards are red, they are placed in your pile.\n• If both cards are black, they are placed in the dealer's pile.\n• Otherwise, the cards are discarded.\n\nAfter all cards are drawn, if your pile is larger than the dealer's pile, you win.\n\nWhat is the probability that you win this game?\n\nExpress as an exact decimal.",
     "answerType": "numeric",
     "correctAnswer": 0,
     "tolerance": 0,
     "solution": "Let $A$ be the number of red-red pairs, $B$ the number of black-black pairs, and $C$ the number of mixed pairs.\n\nThere are 26 red cards and 26 black cards in the deck.\n\nEvery red card belongs either to a red-red pair or a mixed pair:\n$$2A + C = 26$$\n\nEvery black card belongs either to a black-black pair or a mixed pair:\n$$2B + C = 26$$\n\nSubtracting the two equations:\n$$2A - 2B = 0 \\implies A = B$$\n\nYour pile contains exactly $2A$ cards and the dealer's pile contains exactly $2B$ cards. Since $A = B$ always, the two piles are always equal in size — regardless of how the cards happen to be paired.\n\nTherefore your pile can never be strictly larger than the dealer's pile.\n\n$$\\boxed{P(\\text{win}) = 0}$$",
-    "timeLimit": 10
+    "timeLimit": 10,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 4,
@@ -53,12 +53,12 @@
     "category": "Logic Reasoning",
     "difficulty": "Medium",
     "source": "Green Book",
-    "isNew": true,
     "preview": "1000 coins on a table: 980 tails up, 20 heads up. Split them into two piles with equal numbers of heads.",
     "question": "You have 1000 coins on a table. Exactly 20 show heads, and the remaining 980 show tails.\n\nWhile your eyes are covered, divide the coins into two piles so that the two piles contain the same number of heads.",
     "answerType": "theory",
     "solution": "Take any 20 coins and place them in the first pile. The remaining 980 coins form the second pile.\n\nSuppose the first pile contains $m$ coins with heads up. Then it contains $20 - m$ coins with tails up.\n\nSince there are exactly 20 heads among all 1000 coins, the second pile must contain $20 - m$ coins with heads up.\n\nNow flip every coin in the first pile. The $m$ heads become tails and the $20 - m$ tails become heads. Therefore, after flipping, the first pile contains $20 - m$ heads.\n\nThus both piles contain exactly $20 - m$ heads. $\\blacksquare$",
-    "timeLimit": 6
+    "timeLimit": 6,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 5,
@@ -66,12 +66,12 @@
     "category": "Logic Reasoning",
     "difficulty": "Hard",
     "source": "Green Book",
-    "isNew": true,
     "preview": "100 wise men, a glass, and a sultan. Find a strategy to guarantee freedom with 100% certainty.",
     "question": "A sultan has captured 100 wise men. In a closed room there is a glass currently standing bottom down.\n\nEvery minute the sultan calls a random wise man to the room to see the glass, with the option to flip it, and then leave the room. The wise man also has the option to tell the sultan that all of the wise men have been called at least once. If the wise man is correct, everyone goes free. Otherwise, the sultan puts everyone to death.\n\nFind a strategy that lets the wise men go free with 100% certainty. Once the game begins, the wise men cannot communicate in any way and cannot hear or see one another.",
     "answerType": "theory",
     "solution": "Before the game begins, the wise men choose one of them to be the spokesman. The strategy is as follows:\n\n1. Whenever the spokesman is called and the glass is standing bottom up, he flips it to bottom down. Otherwise he does nothing.\n2. Whenever a non-spokesman is called, he flips the glass only if it is standing bottom down and he has never flipped it before.\n3. The spokesman keeps a count of the number of times he flips the glass.\n4. Once the spokesman's count reaches 99, he tells the sultan that all men have been called.\n\nEach non-spokesman flips the glass exactly once — the first time he sees it bottom down. This signals that a new man has visited the room.\n\nWhenever the spokesman encounters the glass bottom up, he flips it back and increments his count by one.\n\nSince every non-spokesman eventually gets called (with probability 1), each will at some point flip the glass exactly once. The spokesman's count therefore reaches exactly 99 when and only when all 99 non-spokesmen have visited — at which point he can safely declare that all 100 wise men have been called. $\\blacksquare$",
-    "timeLimit": 16
+    "timeLimit": 16,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 6,
@@ -79,12 +79,12 @@
     "category": "Summation",
     "difficulty": "Easy",
     "source": "Green Book",
-    "isNew": true,
     "preview": "You have 998 distinct integers from 1 to 1000. Find a clever way to identify the two missing ones.",
     "question": "Say we have 998 distinct integers from 1 to 1000. Find a clever way to find the two missing integers.",
     "answerType": "theory",
     "solution": "We use a couple of summation formulas:\n$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$\n\nAnd\n$$1^2 + 2^2 + \\cdots + n^2 = \\frac{n^3}{3} + \\frac{n^2}{3} + \\frac{n}{6}$$\n\nDenote $x$ and $y$ to be the two missing integers, and $a_1, \\ldots, a_{998}$ to be the distinct given integers. Moreover, denote\n$$S_1 = a_1 + \\cdots + a_{998}$$\nand\n$$S_2 = a_1^2 + \\cdots + a_{998}^2$$\n\nWe get that\n$$S_1 + x + y = 1 + 2 + \\cdots + 1000 = \\frac{1000(1000+1)}{2}$$\n\nAnd\n$$S_2 + x^2 + y^2 = 1^2 + \\cdots + 1000^2 = \\frac{1000^3}{3} + \\frac{1000^2}{3} + \\frac{1000}{6}$$\n\nThis is a simple system of two equations in the two variables $x$ and $y$.",
-    "timeLimit": 4
+    "timeLimit": 4,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 7,
@@ -92,14 +92,14 @@
     "category": "Summation",
     "difficulty": "Easy",
     "source": "Green Book",
-    "isNew": true,
     "preview": "20 bags of coins — 19 weigh 5g each, one weighs 4g or 6g. What is the minimum number of scale measurements needed?",
     "question": "There are 20 bags of coins (of the same size and shape). All the coins in 19 of the bags weigh 5 grams. The coins in the other bag either all weigh 6 grams, or all weigh 4 grams.\n\nYou have a digital scale. What is the minimum number of measurements you need to determine the bag with lighter/heavier coins?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 1,
     "tolerance": 0,
     "solution": "Number the bags $1$ to $20$. Take $i$ coins from bag $i$, for each $i = 1, \\ldots, 20$. Weigh them all together and call the total weight $S$.\n\nSuppose the unique bag is number $i_0$. Then:\n$$S = 1{\\times}5 + 2{\\times}5 + \\cdots + (i_0-1){\\times}5 + i_0{\\times}(5 \\pm 1) + (i_0+1){\\times}5 + \\cdots + 20{\\times}5$$\n$$= (1 + 2 + \\cdots + 20) \\times 5 \\pm i_0 = \\frac{20 \\cdot 21}{2} \\times 5 \\pm i_0 = 1050 \\pm i_0$$\n\nTherefore:\n$$|S - 1050| = i_0$$\n\nA single weighing tells us both which bag is unique and whether its coins are heavier or lighter. $\\blacksquare$\n\nMinimum measurements: $\\boxed{1}$",
-    "timeLimit": 4
+    "timeLimit": 4,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 8,
@@ -107,7 +107,6 @@
     "category": "Pigeon Hole Principle",
     "difficulty": "Medium",
     "source": "Green Book",
-    "isNew": true,
     "preview": "You shake hands with 30 people in a room. Can you know for certainty that two of them shook hands with exactly the same number of people?",
     "question": "You enter a room with 30 people and shake hands with every one of them. You know that some of them shook hands among each other, but you do not know how many.\n\nCan you know for certainty that there are at least two people who shook hands with exactly the same number of people?",
     "answerType": "multiple_choice",
@@ -117,7 +116,8 @@
     ],
     "correctAnswer": "Yes",
     "solution": "There are a total of 31 people in the room. Each of the 30 people already in the room shook hands with at least one person, since they all shook hands with you. Therefore each of them shook hands with between 1 and 30 people.\n\nThus there are 31 people but only 30 possible numbers of handshakes. By the pigeonhole principle, at least two people must have shaken hands with exactly the same number of people.\n\nFinal answer: $\\boxed{\\text{Yes}}$",
-    "timeLimit": 4
+    "timeLimit": 4,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 9,
@@ -125,14 +125,14 @@
     "category": "Modular Arithmetic",
     "difficulty": "Hard",
     "source": "Green Book",
-    "isNew": true,
     "preview": "50 prisoners, 5 hat colors, no communication after hats are assigned. What is the largest number of prisoners that can be guaranteed to be saved?",
     "question": "There are 50 prisoners in jail. Tomorrow, each one of them will have the chance to be freed in the following manner.\n\nEach prisoner will be given randomly a red, green, blue, yellow or pink hat. Each prisoner will be able to see the hats of the rest of the prisoners except their own hat.\n\nAfter the prisoners are given their hats, they will not be allowed to communicate in any way.\n\nEach prisoner will get a chance to shout and guess the color of their own hat. If they are correct, they will be freed.\n\nGiven that the prisoners can think of a clever strategy, what is the largest number of prisoners they can guarantee to save?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 49,
     "tolerance": 0,
     "solution": "For simplicity, label the hat colors by the integers $0, 1, 2, 3, 4$.\n\nOrder the prisoners by the order in which they will shout their guesses. For $i = 1, \\ldots, 50$, let $h_i$ denote the number corresponding to prisoner $i$'s hat. For each prisoner $i$, define\n$$s_i = \\sum_{\\substack{j=1 \\\\ j \\neq i}}^{50} h_j$$\nwhich is the sum of the hat numbers that prisoner $i$ can see.\n\nThe strategy will be as follows:\n\nThe first prisoner announces\n$$g_1 \\equiv s_1 \\pmod{5}$$\nThis guess may be wrong, but it encodes information for the remaining prisoners.\n\nNow, each prisoner $n = 2, 3, \\ldots, 50$ can compute\n$$g_n \\equiv s_n \\pmod{5}$$\n\nWrite $s_i = 5t_i + g_i$ for some integer $t_i$. Now observe that\n$$s_n - s_1 = h_1 - h_n$$\nBut also\n$$s_n - s_1 = 5(t_n - t_1) + g_n - g_1$$\nThus\n$$h_1 - h_n \\equiv g_n - g_1 \\pmod{5}$$\n\nSince prisoner $n$ knows $g_1$, $g_n$, and sees $h_1$, they can compute\n$$h_n \\equiv h_1 - (g_n - g_1) \\pmod{5}$$\n\nThus prisoner $n$ can determine their own hat color exactly.\n\nTo finish, the first prisoner may guess incorrectly, but all other prisoners determine their hat colors correctly. Hence\n\n$$\\boxed{49}$$ prisoners can be saved.",
-    "timeLimit": 20
+    "timeLimit": 20,
+    "createdAt": "2026-03-10"
   },
   {
     "id": 10,
@@ -140,12 +140,12 @@
     "category": "Modular Arithmetic",
     "difficulty": "Easy",
     "source": "Green Book",
-    "isNew": true,
     "preview": "Prove that a natural number is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "question": "Let $n \\in \\mathbb{N}$. Prove that $n$ is divisible by 9 if and only if the sum of its digits is divisible by 9.",
     "answerType": "theory",
     "solution": "Say\n$$n = a_0 + 10a_1 + 10^2 a_2 + \\cdots + 10^m a_m$$\nfor some $m \\in \\mathbb{N}$ and $a_i \\in \\{0, 1, \\ldots, 9\\}$ for any $i = 0, 1, \\ldots, m$.\n\nWe note that\n$$n - (a_0 + \\cdots + a_m) = a_0 - a_0 + (10-1)a_1 + (10^2-1)a_2 + \\cdots + (10^m - 1)a_m$$\n\nSince $10^i - 1$ is divisible by 9 for any $i = 0, 1, \\ldots$, it follows that\n$$n - (a_0 + \\cdots + a_m) \\equiv 0 \\pmod{9}$$\n\nThus\n$$n \\equiv a_0 + \\cdots + a_m \\pmod{9}$$\n\nTherefore $n$ is divisible by 9 if and only if the sum of its digits is divisible by 9.",
-    "timeLimit": 4
+    "timeLimit": 4,
+    "createdAt": "2026-03-11"
   },
   {
     "id": 11,
@@ -153,14 +153,14 @@
     "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
-    "isNew": true,
     "preview": "Player A tosses a coin n+1 times, player B tosses n times. What is the probability that A gets more heads?",
     "question": "Two players $A$ and $B$ play a game with a fair coin.\n\nPlayer $A$ tosses the coin $n+1$ times, and $B$ tosses it $n$ times.\n\nPlayer $A$ wins if they get more heads than $B$. What is the probability that $A$ wins?\n\nExpress your answer as a decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0,
     "solution": "Denote the following events:\n\n$E_1 =$ $A$'s first $n$ tosses have more heads than all of $B$'s tosses,\n\n$E_2 =$ $A$'s first $n$ tosses have the same number of heads as $B$'s tosses,\n\n$E_3 =$ $A$'s first $n$ tosses have fewer heads than all of $B$'s tosses.\n\nBy symmetry,\n$$\\mathbb{P}(E_1) = \\mathbb{P}(E_3)$$\n\nHence\n$$1 = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)$$\n\nDenote by $E$ the event that $A$ gets more heads than $B$. Then\n$$\\mathbb{P}(E) = \\mathbb{P}(E \\mid E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E \\mid E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E \\mid E_3)\\mathbb{P}(E_3)$$\n\nLet us analyze each summand.\n\nAssuming $E_1$, no matter what $A$ gets on the $(n+1)$-th toss, they win. So\n$$\\mathbb{P}(E \\mid E_1) = 1$$\n\nAssuming $E_2$, $A$ wins if and only if they get heads on the $(n+1)$-th toss. So\n$$\\mathbb{P}(E \\mid E_2) = \\frac{1}{2}$$\n\nAssuming $E_3$, $A$ can never win, since at best they can equal the number of heads in $B$'s tosses. Hence\n$$\\mathbb{P}(E \\mid E_3) = 0$$\n\nPlugging everything in, we get\n$$\\mathbb{P}(E) = 1 \\cdot \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2) + 0 \\cdot \\mathbb{P}(E_3) = \\mathbb{P}(E_1) + \\frac{1}{2}\\mathbb{P}(E_2)$$\n\nTherefore,\n$$\\mathbb{P}(E) = \\frac{1}{2}\\bigl(2\\mathbb{P}(E_1) + \\mathbb{P}(E_2)\\bigr) = \\frac{1}{2}$$\n\n$$\\boxed{\\mathbb{P}(A \\text{ wins}) = \\frac{1}{2}}$$",
-    "timeLimit": 6
+    "timeLimit": 6,
+    "createdAt": "2026-03-11"
   },
   {
     "id": 12,
@@ -168,14 +168,14 @@
     "category": "Probability",
     "difficulty": "Medium",
     "source": "Green Book",
-    "isNew": true,
     "preview": "A drunk passenger picks a random seat on a 150-seat plane. What is the probability the last passenger sits in their own seat?",
     "question": "Suppose a plane has 150 seats, all booked. Suppose passenger $n$ is assigned to seat $\\#n$ for any $n = 1, \\ldots, 150$.\n\nAt boarding time, the first passenger is drunk, so they pick a random seat. The rest of the passengers are sober, and pick their assigned seat if it is not taken, and otherwise pick a random seat from the ones that are still available.\n\nWhat is the probability that the 150-th passenger will end up in their seat?\n\nExpress your answer as a decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0,
     "solution": "For any seat $i$, denote the random variable $\\tau_i$ to be the number of the passenger that ends up in seat $\\#i$.\n\nWe note that the 150-th passenger will end up in their seat if and only if seat $\\#1$ is occupied before seat $\\#150$. Formally,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150})$$\n\nBut by symmetry, since all seats are probabilistically the same,\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) = \\mathbb{P}(\\tau_{150} < \\tau_1)$$\n\nThese are complementary events, so\n$$\\mathbb{P}(\\tau_1 < \\tau_{150}) + \\mathbb{P}(\\tau_{150} < \\tau_1) = 1$$\n\nThus,\n$$\\mathbb{P}(\\tau_{150} = 150) = \\mathbb{P}(\\tau_1 < \\tau_{150}) = \\frac{1}{2}$$\n\nFinal answer: $\\boxed{\\dfrac{1}{2}}$",
-    "timeLimit": 6
+    "timeLimit": 6,
+    "createdAt": "2026-03-11"
   },
   {
     "id": 13,
@@ -183,14 +183,14 @@
     "category": "Probability",
     "difficulty": "Medium",
     "source": "Citadel",
-    "isNew": true,
     "preview": "3 random points on a circular table are chosen as legs. What is the probability the table can stand properly?",
     "question": "We choose 3 random points on the circumference of a circular table to attach the legs of the table.\n\nWhat is the probability that the table can stand properly?\n\nExpress your answer as a decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.25,
     "tolerance": 0,
     "solution": "We note that the event that the table will not stand is exactly the event that all points lie within a semicircle. Denote this event by $E$.\n\nDenote the points by 1, 2 and 3. For each $i$, denote by $E_i$ the event that all points $j \\neq i$ lie on the semicircle whose left endpoint is point $i$.\n\nAlso, we note that\n$$E = \\bigcup_{i \\in \\{1,2,3\\}} E_i$$\nand\n$$E_i \\cap E_j = \\varnothing$$\nwhenever $i \\neq j$.\n\nTherefore, by symmetry,\n$$\\mathbb{P}(E) = \\mathbb{P}(E_1) + \\mathbb{P}(E_2) + \\mathbb{P}(E_3) = 3\\mathbb{P}(E_1)$$\n\nTo calculate $\\mathbb{P}(E_1)$, we note that this is exactly the probability that the two points 2 and 3 lie in the semicircle determined by point 1. Since each point independently has probability $\\frac{1}{2}$ to lie in that semicircle,\n$$\\mathbb{P}(E_1) = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n\nThus,\n$$\\mathbb{P}(E) = 3 \\cdot \\frac{1}{4} = \\frac{3}{4}$$\n\nSince this is the probability that the table does *not* stand properly, the desired probability is\n$$1 - \\frac{3}{4} = \\boxed{\\frac{1}{4}}$$",
-    "timeLimit": 6
+    "timeLimit": 6,
+    "createdAt": "2026-03-11"
   },
   {
     "id": 14,
@@ -198,14 +198,14 @@
     "category": "Recursion",
     "difficulty": "Easy",
     "source": "Green Book",
-    "isNew": true,
     "preview": "A frog on stone 0 wants to reach stone 5, jumping 1 or 2 stones at a time. How many ways can it get there?",
     "question": "There is a line of stones in a river, numbered 0 to 5.\nA frog is standing on stone 0 and a bug is on stone 5.\nThe frog can jump either one or two stones forward on each jump.\n\nHow many ways can the frog reach the bug?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 8,
     "tolerance": 0,
     "solution": "Let $T_n$ be the number of ways the frog can jump to stone $n$. We evaluate $T_n$ recursively.\n\nClearly $T_1 = 1$ and $T_2 = 2$, since the frog can jump either\n$$0 \\to 2$$\nor\n$$0 \\to 1 \\to 2$$\n\nSuppose $n \\geq 2$. We note that\n$$T_n = \\#\\{\\text{ways in which the frog jumped from stone } n-1 \\text{ to } n\\} + \\#\\{\\text{ways in which the frog jumped from stone } n-2 \\text{ to } n\\}$$\n\nBut in that case,\n$$T_n = T_{n-1} + T_{n-2}$$\n\nThus,\n$$T_3 = 2 + 1 = 3$$\n$$T_4 = 3 + 2 = 5$$\n$$T_5 = 5 + 3 = 8$$\n\nFinal answer: $\\boxed{8}$",
-    "timeLimit": 3
+    "timeLimit": 3,
+    "createdAt": "2026-03-12"
   },
   {
     "id": 15,
@@ -214,13 +214,13 @@
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 10,
-    "isNew": true,
     "preview": "A billiard tournament has 2ⁿ players with ranked skills. What is the probability the two best players meet in the final?",
     "question": "A billiard competition has $2^n$ players with skills\n$$s_1 < s_2 < \\cdots < s_{2^n}$$\n\nEach game is deterministic, and the winner is always the player with the higher skill score. In each round, all the players are split into pairs, and the winners proceed to the next round until the final.\n\nWhat is the probability, in terms of $n$, that the two best players meet in the final?\n\nIn the answer box, type the answer for the case $n = 4$. Round to 4 decimal places.",
     "answerType": "numeric",
     "correctAnswer": 0.5333,
     "tolerance": 0.001,
-    "solution": "Denote $T = (V, E)$ to be the full binary tree that represents the matches of the entire competition. $T$ has height $n$ and has $2^n$ leaves.\n\nThus, given a random assignment of leaves to players, the only way the two best players meet in the final is if their lowest common ancestor is the root of the tree.\n\nIn that case, the best player can be assigned to any leaf, and the second-best player has $2^{n-1}$ options out of $2^n - 1$ available leaves.\n\nTherefore, the generalized answer is\n$$\\frac{2^{n-1}}{2^n - 1}$$\n\nFor $n = 4$ we get\n$$\\frac{2^3}{2^4 - 1} = \\boxed{\\frac{8}{15}} \\approx 0.5333$$"
+    "solution": "Denote $T = (V, E)$ to be the full binary tree that represents the matches of the entire competition. $T$ has height $n$ and has $2^n$ leaves.\n\nThus, given a random assignment of leaves to players, the only way the two best players meet in the final is if their lowest common ancestor is the root of the tree.\n\nIn that case, the best player can be assigned to any leaf, and the second-best player has $2^{n-1}$ options out of $2^n - 1$ available leaves.\n\nTherefore, the generalized answer is\n$$\\frac{2^{n-1}}{2^n - 1}$$\n\nFor $n = 4$ we get\n$$\\frac{2^3}{2^4 - 1} = \\boxed{\\frac{8}{15}} \\approx 0.5333$$",
+    "createdAt": "2026-03-12"
   },
   {
     "id": 16,
@@ -229,11 +229,11 @@
     "difficulty": "Easy",
     "source": "Green Book",
     "timeLimit": 3,
-    "isNew": true,
     "preview": "You have a p-coin. Generate even odds using this coin.",
     "question": "You have a $p$-coin in your hand. That is, a coin that lands heads with probability $p$ for some fixed $0 < p < 1$.\n\nGenerate even odds using this coin.",
     "answerType": "theory",
-    "solution": "When flipping the coin twice, we get\n\n$$\\mathbb{P}(\\text{heads, heads}) = p^2$$\n$$\\mathbb{P}(\\text{heads, tails}) = p(1-p)$$\n$$\\mathbb{P}(\\text{tails, heads}) = (1-p)p$$\n$$\\mathbb{P}(\\text{tails, tails}) = (1-p)^2$$\n\nEasy claim: if we flip the coin twice again and again, eventually we will obtain either heads–tails or tails–heads.\n\nProof. For any $n \\in \\mathbb{N}$, the probability of not landing heads–tails or tails–heads after $n$ trials is\n\n$$(p^2 + (1-p)^2)^n.$$\n\nTaking $n \\to \\infty$, we get\n\n$$(p^2 + (1-p)^2)^n \\to 0.$$\n\nHence the probability of never obtaining heads–tails or tails–heads is 0.\n\nThus we can flip the coin twice repeatedly until we obtain either heads–tails or tails–heads.\n\nSince these two outcomes have equal probability, we obtain a fair outcome."
+    "solution": "When flipping the coin twice, we get\n\n$$\\mathbb{P}(\\text{heads, heads}) = p^2$$\n$$\\mathbb{P}(\\text{heads, tails}) = p(1-p)$$\n$$\\mathbb{P}(\\text{tails, heads}) = (1-p)p$$\n$$\\mathbb{P}(\\text{tails, tails}) = (1-p)^2$$\n\nEasy claim: if we flip the coin twice again and again, eventually we will obtain either heads–tails or tails–heads.\n\nProof. For any $n \\in \\mathbb{N}$, the probability of not landing heads–tails or tails–heads after $n$ trials is\n\n$$(p^2 + (1-p)^2)^n.$$\n\nTaking $n \\to \\infty$, we get\n\n$$(p^2 + (1-p)^2)^n \\to 0.$$\n\nHence the probability of never obtaining heads–tails or tails–heads is 0.\n\nThus we can flip the coin twice repeatedly until we obtain either heads–tails or tails–heads.\n\nSince these two outcomes have equal probability, we obtain a fair outcome.",
+    "createdAt": "2026-03-12"
   },
   {
     "id": 17,
@@ -242,13 +242,13 @@
     "difficulty": "Easy",
     "source": "Green Book",
     "timeLimit": 2.5,
-    "isNew": true,
     "preview": "You throw 3 darts at a board. What is the probability that the scores form an increasing sequence?",
     "question": "You throw 3 darts at a board. Assume the score of each dart is determined by the exact distance of the dart from the center of the board. What is the probability that the scores of the darts form an increasing sequence?",
     "answerType": "numeric",
     "correctAnswer": 0.16666666666666666,
     "tolerance": 0.001,
-    "solution": "Denote by $X_1, X_2, X_3$ the scores of the darts. By symmetry, for any bijection $\\sigma : \\{1,2,3\\} \\to \\{1,2,3\\}$ it holds that\n\n$$\\mathbb{P}(X_1 < X_2 < X_3) = \\mathbb{P}(X_{\\sigma(1)} < X_{\\sigma(2)} < X_{\\sigma(3)}).$$\n\nThere are 6 bijections on $\\{1,2,3\\}$. Therefore\n\n$$1 = \\sum_{\\sigma} \\mathbb{P}(X_{\\sigma(1)} < X_{\\sigma(2)} < X_{\\sigma(3)}) = \\sum_{\\sigma} \\mathbb{P}(X_1 < X_2 < X_3) = 6\\,\\mathbb{P}(X_1 < X_2 < X_3),$$\n\nwhen the summand is over bijections $\\sigma : \\{1,2,3\\} \\to \\{1,2,3\\}$. Thus\n\n$$\\mathbb{P}(X_1 < X_2 < X_3) = \\boxed{\\frac{1}{6}}.$$"
+    "solution": "Denote by $X_1, X_2, X_3$ the scores of the darts. By symmetry, for any bijection $\\sigma : \\{1,2,3\\} \\to \\{1,2,3\\}$ it holds that\n\n$$\\mathbb{P}(X_1 < X_2 < X_3) = \\mathbb{P}(X_{\\sigma(1)} < X_{\\sigma(2)} < X_{\\sigma(3)}).$$\n\nThere are 6 bijections on $\\{1,2,3\\}$. Therefore\n\n$$1 = \\sum_{\\sigma} \\mathbb{P}(X_{\\sigma(1)} < X_{\\sigma(2)} < X_{\\sigma(3)}) = \\sum_{\\sigma} \\mathbb{P}(X_1 < X_2 < X_3) = 6\\,\\mathbb{P}(X_1 < X_2 < X_3),$$\n\nwhen the summand is over bijections $\\sigma : \\{1,2,3\\} \\to \\{1,2,3\\}$. Thus\n\n$$\\mathbb{P}(X_1 < X_2 < X_3) = \\boxed{\\frac{1}{6}}.$$",
+    "createdAt": "2026-03-12"
   },
   {
     "id": 18,
@@ -257,13 +257,13 @@
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 6,
-    "isNew": true,
     "preview": "A single amoeba dies (prob 1/4), stays (prob 1/4), or splits into two (prob 1/2). What is the probability the population eventually dies out?",
     "question": "Suppose there is a single amoeba in a lake. Every minute, it:\n- dies with probability $\\frac{1}{4}$,\n- stays the same with probability $\\frac{1}{4}$,\n- splits into two with probability $\\frac{1}{2}$.\n\nAssume that all descendants of the amoeba behave in the same way.\n\nWhat is the probability that the amoeba population will eventually die out?\n\nExpress your answer as a decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0,
-    "solution": "Let us denote the events:\n\n$E$ = the amoeba population eventually dies out\n\n$E_1$ = the first amoeba dies\n\n$E_2$ = the first amoeba stays the same\n\n$E_3$ = the first amoeba splits into two\n\nThus,\n$$\\mathbb{P}(E) = \\mathbb{P}(E|E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E|E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E|E_3)\\mathbb{P}(E_3).$$\n\nSince the probabilities are $\\frac{1}{4}, \\frac{1}{4}, \\frac{1}{2}$ respectively,\n$$\\mathbb{P}(E) = \\frac{1}{4}\\mathbb{P}(E|E_1) + \\frac{1}{4}\\mathbb{P}(E|E_2) + \\frac{1}{2}\\mathbb{P}(E|E_3).$$\n\nNow note that\n$$\\mathbb{P}(E|E_1) = 1.$$\n\nAlso,\n$$\\mathbb{P}(E|E_2) = \\mathbb{P}(E),$$\nbecause the situation is identical to the initial one.\n\nFinally,\n$$\\mathbb{P}(E|E_3) = \\mathbb{P}(E)^2,$$\nsince both descendants must independently die out.\n\nLet $x = \\mathbb{P}(E)$. Then\n$$x = \\frac{1}{4} + \\frac{1}{4}x + \\frac{1}{2}x^2.$$\n\nThus\n$$2x^2 - 3x + 1 = 0,$$\n\nand therefore, the final answer is\n$$x = \\boxed{\\frac{1}{2}}.$$"
+    "solution": "Let us denote the events:\n\n$E$ = the amoeba population eventually dies out\n\n$E_1$ = the first amoeba dies\n\n$E_2$ = the first amoeba stays the same\n\n$E_3$ = the first amoeba splits into two\n\nThus,\n$$\\mathbb{P}(E) = \\mathbb{P}(E|E_1)\\mathbb{P}(E_1) + \\mathbb{P}(E|E_2)\\mathbb{P}(E_2) + \\mathbb{P}(E|E_3)\\mathbb{P}(E_3).$$\n\nSince the probabilities are $\\frac{1}{4}, \\frac{1}{4}, \\frac{1}{2}$ respectively,\n$$\\mathbb{P}(E) = \\frac{1}{4}\\mathbb{P}(E|E_1) + \\frac{1}{4}\\mathbb{P}(E|E_2) + \\frac{1}{2}\\mathbb{P}(E|E_3).$$\n\nNow note that\n$$\\mathbb{P}(E|E_1) = 1.$$\n\nAlso,\n$$\\mathbb{P}(E|E_2) = \\mathbb{P}(E),$$\nbecause the situation is identical to the initial one.\n\nFinally,\n$$\\mathbb{P}(E|E_3) = \\mathbb{P}(E)^2,$$\nsince both descendants must independently die out.\n\nLet $x = \\mathbb{P}(E)$. Then\n$$x = \\frac{1}{4} + \\frac{1}{4}x + \\frac{1}{2}x^2.$$\n\nThus\n$$2x^2 - 3x + 1 = 0,$$\n\nand therefore, the final answer is\n$$x = \\boxed{\\frac{1}{2}}.$$",
+    "createdAt": "2026-03-12"
   },
   {
     "id": 19,
@@ -272,13 +272,13 @@
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 12,
-    "isNew": true,
     "preview": "A bag has 20 red, 15 blue, and 10 green balls drawn without replacement. What is the probability that when all red balls are gone, blue and green balls remain?",
     "question": "In a bag there are 20 red balls, 15 blue balls, and 10 green balls. We take a ball, one by one, randomly with no replacement.\n\nWhat is the probability that once there are no red balls in the bag, there are still blue and green balls?",
     "answerType": "numeric",
     "correctAnswer": 0.20634920634920634,
     "tolerance": 0.001,
-    "solution": "Denote the following random variables:\n\n$T_r$ – the number of the balls that were taken out once there are no more red balls in the bag.\n\n$T_b$ and $T_g$ are defined respectively for the colors blue and green.\n\nSo formally, we're looking for\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g)$$\n\nWe note that\n\n$$\\{T_r < T_b \\text{ and } T_r < T_g\\} = \\{T_r < T_b < T_g\\} \\sqcup \\{T_r < T_g < T_b\\}$$\n\nThus\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\mathbb{P}(T_r < T_b < T_g) + \\mathbb{P}(T_r < T_g < T_b)$$\n\nNow, we use conditional probability to have\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\mathbb{P}(T_r < T_b \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45) = \\mathbb{P}(T_b = 44 \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45)$$\n\nWe have that\n\n$$\\mathbb{P}(T_g = 45) = \\mathbb{P}(\\text{last ball pulled is green}) = \\frac{10}{45}$$\n\nsince each of the balls is equally likely to be the last ball being pulled.\n\nNow, in the event $(T_b = 44 \\mid T_g = 45)$, we can just ignore the green balls and ask what's the probability that from a bag of 20 red balls and 15 blue balls, the last ball pulled is blue. Thus, similarly:\n\n$$\\mathbb{P}(T_b = 44 \\mid T_g = 45) = \\frac{15}{35}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\frac{10}{45} \\cdot \\frac{15}{35} = \\frac{2}{21}$$\n\nBy the same logic:\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\mathbb{P}(T_g = 44 \\mid T_b = 45) \\cdot \\mathbb{P}(T_b = 45)$$\n\nWe have\n\n$$\\mathbb{P}(T_b = 45) = \\frac{15}{45}$$\n\nAnd\n\n$$\\mathbb{P}(T_g = 44 \\mid T_b = 45) = \\frac{10}{30}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\frac{15}{45} \\cdot \\frac{10}{30} = \\frac{1}{9}$$\n\nHence\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\frac{2}{21} + \\frac{1}{9} = \\boxed{\\frac{13}{63}}$$"
+    "solution": "Denote the following random variables:\n\n$T_r$ – the number of the balls that were taken out once there are no more red balls in the bag.\n\n$T_b$ and $T_g$ are defined respectively for the colors blue and green.\n\nSo formally, we're looking for\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g)$$\n\nWe note that\n\n$$\\{T_r < T_b \\text{ and } T_r < T_g\\} = \\{T_r < T_b < T_g\\} \\sqcup \\{T_r < T_g < T_b\\}$$\n\nThus\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\mathbb{P}(T_r < T_b < T_g) + \\mathbb{P}(T_r < T_g < T_b)$$\n\nNow, we use conditional probability to have\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\mathbb{P}(T_r < T_b \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45) = \\mathbb{P}(T_b = 44 \\mid T_g = 45) \\cdot \\mathbb{P}(T_g = 45)$$\n\nWe have that\n\n$$\\mathbb{P}(T_g = 45) = \\mathbb{P}(\\text{last ball pulled is green}) = \\frac{10}{45}$$\n\nsince each of the balls is equally likely to be the last ball being pulled.\n\nNow, in the event $(T_b = 44 \\mid T_g = 45)$, we can just ignore the green balls and ask what's the probability that from a bag of 20 red balls and 15 blue balls, the last ball pulled is blue. Thus, similarly:\n\n$$\\mathbb{P}(T_b = 44 \\mid T_g = 45) = \\frac{15}{35}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_b < T_g) = \\frac{10}{45} \\cdot \\frac{15}{35} = \\frac{2}{21}$$\n\nBy the same logic:\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\mathbb{P}(T_g = 44 \\mid T_b = 45) \\cdot \\mathbb{P}(T_b = 45)$$\n\nWe have\n\n$$\\mathbb{P}(T_b = 45) = \\frac{15}{45}$$\n\nAnd\n\n$$\\mathbb{P}(T_g = 44 \\mid T_b = 45) = \\frac{10}{30}$$\n\nThus,\n\n$$\\mathbb{P}(T_r < T_g < T_b) = \\frac{15}{45} \\cdot \\frac{10}{30} = \\frac{1}{9}$$\n\nHence\n\n$$\\mathbb{P}(T_r < T_b \\text{ and } T_r < T_g) = \\frac{2}{21} + \\frac{1}{9} = \\boxed{\\frac{13}{63}}$$",
+    "createdAt": "2026-03-17"
   },
   {
     "id": 20,
@@ -287,13 +287,13 @@
     "difficulty": "Medium",
     "source": "Green Book",
     "timeLimit": 7,
-    "isNew": true,
     "preview": "Avi and Benny take turns flipping a coin. The first to flip Heads right after another Heads wins. What is the probability Avi wins?",
     "question": "Two players, Avi and Benny, play a game. First, Avi flips a fair coin, then Benny, then Avi, and so on.\n\nThe flips are recorded, and the first player to land Heads immediately after another Heads wins. What is the probability that Avi wins?",
     "answerType": "numeric",
     "correctAnswer": 0.4,
     "tolerance": 0.001,
-    "solution": "A basic stochastic process argument gives that with probability 1, eventually either Avi or Benny will win.\n\nDenote by $A$ the event that Avi wins, and $B$ the event that Benny wins.\n\nThus we have, by the law of total and conditional probability:\n\n$$\\mathbb{P}(A) = \\mathbb{P}(A \\mid \\text{first flip is heads}) \\cdot \\frac{1}{2} + \\mathbb{P}(A \\mid \\text{first flip is tails}) \\cdot \\frac{1}{2}$$\n\nNow, the event $(A \\mid \\text{first flip is tails})$ is symmetric to the event $B$, so:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is tails}) = \\mathbb{P}(B) = 1 - \\mathbb{P}(A)$$\n\nSecondly, using conditional probability:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is heads}) \\cdot \\mathbb{P}(\\text{second flip is heads})$$\n$$+ \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is tails}) \\cdot \\mathbb{P}(\\text{second flip is tails})$$\n\nNow, we examine the event $(A \\mid \\text{first flip is heads})$. With probability $\\frac{1}{2}$, the second toss lands heads and Avi loses, and if the second toss lands tails, then we are back to the same situation as the start of the game.\n\nThus:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = 0 \\cdot \\frac{1}{2} + \\mathbb{P}(A) \\cdot \\frac{1}{2} = \\frac{\\mathbb{P}(A)}{2}$$\n\nSo together we have:\n\n$$\\mathbb{P}(A) = \\frac{1}{2} \\cdot \\frac{\\mathbb{P}(A)}{2} + \\frac{1}{2} \\cdot (1 - \\mathbb{P}(A))$$\n\nWhich gives:\n\n$$\\mathbb{P}(A) = \\boxed{\\frac{2}{5}}$$"
+    "solution": "A basic stochastic process argument gives that with probability 1, eventually either Avi or Benny will win.\n\nDenote by $A$ the event that Avi wins, and $B$ the event that Benny wins.\n\nThus we have, by the law of total and conditional probability:\n\n$$\\mathbb{P}(A) = \\mathbb{P}(A \\mid \\text{first flip is heads}) \\cdot \\frac{1}{2} + \\mathbb{P}(A \\mid \\text{first flip is tails}) \\cdot \\frac{1}{2}$$\n\nNow, the event $(A \\mid \\text{first flip is tails})$ is symmetric to the event $B$, so:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is tails}) = \\mathbb{P}(B) = 1 - \\mathbb{P}(A)$$\n\nSecondly, using conditional probability:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is heads}) \\cdot \\mathbb{P}(\\text{second flip is heads})$$\n$$+ \\mathbb{P}(A \\mid \\text{first flip is heads and second flip is tails}) \\cdot \\mathbb{P}(\\text{second flip is tails})$$\n\nNow, we examine the event $(A \\mid \\text{first flip is heads})$. With probability $\\frac{1}{2}$, the second toss lands heads and Avi loses, and if the second toss lands tails, then we are back to the same situation as the start of the game.\n\nThus:\n\n$$\\mathbb{P}(A \\mid \\text{first flip is heads}) = 0 \\cdot \\frac{1}{2} + \\mathbb{P}(A) \\cdot \\frac{1}{2} = \\frac{\\mathbb{P}(A)}{2}$$\n\nSo together we have:\n\n$$\\mathbb{P}(A) = \\frac{1}{2} \\cdot \\frac{\\mathbb{P}(A)}{2} + \\frac{1}{2} \\cdot (1 - \\mathbb{P}(A))$$\n\nWhich gives:\n\n$$\\mathbb{P}(A) = \\boxed{\\frac{2}{5}}$$",
+    "createdAt": "2026-03-17"
   },
   {
     "id": 21,
@@ -301,13 +301,13 @@
     "category": "Probability",
     "difficulty": "Hard",
     "timeLimit": 17,
-    "isNew": true,
     "preview": "Given a fair coin and 0 < p < 1, design an experiment with P(Success) = p. On average, how many flips are needed?",
     "question": "Let $0 < p < 1$. You have a fair coin.\n\n**Part 1**\n\nCome up with a probabilistic experiment. Clearly describe what constitutes a success and a failure such that\n$$\\mathbb{P}(\\text{Success}) = p.$$\n\n**Part 2**\n\nOn average, how many times do you need to flip the coin?",
     "answerType": "theory",
     "part2Answer": 2,
     "part2Tolerance": 0,
-    "solution": "**Part 1**\n\nWrite\n$$p = 0.p_1p_2p_3\\cdots$$\nas a binary representation, that is, $p \\in (0,1)$, $p_i \\in \\{0,1\\}$ for all $i \\in \\mathbb{N}$, and\n$$p = \\sum_{n=1}^{\\infty} 2^{-n}p_n,$$\nwhere we choose a representation that does not end with infinitely many 1's.\n\nWe use the coin to generate a random number. Flip the coin repeatedly. Define, in binary representation,\n$$x = 0.x_1x_2x_3\\cdots$$\nsuch that for each $n \\in \\mathbb{N}$, $x_n = 1$ if the $n$-th flip is heads, and $x_n = 0$ otherwise.\n\nIt holds that $x \\sim \\text{Uniform}(0,1)$, since\n$$\\mathbb{P}(x < p) = \\mathbb{P}\\!\\left(\\bigcup_{n \\in \\mathbb{N}} \\{x_1 = p_1, \\ldots, x_{n-1} = p_{n-1},\\, x_n < p_n\\}\\right)$$\n$$= \\sum_{n \\in \\mathbb{N}} \\mathbb{P}(x_1 = p_1)\\cdots\\mathbb{P}(x_{n-1} = p_{n-1})\\,\\mathbb{P}(x_n < p_n) = \\sum_{n=1}^{\\infty} 2^{-n}p_n = p.$$\n\nThus $\\mathbb{P}(x < p) = p$. We define **success** as the event $x < p$.\n\n**Part 2**\n\nOnce $p$ is fixed, we do not need an infinite number of flips to determine whether $x < p$. Let\n$$N = \\min\\{n \\in \\mathbb{N} : x_n \\neq p_n\\}.$$\nThis is the number of flips needed. For any $n \\in \\mathbb{N}$,\n$$\\mathbb{P}(N \\geq n) = \\mathbb{P}(x_1 = p_1, \\ldots, x_n = p_n) = 2^{-n}.$$\nHence\n$$N \\sim \\text{Geom}\\!\\left(\\tfrac{1}{2}\\right),$$\nand therefore\n$$\\mathbb{E}[N] = 2.$$"
+    "solution": "**Part 1**\n\nWrite\n$$p = 0.p_1p_2p_3\\cdots$$\nas a binary representation, that is, $p \\in (0,1)$, $p_i \\in \\{0,1\\}$ for all $i \\in \\mathbb{N}$, and\n$$p = \\sum_{n=1}^{\\infty} 2^{-n}p_n,$$\nwhere we choose a representation that does not end with infinitely many 1's.\n\nWe use the coin to generate a random number. Flip the coin repeatedly. Define, in binary representation,\n$$x = 0.x_1x_2x_3\\cdots$$\nsuch that for each $n \\in \\mathbb{N}$, $x_n = 1$ if the $n$-th flip is heads, and $x_n = 0$ otherwise.\n\nIt holds that $x \\sim \\text{Uniform}(0,1)$, since\n$$\\mathbb{P}(x < p) = \\mathbb{P}\\!\\left(\\bigcup_{n \\in \\mathbb{N}} \\{x_1 = p_1, \\ldots, x_{n-1} = p_{n-1},\\, x_n < p_n\\}\\right)$$\n$$= \\sum_{n \\in \\mathbb{N}} \\mathbb{P}(x_1 = p_1)\\cdots\\mathbb{P}(x_{n-1} = p_{n-1})\\,\\mathbb{P}(x_n < p_n) = \\sum_{n=1}^{\\infty} 2^{-n}p_n = p.$$\n\nThus $\\mathbb{P}(x < p) = p$. We define **success** as the event $x < p$.\n\n**Part 2**\n\nOnce $p$ is fixed, we do not need an infinite number of flips to determine whether $x < p$. Let\n$$N = \\min\\{n \\in \\mathbb{N} : x_n \\neq p_n\\}.$$\nThis is the number of flips needed. For any $n \\in \\mathbb{N}$,\n$$\\mathbb{P}(N \\geq n) = \\mathbb{P}(x_1 = p_1, \\ldots, x_n = p_n) = 2^{-n}.$$\nHence\n$$N \\sim \\text{Geom}\\!\\left(\\tfrac{1}{2}\\right),$$\nand therefore\n$$\\mathbb{E}[N] = 2.$$",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 22,
@@ -315,11 +315,11 @@
     "category": "Probability",
     "difficulty": "Easy",
     "timeLimit": 6,
-    "isNew": true,
     "preview": "You own j shares of stock A and want to hedge by shorting stock B. How many shares of B should you short to minimize variance?",
     "question": "You own $j$ shares of stock $A$ and wish to hedge them by shorting a different stock $B$.\n\nLet:\n- $r_A$ — return of stock $A$, and $r_B$ of $B$ accordingly.\n- $\\sigma_A^2$ — variance of stock $A$'s return, and $\\sigma_B^2$ of $B$ accordingly.\n- $\\rho$ — their correlation coefficient.\n\nHow many shares of stock $B$ should you short to minimize the variance of the hedged position?",
     "answerType": "theory",
-    "solution": "Say we short $h$ shares of $B$. Then\n$$\\text{Var}(jr_A - hr_B) = j^2\\sigma_A^2 - 2jh\\rho\\sigma_A\\sigma_B + h^2\\sigma_B^2.$$\n\nNow it remains to minimize this term with respect to $h$.\n\nSince it is a second-order polynomial in $h$, the task is easy and the answer is\n$$\\hat{h} = j\\rho\\,\\frac{\\sigma_A}{\\sigma_B}.$$"
+    "solution": "Say we short $h$ shares of $B$. Then\n$$\\text{Var}(jr_A - hr_B) = j^2\\sigma_A^2 - 2jh\\rho\\sigma_A\\sigma_B + h^2\\sigma_B^2.$$\n\nNow it remains to minimize this term with respect to $h$.\n\nSince it is a second-order polynomial in $h$, the task is easy and the answer is\n$$\\hat{h} = j\\rho\\,\\frac{\\sigma_A}{\\sigma_B}.$$",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 23,
@@ -328,13 +328,13 @@
     "difficulty": "Medium",
     "timeLimit": 7,
     "source": "Green Book",
-    "isNew": true,
     "preview": "Roll a die until it lands on 4, 5, or 6. You are paid the sum of all rolls. What is the expected payoff?",
     "question": "You play the following game:\n\nYou roll a die repeatedly until it lands on 4, 5, or 6, and then you are paid the sum of the rolls.\n\nWhat is the expected payoff?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 7,
     "tolerance": 0,
-    "solution": "Denote the random variables:\n$X$ — the total payoff.\n$Y$ — the outcome of the first roll.\n\nBy the law of total expectation:\n$$\\mathbb{E}(X) = \\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}]\\,\\mathbb{P}(Y \\in \\{4,5,6\\}) + \\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}]\\,\\mathbb{P}(Y \\in \\{1,2,3\\}).$$\n\nIt is easy to see that\n$$\\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}] = \\mathbb{E}(Y \\mid Y \\in \\{4,5,6\\}) = 5.$$\n\nAnd, since $Y$ is $\\{1,2,3\\}$-measurable, conditioning on $Y \\in \\{1,2,3\\}$, the expected payoff of the game minus $Y$ is just the expected payoff from a fresh game. Thus,\n$$\\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}] = \\mathbb{E}(Y \\mid Y \\in \\{1,2,3\\}) + \\mathbb{E}(X) = 2 + \\mathbb{E}(X).$$\n\nPlugging in:\n$$\\mathbb{E}(X) = 5 \\cdot \\frac{1}{2} + (2 + \\mathbb{E}(X)) \\cdot \\frac{1}{2}.$$\n\nSolving,\n$$\\mathbb{E}(X) = 7.$$\n\n**Another answer, using Wald's equality**\n\nLet $X_n \\sim \\mathrm{uniform}\\{1,\\ldots,6\\}$ be the $n$-th roll of the dice, and\n$$N = \\min\\{n \\mid X_n \\in \\{4,5,6\\}\\} \\sim \\mathrm{Geo}\\!\\left(\\tfrac{1}{2}\\right)$$\nbe the stopping time. Then by Wald's Equality,\n$$\\mathbb{E}[X_1 + \\cdots + X_N] = \\mathbb{E}(X_1)\\,\\mathbb{E}(N) = \\frac{7}{2} \\cdot 2 = \\boxed{7}.$$"
+    "solution": "Denote the random variables:\n$X$ — the total payoff.\n$Y$ — the outcome of the first roll.\n\nBy the law of total expectation:\n$$\\mathbb{E}(X) = \\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}]\\,\\mathbb{P}(Y \\in \\{4,5,6\\}) + \\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}]\\,\\mathbb{P}(Y \\in \\{1,2,3\\}).$$\n\nIt is easy to see that\n$$\\mathbb{E}[X \\mid Y \\in \\{4,5,6\\}] = \\mathbb{E}(Y \\mid Y \\in \\{4,5,6\\}) = 5.$$\n\nAnd, since $Y$ is $\\{1,2,3\\}$-measurable, conditioning on $Y \\in \\{1,2,3\\}$, the expected payoff of the game minus $Y$ is just the expected payoff from a fresh game. Thus,\n$$\\mathbb{E}[X \\mid Y \\in \\{1,2,3\\}] = \\mathbb{E}(Y \\mid Y \\in \\{1,2,3\\}) + \\mathbb{E}(X) = 2 + \\mathbb{E}(X).$$\n\nPlugging in:\n$$\\mathbb{E}(X) = 5 \\cdot \\frac{1}{2} + (2 + \\mathbb{E}(X)) \\cdot \\frac{1}{2}.$$\n\nSolving,\n$$\\mathbb{E}(X) = 7.$$\n\n**Another answer, using Wald's equality**\n\nLet $X_n \\sim \\mathrm{uniform}\\{1,\\ldots,6\\}$ be the $n$-th roll of the dice, and\n$$N = \\min\\{n \\mid X_n \\in \\{4,5,6\\}\\} \\sim \\mathrm{Geo}\\!\\left(\\tfrac{1}{2}\\right)$$\nbe the stopping time. Then by Wald's Equality,\n$$\\mathbb{E}[X_1 + \\cdots + X_N] = \\mathbb{E}(X_1)\\,\\mathbb{E}(N) = \\frac{7}{2} \\cdot 2 = \\boxed{7}.$$",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 24,
@@ -342,11 +342,11 @@
     "category": "Expected Value",
     "difficulty": "Hard",
     "timeLimit": 20,
-    "isNew": true,
     "preview": "Let (Xn) be i.i.d. and N an independent positive integer-valued random variable. Prove that E(X1 + ... + XN) = E(X1)E(N), assuming X1 ≥ 0.",
     "question": "Wald's equality is the following statement:\n\nLet $(X_n)_{n \\in \\mathbb{N}}$ be i.i.d. random variables, and let $N$ be a positive integer-valued random variable, independent of $(X_n)_{n \\in \\mathbb{N}}$. Suppose $\\mathbb{E}(X_1), \\mathbb{E}(N) < \\infty$, then\n$$\\mathbb{E}(X_1 + \\cdots + X_N) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nProve this equality assuming $X_1 \\geq 0$.",
     "answerType": "theory",
-    "solution": "Denote $S_n = X_1 + \\cdots + X_n$ for any $n \\in \\mathbb{N}$, and let $I_n$ be the indicator of the event $\\{n \\leq N\\}$.\n\nWe have that\n$$S_N = \\sum_{n=1}^{\\infty} X_n I_n.$$\n\nThen, by the monotone convergence theorem,\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n I_n).$$\n\nSince $I_n$ is independent of $X_n$, we have\n$$\\mathbb{E}(X_n I_n) = \\mathbb{E}(X_n)\\mathbb{E}(I_n).$$\n\nSo we get\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n)\\mathbb{E}(I_n) = \\mathbb{E}(X_1) \\sum_{n=1}^{\\infty} \\mathbb{E}(I_n) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nWhere the last equality is again by the monotone convergence theorem."
+    "solution": "Denote $S_n = X_1 + \\cdots + X_n$ for any $n \\in \\mathbb{N}$, and let $I_n$ be the indicator of the event $\\{n \\leq N\\}$.\n\nWe have that\n$$S_N = \\sum_{n=1}^{\\infty} X_n I_n.$$\n\nThen, by the monotone convergence theorem,\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n I_n).$$\n\nSince $I_n$ is independent of $X_n$, we have\n$$\\mathbb{E}(X_n I_n) = \\mathbb{E}(X_n)\\mathbb{E}(I_n).$$\n\nSo we get\n$$\\mathbb{E}(S_N) = \\sum_{n=1}^{\\infty} \\mathbb{E}(X_n)\\mathbb{E}(I_n) = \\mathbb{E}(X_1) \\sum_{n=1}^{\\infty} \\mathbb{E}(I_n) = \\mathbb{E}(X_1)\\mathbb{E}(N).$$\n\nWhere the last equality is again by the monotone convergence theorem.",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 25,
@@ -355,13 +355,13 @@
     "difficulty": "Hard",
     "timeLimit": 20,
     "source": "Green Book",
-    "isNew": true,
     "preview": "A drunk man starts at the 6th meter of a 10-meter bridge, stepping left or right with equal probability. What is the expected number of steps to reach either end?",
     "question": "A drunk man is on the 6th meter of a 10-meter-long bridge. Each minute he takes a 1-meter step to the right with probability $\\frac{1}{2}$, and to the left with probability $\\frac{1}{2}$.\n\nWhat is the expected number of steps he takes to reach either end of the bridge?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 24,
     "tolerance": 0,
-    "solution": "For simplicity, let us say the drunk man starts at point 0, and wishes to reach either point $-6$ or $4$.\n\nLet $S_n$ be his position after $n$ steps. Then we have that both $S_n$ and $S_n^2 - n$ are martingales.\n\nMoreover, let\n$$N = \\min\\{n : S_n \\in \\{-6, 4\\}\\}.$$\n\nThen it is a stopping time, and a martingale stopped at a stopping time is a martingale. That is, both $S_N$ and $S_N^2 - N$ are martingales.\n\nLet\n$$p_\\alpha = \\mathbb{P}(S_N = \\alpha).$$\n\nThen\n$$0 = S_0 = \\mathbb{E}(S_N) = p_4 \\cdot \\mathbb{E}(S_N \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N \\mid S_N = -6) = p_4 \\cdot 4 + (1 - p_4) \\cdot (-6).$$\n\nAnd\n$$0 = S_0^2 - 0 = \\mathbb{E}(S_N^2 - N) = \\mathbb{E}(S_N^2) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot \\mathbb{E}(S_N^2 \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N^2 \\mid S_N = -6) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot 4^2 + p_{-6} \\cdot (-6)^2 - \\mathbb{E}(N).$$\n\nSolving this system of equations, we get that\n$$\\mathbb{E}(N) = \\boxed{24}.$$"
+    "solution": "For simplicity, let us say the drunk man starts at point 0, and wishes to reach either point $-6$ or $4$.\n\nLet $S_n$ be his position after $n$ steps. Then we have that both $S_n$ and $S_n^2 - n$ are martingales.\n\nMoreover, let\n$$N = \\min\\{n : S_n \\in \\{-6, 4\\}\\}.$$\n\nThen it is a stopping time, and a martingale stopped at a stopping time is a martingale. That is, both $S_N$ and $S_N^2 - N$ are martingales.\n\nLet\n$$p_\\alpha = \\mathbb{P}(S_N = \\alpha).$$\n\nThen\n$$0 = S_0 = \\mathbb{E}(S_N) = p_4 \\cdot \\mathbb{E}(S_N \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N \\mid S_N = -6) = p_4 \\cdot 4 + (1 - p_4) \\cdot (-6).$$\n\nAnd\n$$0 = S_0^2 - 0 = \\mathbb{E}(S_N^2 - N) = \\mathbb{E}(S_N^2) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot \\mathbb{E}(S_N^2 \\mid S_N = 4) + p_{-6} \\cdot \\mathbb{E}(S_N^2 \\mid S_N = -6) - \\mathbb{E}(N)$$\n$$= p_4 \\cdot 4^2 + p_{-6} \\cdot (-6)^2 - \\mathbb{E}(N).$$\n\nSolving this system of equations, we get that\n$$\\mathbb{E}(N) = \\boxed{24}.$$",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 26,
@@ -370,13 +370,13 @@
     "difficulty": "Easy",
     "timeLimit": 7,
     "source": "Green Book",
-    "isNew": true,
     "preview": "Let (Bt) be a Brownian motion. Calculate Cor(Bt, Bt²).",
     "question": "Let $(B_t)_{t \\in (0,\\infty)}$ be a (one-dimensional) Brownian motion. Calculate $\\mathrm{Cor}(B_t, B_t^2)$.\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 0,
     "tolerance": 0,
-    "solution": "Since $B_t \\sim \\mathcal{N}(0, t)$, we have $\\mathbb{E}(B_t) = 0$.\n\nMoreover, since\n$$f(u) = \\frac{1}{\\sqrt{2\\pi t}} \\exp\\!\\left(-\\frac{u^2}{2t}\\right)$$\nis the density function of $B_t$, and\n$$\\mathbb{E}(B_t^3) = \\int_{\\mathbb{R}} u^3 f(u)\\, du$$\nis a finite integral of an odd function, it is clearly 0. Thus\n$$\\mathrm{Cor}(B_t, B_t^2) = \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(\\mathbb{E}(B_t B_t^2) - \\mathbb{E}(B_t)\\mathbb{E}(B_t^2)\\right)$$\n$$= \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(0 - 0 \\cdot \\mathbb{E}(B_t^2)\\right) = \\boxed{0}.$$"
+    "solution": "Since $B_t \\sim \\mathcal{N}(0, t)$, we have $\\mathbb{E}(B_t) = 0$.\n\nMoreover, since\n$$f(u) = \\frac{1}{\\sqrt{2\\pi t}} \\exp\\!\\left(-\\frac{u^2}{2t}\\right)$$\nis the density function of $B_t$, and\n$$\\mathbb{E}(B_t^3) = \\int_{\\mathbb{R}} u^3 f(u)\\, du$$\nis a finite integral of an odd function, it is clearly 0. Thus\n$$\\mathrm{Cor}(B_t, B_t^2) = \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(\\mathbb{E}(B_t B_t^2) - \\mathbb{E}(B_t)\\mathbb{E}(B_t^2)\\right)$$\n$$= \\frac{1}{\\sqrt{\\mathrm{Var}(B_t) \\cdot \\mathrm{Var}(B_t^2)}}\\!\\left(0 - 0 \\cdot \\mathbb{E}(B_t^2)\\right) = \\boxed{0}.$$",
+    "createdAt": "2026-03-18"
   },
   {
     "id": 27,
@@ -385,11 +385,11 @@
     "difficulty": "Hard",
     "timeLimit": 15,
     "source": "Green Book",
-    "isNew": true,
     "preview": "Let (Bt) be a Brownian motion with B0 = 0. For a, b > 0, calculate P(ta < t−b), where ts = inf{t ≥ 0 | Bt = s}.",
     "question": "Let $(B_t)_{t \\in (0,\\infty)}$ be a (one-dimensional) Brownian motion with no drift. Say $B_0 = 0$. For any $s \\in \\mathbb{R}$, denote\n$$t_s = \\inf\\{t \\geq 0 \\mid B_t = s\\}.$$\n\nCalculate\n$$\\mathbb{P}(t_a < t_{-b})$$\nfor arbitrary $a, b > 0$.",
     "answerType": "theory",
-    "solution": "Denote\n$$t_{a,-b} = \\inf\\{t \\geq 0 \\mid B_t \\in \\{a, -b\\}\\}.$$\n\nSince $t_{a,-b}$ is a stopping time and $B_t$ is a martingale, by the optional stopping theorem we have\n$$\\mathbb{E}(B_{t_{a,-b}}) = \\mathbb{E}(B_0) = 0.$$\n\nMoreover,\n$$B_{t_{a,-b}} = a\\,\\mathbf{1}_{\\{t_a < t_{-b}\\}} - b\\,\\mathbf{1}_{\\{t_{-b} < t_a\\}}.$$\n\nThus,\n$$0 = \\mathbb{E}(B_{t_{a,-b}})$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,\\mathbb{P}(t_{-b} < t_a)$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,(1 - \\mathbb{P}(t_a < t_{-b})).$$\n\nSolving,\n$$\\mathbb{P}(t_a < t_{-b}) = \\frac{b}{a+b}.$$"
+    "solution": "Denote\n$$t_{a,-b} = \\inf\\{t \\geq 0 \\mid B_t \\in \\{a, -b\\}\\}.$$\n\nSince $t_{a,-b}$ is a stopping time and $B_t$ is a martingale, by the optional stopping theorem we have\n$$\\mathbb{E}(B_{t_{a,-b}}) = \\mathbb{E}(B_0) = 0.$$\n\nMoreover,\n$$B_{t_{a,-b}} = a\\,\\mathbf{1}_{\\{t_a < t_{-b}\\}} - b\\,\\mathbf{1}_{\\{t_{-b} < t_a\\}}.$$\n\nThus,\n$$0 = \\mathbb{E}(B_{t_{a,-b}})$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,\\mathbb{P}(t_{-b} < t_a)$$\n$$= a\\,\\mathbb{P}(t_a < t_{-b}) - b\\,(1 - \\mathbb{P}(t_a < t_{-b})).$$\n\nSolving,\n$$\\mathbb{P}(t_a < t_{-b}) = \\frac{b}{a+b}.$$",
+    "createdAt": "2026-03-19"
   },
   {
     "id": 28,
@@ -398,13 +398,13 @@
     "difficulty": "Medium",
     "timeLimit": 8,
     "source": "Citadel",
-    "isNew": true,
     "preview": "You flip a fair coin until it lands heads three times. What is the probability that the total number of flips is odd?",
     "question": "You flip a fair coin until it lands heads three times (not necessarily in a row).\n\nWhat is the probability that the total number of flips is odd?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.5185185185185185,
     "tolerance": 0.001,
-    "solution": "We first simplify the question to the case of obtaining the first head after an odd number of flips.\n\nLet $N_1$ be the number of flips until the first head. Then\n$$N_1 \\sim \\mathrm{Geo}\\!\\left(\\tfrac{1}{2}\\right).$$\n\nThus\n$$\\mathbb{P}(N_1 \\text{ is odd}) = \\sum_{n=1}^{\\infty} \\mathbb{P}(N_1 = 2n-1) = \\sum_{n=1}^{\\infty} \\frac{1}{2^{2n-1}} = \\frac{2}{3}.$$\n\nSimilarly, define $N_2$ to be the number of flips until the second head, counting only the flips after the first head. Define $N_3$ analogously.\n\nNote that $N_1, N_2, N_3$ are i.i.d.\n\nThus, we are looking for $\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd})$. By symmetry,\n$$\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd}) = \\mathbb{P}(N_1, N_2, N_3 \\text{ are all odd}) + 3\\,\\mathbb{P}(N_1 \\text{ is odd},\\ N_2, N_3 \\text{ are even})$$\n$$= \\mathbb{P}(N_1 \\text{ is odd})^3 + 3\\,\\mathbb{P}(N_1 \\text{ is odd})\\,\\mathbb{P}(N_2 \\text{ is even})^2$$\n$$= \\left(\\frac{2}{3}\\right)^3 + 3 \\cdot \\frac{2}{3} \\cdot \\left(1 - \\frac{2}{3}\\right)^2 = \\boxed{\\frac{14}{27}}.$$"
+    "solution": "We first simplify the question to the case of obtaining the first head after an odd number of flips.\n\nLet $N_1$ be the number of flips until the first head. Then\n$$N_1 \\sim \\mathrm{Geo}\\!\\left(\\tfrac{1}{2}\\right).$$\n\nThus\n$$\\mathbb{P}(N_1 \\text{ is odd}) = \\sum_{n=1}^{\\infty} \\mathbb{P}(N_1 = 2n-1) = \\sum_{n=1}^{\\infty} \\frac{1}{2^{2n-1}} = \\frac{2}{3}.$$\n\nSimilarly, define $N_2$ to be the number of flips until the second head, counting only the flips after the first head. Define $N_3$ analogously.\n\nNote that $N_1, N_2, N_3$ are i.i.d.\n\nThus, we are looking for $\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd})$. By symmetry,\n$$\\mathbb{P}(N_1 + N_2 + N_3 \\text{ is odd}) = \\mathbb{P}(N_1, N_2, N_3 \\text{ are all odd}) + 3\\,\\mathbb{P}(N_1 \\text{ is odd},\\ N_2, N_3 \\text{ are even})$$\n$$= \\mathbb{P}(N_1 \\text{ is odd})^3 + 3\\,\\mathbb{P}(N_1 \\text{ is odd})\\,\\mathbb{P}(N_2 \\text{ is even})^2$$\n$$= \\left(\\frac{2}{3}\\right)^3 + 3 \\cdot \\frac{2}{3} \\cdot \\left(1 - \\frac{2}{3}\\right)^2 = \\boxed{\\frac{14}{27}}.$$",
+    "createdAt": "2026-03-19"
   },
   {
     "id": 29,
@@ -412,13 +412,13 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 12,
-    "isNew": true,
     "preview": "You roll a fair die again and again until all possible outcomes are achieved. What is the expected number of rolls?",
     "question": "You roll a fair die again and again until all possible outcomes (1 through 6) are achieved.\n\nWhat is the expected number of rolls?",
     "answerType": "numeric",
     "correctAnswer": 14.7,
     "tolerance": 0.05,
-    "solution": "For any $i = 1, \\ldots, 6$, let $X_i$ be the number of rolls until landing a new number for the first time, excluding all the rolls until the $(i-1)$-th new number.\n\nThe total number of rolls until all faces are seen is:\n$$X_1 + X_2 + \\cdots + X_6$$\n\nNote that after seeing $i-1$ distinct faces, there are $6-(i-1) = 7-i$ faces remaining out of 6, so:\n$$X_i \\sim \\mathrm{Geo}\\!\\left(\\frac{7-i}{6}\\right)$$\n\nThus, by linearity of expectation:\n$$\\mathbb{E}(X_1 + \\cdots + X_6) = \\sum_{i=1}^{6} \\frac{6}{7-i} = 6\\sum_{i=1}^{6} \\frac{1}{i} = 6\\left(1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\frac{1}{6}\\right) = \\boxed{14.7}$$"
+    "solution": "For any $i = 1, \\ldots, 6$, let $X_i$ be the number of rolls until landing a new number for the first time, excluding all the rolls until the $(i-1)$-th new number.\n\nThe total number of rolls until all faces are seen is:\n$$X_1 + X_2 + \\cdots + X_6$$\n\nNote that after seeing $i-1$ distinct faces, there are $6-(i-1) = 7-i$ faces remaining out of 6, so:\n$$X_i \\sim \\mathrm{Geo}\\!\\left(\\frac{7-i}{6}\\right)$$\n\nThus, by linearity of expectation:\n$$\\mathbb{E}(X_1 + \\cdots + X_6) = \\sum_{i=1}^{6} \\frac{6}{7-i} = 6\\sum_{i=1}^{6} \\frac{1}{i} = 6\\left(1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\frac{1}{6}\\right) = \\boxed{14.7}$$",
+    "createdAt": "2026-03-22"
   },
   {
     "id": 30,
@@ -426,13 +426,13 @@
     "category": "Expected Value",
     "difficulty": "Easy",
     "timeLimit": 10,
-    "isNew": true,
     "preview": "Let X1, X2, X3, X4 be i.i.d. Uniform(0,1). Calculate E(min{X1, X2, X3, X4}).",
     "question": "Let $2 \\leq n \\in \\mathbb{N}$ be fixed, and for any $i = 1, \\ldots, n$, denote $X_i \\sim \\mathrm{Uniform}(0,1)$ i.i.d.\n\nCalculate\n$$\\mathbb{E}(\\min\\{X_1, \\ldots, X_n\\})$$\n\nProvide a numerical answer for the case $n = 4$.",
     "answerType": "numeric",
     "correctAnswer": 0.2,
     "tolerance": 0.001,
-    "solution": "Denote $X = \\min\\{X_1, \\ldots, X_n\\}$. For any $x \\in [0,1]$:\n$$\\mathbb{P}(X \\leq x) = 1 - \\mathbb{P}(X > x) = 1 - \\mathbb{P}(X_1 > x, \\ldots, X_n > x)$$\n$$= 1 - \\mathbb{P}(X_1 > x) \\cdots \\mathbb{P}(X_n > x) = 1 - (1-x)^n$$\n\nSo the CDF of $X$ is:\n$$F_X(x) = 1 - (1-x)^n$$\n\nAnd the PDF is:\n$$f_X(x) = F_X'(x) = n(1-x)^{n-1}$$\n\nThus:\n$$\\mathbb{E}(X) = \\int_0^1 x f_X(x)\\, dx = \\int_0^1 x \\cdot n(1-x)^{n-1}\\, dx = \\frac{1}{n+1}$$\n\nThe last equality follows from the Beta function integral.\n\nFor $n = 4$:\n$$\\mathbb{E}(\\min\\{X_1, X_2, X_3, X_4\\}) = \\frac{1}{5} = \\boxed{0.2}$$"
+    "solution": "Denote $X = \\min\\{X_1, \\ldots, X_n\\}$. For any $x \\in [0,1]$:\n$$\\mathbb{P}(X \\leq x) = 1 - \\mathbb{P}(X > x) = 1 - \\mathbb{P}(X_1 > x, \\ldots, X_n > x)$$\n$$= 1 - \\mathbb{P}(X_1 > x) \\cdots \\mathbb{P}(X_n > x) = 1 - (1-x)^n$$\n\nSo the CDF of $X$ is:\n$$F_X(x) = 1 - (1-x)^n$$\n\nAnd the PDF is:\n$$f_X(x) = F_X'(x) = n(1-x)^{n-1}$$\n\nThus:\n$$\\mathbb{E}(X) = \\int_0^1 x f_X(x)\\, dx = \\int_0^1 x \\cdot n(1-x)^{n-1}\\, dx = \\frac{1}{n+1}$$\n\nThe last equality follows from the Beta function integral.\n\nFor $n = 4$:\n$$\\mathbb{E}(\\min\\{X_1, X_2, X_3, X_4\\}) = \\frac{1}{5} = \\boxed{0.2}$$",
+    "createdAt": "2026-03-22"
   },
   {
     "id": 31,
@@ -440,13 +440,13 @@
     "category": "Expected Value",
     "difficulty": "Easy",
     "timeLimit": 8,
-    "isNew": true,
     "preview": "Let X, Y ~ Uniform(0,1) be i.i.d. Calculate E(|X - Y|).",
     "question": "Let $X, Y \\sim \\mathrm{Uniform}(0,1)$ be i.i.d. Calculate\n$$\\mathbb{E}(|X - Y|).$$",
     "answerType": "numeric",
     "correctAnswer": 0.3333333333333333,
     "tolerance": 0.001,
-    "solution": "The joint PDF of $(X, Y)$ is:\n$$f_{X,Y}(x,y) = f_X(x) f_Y(y) = 1, \\quad (x,y) \\in [0,1]^2$$\n\nThen:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^1 |x-y|\\, dy\\, dx$$\n\nWe split the domain into two regions, $y \\leq x$ and $y \\geq x$:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^x (x-y)\\, dy\\, dx + \\int_0^1 \\int_x^1 (y-x)\\, dy\\, dx$$\n\nFor the first term:\n$$\\int_0^x (x-y)\\, dy = \\left[xy - \\frac{y^2}{2}\\right]_0^x = \\frac{x^2}{2}$$\n$$\\int_0^1 \\frac{x^2}{2}\\, dx = \\frac{1}{6}$$\n\nFor the second term:\n$$\\int_x^1 (y-x)\\, dy = \\left[\\frac{y^2}{2} - xy\\right]_x^1 = \\frac{1}{2} - x + \\frac{x^2}{2}$$\n$$\\int_0^1 \\left(\\frac{1}{2} - x + \\frac{x^2}{2}\\right) dx = \\frac{1}{6}$$\n\nTherefore:\n$$\\mathbb{E}(|X-Y|) = \\frac{1}{6} + \\frac{1}{6} = \\boxed{\\frac{1}{3}}$$"
+    "solution": "The joint PDF of $(X, Y)$ is:\n$$f_{X,Y}(x,y) = f_X(x) f_Y(y) = 1, \\quad (x,y) \\in [0,1]^2$$\n\nThen:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^1 |x-y|\\, dy\\, dx$$\n\nWe split the domain into two regions, $y \\leq x$ and $y \\geq x$:\n$$\\mathbb{E}(|X-Y|) = \\int_0^1 \\int_0^x (x-y)\\, dy\\, dx + \\int_0^1 \\int_x^1 (y-x)\\, dy\\, dx$$\n\nFor the first term:\n$$\\int_0^x (x-y)\\, dy = \\left[xy - \\frac{y^2}{2}\\right]_0^x = \\frac{x^2}{2}$$\n$$\\int_0^1 \\frac{x^2}{2}\\, dx = \\frac{1}{6}$$\n\nFor the second term:\n$$\\int_x^1 (y-x)\\, dy = \\left[\\frac{y^2}{2} - xy\\right]_x^1 = \\frac{1}{2} - x + \\frac{x^2}{2}$$\n$$\\int_0^1 \\left(\\frac{1}{2} - x + \\frac{x^2}{2}\\right) dx = \\frac{1}{6}$$\n\nTherefore:\n$$\\mathbb{E}(|X-Y|) = \\frac{1}{6} + \\frac{1}{6} = \\boxed{\\frac{1}{3}}$$",
+    "createdAt": "2026-03-22"
   },
   {
     "id": 32,
@@ -454,13 +454,13 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 7,
-    "isNew": true,
     "preview": "You draw cards one by one without replacement from a shuffled deck. What is the expected number of cards you need to draw before the first Jack?",
     "question": "You draw a card, one by one, without replacement from a shuffled standard deck of cards.\n\nWhat is the expected number of cards you need to draw before the first Jack?\n\nProvide a numerical answer.",
     "answerType": "numeric",
     "correctAnswer": 9.6,
     "tolerance": 0.001,
-    "solution": "Let us lay down the deck of cards in a row, starting from right to left. The four Jacks split the pile into five groups:\n\n$$X_1 = \\text{the number of cards left to the first Jack}$$\n$$X_2 = \\text{the number of cards right to the first Jack and left to the second Jack}$$\n\nLikewise, we define $X_3$, $X_4$, and $X_5$.\n\nBy symmetry, $\\mathbb{E}(X_i)$ is independent of $i$, and moreover, by counting together all the cards and using linearity of expectation:\n$$52 = \\mathbb{E}(52) = \\mathbb{E}(X_1 + \\cdots + X_5 + 4) = 5\\,\\mathbb{E}(X_1) + 4$$\n\nSo:\n$$\\mathbb{E}(X_1) = \\frac{52 - 4}{5} = \\boxed{9.6}$$"
+    "solution": "Let us lay down the deck of cards in a row, starting from right to left. The four Jacks split the pile into five groups:\n\n$$X_1 = \\text{the number of cards left to the first Jack}$$\n$$X_2 = \\text{the number of cards right to the first Jack and left to the second Jack}$$\n\nLikewise, we define $X_3$, $X_4$, and $X_5$.\n\nBy symmetry, $\\mathbb{E}(X_i)$ is independent of $i$, and moreover, by counting together all the cards and using linearity of expectation:\n$$52 = \\mathbb{E}(52) = \\mathbb{E}(X_1 + \\cdots + X_5 + 4) = 5\\,\\mathbb{E}(X_1) + 4$$\n\nSo:\n$$\\mathbb{E}(X_1) = \\frac{52 - 4}{5} = \\boxed{9.6}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 33,
@@ -468,13 +468,13 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 12,
-    "isNew": true,
     "preview": "You roll a die until you get a 3. What is the expected highest number within all the rolls?",
     "question": "You roll a die until you get a 3. What is the expected highest number within all the rolls?\n\nProvide your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 4.916666666666667,
     "tolerance": 0.001,
-    "solution": "Denote $M$ to be the highest roll. By the tail-sum formula:\n$$\\mathbb{E}(M) = \\sum_{m=1}^{\\infty} \\mathbb{P}(M \\geq m)$$\n\nClearly,\n$$\\mathbb{P}(M \\geq m) = 1, \\quad \\forall\\, m = 1, 2, 3$$\nand\n$$\\mathbb{P}(M \\geq m) = 0, \\quad \\forall\\, m \\geq 7$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\mathbb{P}(M \\geq 4) + \\mathbb{P}(M \\geq 5) + \\mathbb{P}(M \\geq 6)$$\n\nFor any $4 \\leq i \\leq 6$, denote $\\tau_i$ to be the number of the first roll to give $i$. By symmetry, for any bijection $\\sigma : \\{3,4,5,6\\} \\to \\{3,4,5,6\\}$:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\mathbb{P}(\\tau_{\\sigma(3)} < \\tau_{\\sigma(4)} < \\tau_{\\sigma(5)} < \\tau_{\\sigma(6)})$$\n\nSince there are $4! = 24$ bijections and they partition the probability space:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\frac{1}{24}$$\n\n**Computing $\\mathbb{P}(M \\geq 4)$:** $\\{M < 4\\} = \\{M = 3\\}$ requires $\\tau_3$ to come first among $\\{\\tau_3, \\tau_4, \\tau_5, \\tau_6\\}$. There are $3! = 6$ such bijections out of 24, so:\n$$\\mathbb{P}(M < 4) = \\frac{6}{24} = \\frac{1}{4} \\implies \\mathbb{P}(M \\geq 4) = \\frac{3}{4}$$\n\n**Computing $\\mathbb{P}(M \\geq 5)$:** To have $M < 5$, the first value among $\\{3, 5, 6\\}$ must be 3. By symmetry:\n$$\\mathbb{P}(M < 5) = \\frac{1}{3} \\implies \\mathbb{P}(M \\geq 5) = \\frac{2}{3}$$\n\n**Computing $\\mathbb{P}(M \\geq 6)$:** To have $M < 6$, the first value among $\\{3, 6\\}$ must be 3. Therefore:\n$$\\mathbb{P}(M < 6) = \\frac{1}{2} \\implies \\mathbb{P}(M \\geq 6) = \\frac{1}{2}$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\frac{3}{4} + \\frac{2}{3} + \\frac{1}{2} = 3 + \\frac{9 + 8 + 6}{12} = 3 + \\frac{23}{12} = \\boxed{\\frac{59}{12}}$$"
+    "solution": "Denote $M$ to be the highest roll. By the tail-sum formula:\n$$\\mathbb{E}(M) = \\sum_{m=1}^{\\infty} \\mathbb{P}(M \\geq m)$$\n\nClearly,\n$$\\mathbb{P}(M \\geq m) = 1, \\quad \\forall\\, m = 1, 2, 3$$\nand\n$$\\mathbb{P}(M \\geq m) = 0, \\quad \\forall\\, m \\geq 7$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\mathbb{P}(M \\geq 4) + \\mathbb{P}(M \\geq 5) + \\mathbb{P}(M \\geq 6)$$\n\nFor any $4 \\leq i \\leq 6$, denote $\\tau_i$ to be the number of the first roll to give $i$. By symmetry, for any bijection $\\sigma : \\{3,4,5,6\\} \\to \\{3,4,5,6\\}$:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\mathbb{P}(\\tau_{\\sigma(3)} < \\tau_{\\sigma(4)} < \\tau_{\\sigma(5)} < \\tau_{\\sigma(6)})$$\n\nSince there are $4! = 24$ bijections and they partition the probability space:\n$$\\mathbb{P}(\\tau_3 < \\tau_4 < \\tau_5 < \\tau_6) = \\frac{1}{24}$$\n\n**Computing $\\mathbb{P}(M \\geq 4)$:** $\\{M < 4\\} = \\{M = 3\\}$ requires $\\tau_3$ to come first among $\\{\\tau_3, \\tau_4, \\tau_5, \\tau_6\\}$. There are $3! = 6$ such bijections out of 24, so:\n$$\\mathbb{P}(M < 4) = \\frac{6}{24} = \\frac{1}{4} \\implies \\mathbb{P}(M \\geq 4) = \\frac{3}{4}$$\n\n**Computing $\\mathbb{P}(M \\geq 5)$:** To have $M < 5$, the first value among $\\{3, 5, 6\\}$ must be 3. By symmetry:\n$$\\mathbb{P}(M < 5) = \\frac{1}{3} \\implies \\mathbb{P}(M \\geq 5) = \\frac{2}{3}$$\n\n**Computing $\\mathbb{P}(M \\geq 6)$:** To have $M < 6$, the first value among $\\{3, 6\\}$ must be 3. Therefore:\n$$\\mathbb{P}(M < 6) = \\frac{1}{2} \\implies \\mathbb{P}(M \\geq 6) = \\frac{1}{2}$$\n\nSo:\n$$\\mathbb{E}(M) = 3 + \\frac{3}{4} + \\frac{2}{3} + \\frac{1}{2} = 3 + \\frac{9 + 8 + 6}{12} = 3 + \\frac{23}{12} = \\boxed{\\frac{59}{12}}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 34,
@@ -482,13 +482,13 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 12,
-    "isNew": true,
     "preview": "Player A has a 10-sided die, player B has a 5-sided die. The higher roll wins and gets paid the value of their die. What is the expected payoff for player A?",
     "question": "Player A has a 10-sided fair die and player B has a 5-sided fair die. They both roll their dice. The player with the higher score wins and gets paid the value of their die by the loser.\n\nWhat is the expected payoff for player A?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 4,
     "tolerance": 0,
-    "solution": "Let $X$ be the score of player A and $Y$ of player B.\n\n**Case 1: $X > 5$**\n\nSince $Y \\leq 5 < X$, player A always wins:\n$$\\mathbb{E}(P \\mid X > 5) = \\mathbb{E}(X \\mid X > 5) = \\frac{1}{5}(6+7+8+9+10) = 8$$\n\nand $\\mathbb{P}(X > 5) = \\frac{1}{2}$.\n\n**Case 2: $X \\leq 5$**\n\nConditioned on $X \\leq 5$, both $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$. By symmetry:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5)$$\n\nClearly $\\mathbb{P}(X = Y \\mid X \\leq 5) = \\frac{1}{5}$, so:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5) = \\frac{1 - \\frac{1}{5}}{2} = 0.4$$\n\nExpanding $\\mathbb{E}(P \\mid X \\leq 5)$:\n$$\\mathbb{E}(P \\mid X \\leq 5) = \\mathbb{E}(X \\mid X \\leq 5, X > Y) \\cdot 0.4 + \\mathbb{E}(-Y \\mid X \\leq 5, X < Y) \\cdot 0.4 + 0 \\cdot \\mathbb{P}(X = Y \\mid X \\leq 5)$$\n\nSince $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$ given $X \\leq 5$, by symmetry:\n$$\\mathbb{E}(X \\mid X \\leq 5, X > Y) = \\mathbb{E}(Y \\mid X \\leq 5, X < Y)$$\n\nHence $\\mathbb{E}(P \\mid X \\leq 5) = 0$.\n\n**Combining:**\n$$\\mathbb{E}(P) = \\frac{1}{2}\\bigl(\\mathbb{E}(P \\mid X \\leq 5) + \\mathbb{E}(P \\mid X > 5)\\bigr) = \\frac{1}{2}(0 + 8) = \\boxed{4}$$"
+    "solution": "Let $X$ be the score of player A and $Y$ of player B.\n\n**Case 1: $X > 5$**\n\nSince $Y \\leq 5 < X$, player A always wins:\n$$\\mathbb{E}(P \\mid X > 5) = \\mathbb{E}(X \\mid X > 5) = \\frac{1}{5}(6+7+8+9+10) = 8$$\n\nand $\\mathbb{P}(X > 5) = \\frac{1}{2}$.\n\n**Case 2: $X \\leq 5$**\n\nConditioned on $X \\leq 5$, both $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$. By symmetry:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5)$$\n\nClearly $\\mathbb{P}(X = Y \\mid X \\leq 5) = \\frac{1}{5}$, so:\n$$\\mathbb{P}(X > Y \\mid X \\leq 5) = \\mathbb{P}(X < Y \\mid X \\leq 5) = \\frac{1 - \\frac{1}{5}}{2} = 0.4$$\n\nExpanding $\\mathbb{E}(P \\mid X \\leq 5)$:\n$$\\mathbb{E}(P \\mid X \\leq 5) = \\mathbb{E}(X \\mid X \\leq 5, X > Y) \\cdot 0.4 + \\mathbb{E}(-Y \\mid X \\leq 5, X < Y) \\cdot 0.4 + 0 \\cdot \\mathbb{P}(X = Y \\mid X \\leq 5)$$\n\nSince $X$ and $Y$ are i.i.d. uniform on $\\{1,2,3,4,5\\}$ given $X \\leq 5$, by symmetry:\n$$\\mathbb{E}(X \\mid X \\leq 5, X > Y) = \\mathbb{E}(Y \\mid X \\leq 5, X < Y)$$\n\nHence $\\mathbb{E}(P \\mid X \\leq 5) = 0$.\n\n**Combining:**\n$$\\mathbb{E}(P) = \\frac{1}{2}\\bigl(\\mathbb{E}(P \\mid X \\leq 5) + \\mathbb{E}(P \\mid X > 5)\\bigr) = \\frac{1}{2}(0 + 8) = \\boxed{4}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 35,
@@ -496,13 +496,13 @@
     "category": "Probability",
     "difficulty": "Hard",
     "timeLimit": 12,
-    "isNew": true,
     "preview": "X ≥ 0 a.s. with E(X) = 2 and Var(X) = 5. What is the maximum probability that X = 0?",
     "question": "Say $X$ is a random variable with $X \\geq 0$ a.s. Suppose\n$$\\mathbb{E}(X) = 2 \\quad \\text{and} \\quad \\text{Var}(X) = 5.$$\n\nWhat is the maximum probability that $X = 0$?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.5555555555555556,
     "tolerance": 0.001,
-    "solution": "From the variance formula:\n$$5 = \\text{Var}(X) = \\mathbb{E}(X^2) - \\mathbb{E}(X)^2 = \\mathbb{E}(X^2) - 4$$\n\nso $\\mathbb{E}(X^2) = 9$.\n\nLet $A = \\{X > 0\\}$. By the Cauchy–Schwarz inequality:\n$$(\\mathbb{E}(X \\mathbf{1}_A))^2 \\leq \\mathbb{E}(X^2)\\,\\mathbb{E}(\\mathbf{1}_A^2) = \\mathbb{E}(X^2)\\,\\mathbb{P}(A) = 9\\,\\mathbb{P}(A)$$\n\nSince $X \\geq 0$ a.s., we have $X = X\\mathbf{1}_A$, so:\n$$4 = (\\mathbb{E}(X))^2 \\leq 9\\,\\mathbb{P}(A)$$\n\nThus $\\mathbb{P}(A) \\geq \\dfrac{4}{9}$, and hence:\n$$\\mathbb{P}(X = 0) = 1 - \\mathbb{P}(A) \\leq \\frac{5}{9}$$\n\n**The bound is tight.** Take $X \\sim \\frac{9}{2} \\cdot \\text{Ber}\\!\\left(\\frac{4}{9}\\right)$:\n$$\\mathbb{P}(X = x) = \\begin{cases} \\dfrac{5}{9}, & x = 0 \\\\ \\dfrac{4}{9}, & x = \\dfrac{9}{2} \\end{cases}$$\n\nOne can verify $\\mathbb{E}(X) = \\frac{4}{9} \\cdot \\frac{9}{2} = 2$ and $\\text{Var}(X) = 5$, confirming the maximum is achieved.\n\n$$\\mathbb{P}(X = 0)_{\\max} = \\boxed{\\frac{5}{9}}$$"
+    "solution": "From the variance formula:\n$$5 = \\text{Var}(X) = \\mathbb{E}(X^2) - \\mathbb{E}(X)^2 = \\mathbb{E}(X^2) - 4$$\n\nso $\\mathbb{E}(X^2) = 9$.\n\nLet $A = \\{X > 0\\}$. By the Cauchy–Schwarz inequality:\n$$(\\mathbb{E}(X \\mathbf{1}_A))^2 \\leq \\mathbb{E}(X^2)\\,\\mathbb{E}(\\mathbf{1}_A^2) = \\mathbb{E}(X^2)\\,\\mathbb{P}(A) = 9\\,\\mathbb{P}(A)$$\n\nSince $X \\geq 0$ a.s., we have $X = X\\mathbf{1}_A$, so:\n$$4 = (\\mathbb{E}(X))^2 \\leq 9\\,\\mathbb{P}(A)$$\n\nThus $\\mathbb{P}(A) \\geq \\dfrac{4}{9}$, and hence:\n$$\\mathbb{P}(X = 0) = 1 - \\mathbb{P}(A) \\leq \\frac{5}{9}$$\n\n**The bound is tight.** Take $X \\sim \\frac{9}{2} \\cdot \\text{Ber}\\!\\left(\\frac{4}{9}\\right)$:\n$$\\mathbb{P}(X = x) = \\begin{cases} \\dfrac{5}{9}, & x = 0 \\\\ \\dfrac{4}{9}, & x = \\dfrac{9}{2} \\end{cases}$$\n\nOne can verify $\\mathbb{E}(X) = \\frac{4}{9} \\cdot \\frac{9}{2} = 2$ and $\\text{Var}(X) = 5$, confirming the maximum is achieved.\n\n$$\\mathbb{P}(X = 0)_{\\max} = \\boxed{\\frac{5}{9}}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 36,
@@ -510,13 +510,13 @@
     "category": "Algorithms",
     "difficulty": "Medium",
     "timeLimit": 8,
-    "isNew": true,
     "preview": "Let σ be a random permutation of {1,...,5}. What is the probability that Bubble Sort sorts the array in a single left-to-right pass?",
     "question": "Let $\\sigma : \\{1, \\ldots, 5\\} \\to \\{1, \\ldots, 5\\}$ be a random permutation. What is the probability that a Bubble Sort will sort (increasing order) the array $[\\sigma(1), \\ldots, \\sigma(5)]$ in a single left-to-right pass?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.13333333333333333,
     "tolerance": 0.001,
-    "solution": "There are $5! = 120$ permutations in total.\n\nDenote $A_n$ to be the set of permutations of length $n$ for which Bubble Sort needs only a single pass. In a single pass, the number 1 can move at most one position to the left, so:\n$$A_5 = \\{\\sigma \\in A_5 \\mid 1 = \\sigma(1)\\} \\cup \\{\\sigma \\in A_5 \\mid 1 = \\sigma(2)\\}$$\n\n**Case 1:** $\\{\\sigma \\in A_5 \\mid 1 = \\sigma(1)\\}$\nIf 1 is already in the first position, then deleting the first entry and relabeling $2 \\mapsto 1,\\ 3 \\mapsto 2,\\ 4 \\mapsto 3,\\ 5 \\mapsto 4$ gives a bijection with $A_4$.\n\n**Case 2:** $\\{\\sigma \\in A_5 \\mid 1 = \\sigma(2)\\}$\nIf 1 is in the second position, after one pass it swaps with the first entry. Deleting the second entry and relabeling the same way again gives a bijection with $A_4$.\n\nTherefore $|A_5| = 2|A_4|$, and by the same argument $|A_n| = 2|A_{n-1}|$ for any $n \\geq 2$.\n\nSince $|A_1| = 1$:\n$$|A_5| = 2^{5-1} = 16$$\n\nSo the probability is:\n$$\\frac{|A_5|}{5!} = \\frac{16}{120} = \\boxed{\\frac{2}{15}}$$"
+    "solution": "There are $5! = 120$ permutations in total.\n\nDenote $A_n$ to be the set of permutations of length $n$ for which Bubble Sort needs only a single pass. In a single pass, the number 1 can move at most one position to the left, so:\n$$A_5 = \\{\\sigma \\in A_5 \\mid 1 = \\sigma(1)\\} \\cup \\{\\sigma \\in A_5 \\mid 1 = \\sigma(2)\\}$$\n\n**Case 1:** $\\{\\sigma \\in A_5 \\mid 1 = \\sigma(1)\\}$\nIf 1 is already in the first position, then deleting the first entry and relabeling $2 \\mapsto 1,\\ 3 \\mapsto 2,\\ 4 \\mapsto 3,\\ 5 \\mapsto 4$ gives a bijection with $A_4$.\n\n**Case 2:** $\\{\\sigma \\in A_5 \\mid 1 = \\sigma(2)\\}$\nIf 1 is in the second position, after one pass it swaps with the first entry. Deleting the second entry and relabeling the same way again gives a bijection with $A_4$.\n\nTherefore $|A_5| = 2|A_4|$, and by the same argument $|A_n| = 2|A_{n-1}|$ for any $n \\geq 2$.\n\nSince $|A_1| = 1$:\n$$|A_5| = 2^{5-1} = 16$$\n\nSo the probability is:\n$$\\frac{|A_5|}{5!} = \\frac{16}{120} = \\boxed{\\frac{2}{15}}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 37,
@@ -524,13 +524,13 @@
     "category": "Stochastic Process",
     "difficulty": "Medium",
     "timeLimit": 8,
-    "isNew": true,
     "preview": "We roll a die until it lands on 4, 5, or 6. What is the probability that all of 1, 2, and 3 appeared during that experiment?",
     "question": "We roll a die until it lands on 4, 5, or 6. What is the probability that all the numbers 1, 2, and 3 appeared during that experiment?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.05,
     "tolerance": 0.001,
-    "solution": "**Solution 1 (Symmetry)**\n\nDenote $\\tau_i$ to be the roll number on which face $i$ first appears. We extend the experiment until all 6 faces appear (this happens in finitely many rolls with probability 1).\n\nBy symmetry, all $6! = 720$ orderings of $\\tau_1 < \\tau_2 < \\cdots < \\tau_6$ are equally likely, so:\n$$\\mathbb{P}(\\tau_{\\sigma(1)} < \\tau_{\\sigma(2)} < \\cdots < \\tau_{\\sigma(6)}) = \\frac{1}{720}$$\n\nWe want all of $\\{1,2,3\\}$ to appear before the experiment stops, i.e. before any of $\\{4,5,6\\}$ appears. This requires $\\sigma(\\{1,2,3\\}) = \\{1,2,3\\}$ — both sets are $\\sigma$-invariant. There are $3! \\cdot 3! = 36$ such bijections, so:\n$$\\mathbb{P} = \\frac{36}{720} = \\boxed{\\frac{1}{20}}$$\n\n---\n\n**Solution 2 (State Recursion)**\n\nDefine states by the number of distinct values from $\\{1,2,3\\}$ seen so far:\n- $S_0$: none seen, $S_1$: one seen, $S_2$: two seen, $S_{\\text{win}}$: all three seen, $S_{\\text{loss}}$: stopped early.\n\nLet $P_i = \\mathbb{P}(\\text{reach } S_{\\text{win}} \\mid \\text{start at } S_i)$.\n\n**From $S_0$:** Roll lands in $\\{1,2,3\\}$ (prob $\\frac{1}{2}$) $\\to S_1$, or in $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_0 = \\frac{1}{2}P_1$$\n\n**From $S_1$:** Roll repeats seen value (prob $\\frac{1}{6}$) $\\to S_1$, hits new value from $\\{1,2,3\\}$ (prob $\\frac{1}{3}$) $\\to S_2$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_1 = \\frac{1}{6}P_1 + \\frac{1}{3}P_2 \\implies \\frac{5}{6}P_1 = \\frac{1}{3}P_2$$\n\n**From $S_2$:** Roll repeats seen value (prob $\\frac{1}{3}$) $\\to S_2$, hits last unseen value (prob $\\frac{1}{6}$) $\\to S_{\\text{win}}$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_2 = \\frac{1}{3}P_2 + \\frac{1}{6} \\implies P_2 = \\frac{1}{4}$$\n\nSolving back:\n$$P_1 = \\frac{1}{10}, \\quad P_0 = \\frac{1}{2} \\cdot \\frac{1}{10} = \\boxed{\\frac{1}{20}}$$"
+    "solution": "**Solution 1 (Symmetry)**\n\nDenote $\\tau_i$ to be the roll number on which face $i$ first appears. We extend the experiment until all 6 faces appear (this happens in finitely many rolls with probability 1).\n\nBy symmetry, all $6! = 720$ orderings of $\\tau_1 < \\tau_2 < \\cdots < \\tau_6$ are equally likely, so:\n$$\\mathbb{P}(\\tau_{\\sigma(1)} < \\tau_{\\sigma(2)} < \\cdots < \\tau_{\\sigma(6)}) = \\frac{1}{720}$$\n\nWe want all of $\\{1,2,3\\}$ to appear before the experiment stops, i.e. before any of $\\{4,5,6\\}$ appears. This requires $\\sigma(\\{1,2,3\\}) = \\{1,2,3\\}$ — both sets are $\\sigma$-invariant. There are $3! \\cdot 3! = 36$ such bijections, so:\n$$\\mathbb{P} = \\frac{36}{720} = \\boxed{\\frac{1}{20}}$$\n\n---\n\n**Solution 2 (State Recursion)**\n\nDefine states by the number of distinct values from $\\{1,2,3\\}$ seen so far:\n- $S_0$: none seen, $S_1$: one seen, $S_2$: two seen, $S_{\\text{win}}$: all three seen, $S_{\\text{loss}}$: stopped early.\n\nLet $P_i = \\mathbb{P}(\\text{reach } S_{\\text{win}} \\mid \\text{start at } S_i)$.\n\n**From $S_0$:** Roll lands in $\\{1,2,3\\}$ (prob $\\frac{1}{2}$) $\\to S_1$, or in $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_0 = \\frac{1}{2}P_1$$\n\n**From $S_1$:** Roll repeats seen value (prob $\\frac{1}{6}$) $\\to S_1$, hits new value from $\\{1,2,3\\}$ (prob $\\frac{1}{3}$) $\\to S_2$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_1 = \\frac{1}{6}P_1 + \\frac{1}{3}P_2 \\implies \\frac{5}{6}P_1 = \\frac{1}{3}P_2$$\n\n**From $S_2$:** Roll repeats seen value (prob $\\frac{1}{3}$) $\\to S_2$, hits last unseen value (prob $\\frac{1}{6}$) $\\to S_{\\text{win}}$, or hits $\\{4,5,6\\}$ (prob $\\frac{1}{2}$) $\\to$ loss:\n$$P_2 = \\frac{1}{3}P_2 + \\frac{1}{6} \\implies P_2 = \\frac{1}{4}$$\n\nSolving back:\n$$P_1 = \\frac{1}{10}, \\quad P_0 = \\frac{1}{2} \\cdot \\frac{1}{10} = \\boxed{\\frac{1}{20}}$$",
+    "createdAt": "2026-03-31"
   },
   {
     "id": 38,
@@ -538,13 +538,13 @@
     "category": "Probability",
     "difficulty": "Easy",
     "timeLimit": 5,
-    "isNew": true,
     "preview": "You roll a fair die 10 times. What is the probability that the sum of all the outcomes is divisible by 6?",
     "question": "You roll a fair die 10 times. What is the probability that the sum of all the outcomes is divisible by 6?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.16666666666666666,
     "tolerance": 0.001,
-    "solution": "Let $X_1, \\ldots, X_{10}$ be the outcomes of the ten die rolls, and define\n$$S_n = X_1 + \\cdots + X_n.$$\n\nWe want to compute $\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6})$.\n\nCondition on the value of $S_9 \\pmod{6}$:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6})\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}).$$\n\nIf $S_9 \\equiv t \\pmod{6}$, then $S_{10} = S_9 + X_{10} \\equiv 0 \\pmod{6}$ requires $X_{10} \\equiv -t \\pmod{6}$. Hence\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}) = \\mathbb{P}(X_{10} \\equiv -t \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}).$$\n\nSince $X_{10}$ is independent of $S_9$, this equals $\\mathbb{P}(X_{10} \\equiv -t \\pmod{6})$.\n\nA fair die is uniformly distributed modulo 6, since\n$$1, 2, 3, 4, 5, 6 \\equiv 1, 2, 3, 4, 5, 0 \\pmod{6}.$$\n\nTherefore, for every $t \\in \\{0, 1, \\ldots, 5\\}$,\n$$\\mathbb{P}(X_{10} \\equiv -t \\pmod{6}) = \\frac{1}{6}.$$\n\nSubstituting back:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\frac{1}{6}\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6} \\sum_{t=0}^{5} \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6}.$$\n\nTherefore,\n$$\\boxed{\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\frac{1}{6}.}$$"
+    "solution": "Let $X_1, \\ldots, X_{10}$ be the outcomes of the ten die rolls, and define\n$$S_n = X_1 + \\cdots + X_n.$$\n\nWe want to compute $\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6})$.\n\nCondition on the value of $S_9 \\pmod{6}$:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6})\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}).$$\n\nIf $S_9 \\equiv t \\pmod{6}$, then $S_{10} = S_9 + X_{10} \\equiv 0 \\pmod{6}$ requires $X_{10} \\equiv -t \\pmod{6}$. Hence\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}) = \\mathbb{P}(X_{10} \\equiv -t \\pmod{6} \\mid S_9 \\equiv t \\pmod{6}).$$\n\nSince $X_{10}$ is independent of $S_9$, this equals $\\mathbb{P}(X_{10} \\equiv -t \\pmod{6})$.\n\nA fair die is uniformly distributed modulo 6, since\n$$1, 2, 3, 4, 5, 6 \\equiv 1, 2, 3, 4, 5, 0 \\pmod{6}.$$\n\nTherefore, for every $t \\in \\{0, 1, \\ldots, 5\\}$,\n$$\\mathbb{P}(X_{10} \\equiv -t \\pmod{6}) = \\frac{1}{6}.$$\n\nSubstituting back:\n$$\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\sum_{t=0}^{5} \\frac{1}{6}\\, \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6} \\sum_{t=0}^{5} \\mathbb{P}(S_9 \\equiv t \\pmod{6}) = \\frac{1}{6}.$$\n\nTherefore,\n$$\\boxed{\\mathbb{P}(S_{10} \\equiv 0 \\pmod{6}) = \\frac{1}{6}.}$$",
+    "createdAt": "2026-04-01"
   },
   {
     "id": 39,
@@ -552,13 +552,13 @@
     "category": "Brain Teaser",
     "difficulty": "Easy",
     "timeLimit": 7,
-    "isNew": true,
     "preview": "You have a 3×3×3 Rubik's cube. After each cut you may reposition the pieces. What is the minimum number of straight cuts to separate all 27 small cubes?",
     "question": "Suppose you have a $3 \\times 3 \\times 3$ Rubik's cube. If you want to separate all 27 small cubes, you can do so with 6 straight cuts without reordering any of the pieces.\n\nNow suppose that after each cut you are allowed to reposition the separated pieces. What is the minimum number of cuts required in order to separate all 27 small cubes?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 6,
     "tolerance": 0,
-    "solution": "Denote by $N$ the minimum number of cuts required.\n\nFirst, it is clear that\n$$N \\leq 6,$$\nsince even without repositioning, 6 cuts are enough.\n\nNow consider the small cube located at the very center of the original $3 \\times 3 \\times 3$ cube. Initially, this center cube shares a face with each of its 6 neighboring cubes.\n\nIn order for the center cube to be completely separated, each of these 6 face-to-face connections must be cut.\n\nA single straight cut can pass through the center cube in only one direction, and therefore can separate at most one of these 6 connections involving the center cube.\n\nHence, at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities, we obtain\n$$\\boxed{N = 6}$$"
+    "solution": "Denote by $N$ the minimum number of cuts required.\n\nFirst, it is clear that\n$$N \\leq 6,$$\nsince even without repositioning, 6 cuts are enough.\n\nNow consider the small cube located at the very center of the original $3 \\times 3 \\times 3$ cube. Initially, this center cube shares a face with each of its 6 neighboring cubes.\n\nIn order for the center cube to be completely separated, each of these 6 face-to-face connections must be cut.\n\nA single straight cut can pass through the center cube in only one direction, and therefore can separate at most one of these 6 connections involving the center cube.\n\nHence, at least 6 cuts are necessary:\n$$N \\geq 6.$$\n\nCombining both inequalities, we obtain\n$$\\boxed{N = 6}$$",
+    "createdAt": "2026-04-02"
   },
   {
     "id": 40,
@@ -566,14 +566,14 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 12,
-    "isNew": true,
     "source": "Jane Street",
     "preview": "There are 3 light bulbs that are off. Each minute, we randomly choose a light bulb and switch its state. What is the expected number of minutes until all bulbs are off again?",
     "question": "There are 3 light bulbs that are off. Each minute, we randomly choose a light bulb and switch its state (off to on, or on to off).\n\nWhat is the expected number of minutes that pass till the first time all bulbs are off again?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 8,
     "tolerance": 0,
-    "solution": "Let $X_i$ be the number of light bulbs that are on after minute $i$.\n\nSo we look for $\\mathbb{E}(N_0)$, where\n$$N_i := \\min\\{n > 0 : X_n = 0\\} \\mid X_0 = i, \\quad \\forall i = 0, 1, 2, 3.$$\n\nThen we have\n$$\\mathbb{E}(N_0) = \\mathbb{E}(N_0 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1) = \\mathbb{E}(N_1 + 1) = \\mathbb{E}(N_1) + 1.$$\n\nAnd\n$$\\mathbb{E}(N_1) = \\mathbb{E}(N_1 \\mid X_1 = 0)\\, \\mathbb{P}(X_1 = 0 \\mid X_0 = 1) + \\mathbb{E}(N_1 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 1)$$\n$$= \\mathbb{E}(1 \\mid X_1 = 0) \\cdot \\frac{1}{3} + \\mathbb{E}(N_2 + 1) \\cdot \\frac{2}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_2).$$\n\nAnd\n$$\\mathbb{E}(N_2) = \\mathbb{E}(N_2 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1 \\mid X_0 = 2) + \\mathbb{E}(N_2 \\mid X_1 = 3)\\, \\mathbb{P}(X_1 = 3 \\mid X_0 = 2)$$\n$$= \\mathbb{E}(N_1 + 1) \\cdot \\frac{2}{3} + \\mathbb{E}(N_3 + 1) \\cdot \\frac{1}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_1) + \\frac{1}{3}\\mathbb{E}(N_3).$$\n\nAnd\n$$\\mathbb{E}(N_3) = \\mathbb{E}(N_3 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 3) = \\mathbb{E}(N_2 + 1) = \\mathbb{E}(N_2) + 1.$$\n\nSolving this, we get\n$$\\boxed{\\mathbb{E}(N_0) = 8.}$$"
+    "solution": "Let $X_i$ be the number of light bulbs that are on after minute $i$.\n\nSo we look for $\\mathbb{E}(N_0)$, where\n$$N_i := \\min\\{n > 0 : X_n = 0\\} \\mid X_0 = i, \\quad \\forall i = 0, 1, 2, 3.$$\n\nThen we have\n$$\\mathbb{E}(N_0) = \\mathbb{E}(N_0 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1) = \\mathbb{E}(N_1 + 1) = \\mathbb{E}(N_1) + 1.$$\n\nAnd\n$$\\mathbb{E}(N_1) = \\mathbb{E}(N_1 \\mid X_1 = 0)\\, \\mathbb{P}(X_1 = 0 \\mid X_0 = 1) + \\mathbb{E}(N_1 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 1)$$\n$$= \\mathbb{E}(1 \\mid X_1 = 0) \\cdot \\frac{1}{3} + \\mathbb{E}(N_2 + 1) \\cdot \\frac{2}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_2).$$\n\nAnd\n$$\\mathbb{E}(N_2) = \\mathbb{E}(N_2 \\mid X_1 = 1)\\, \\mathbb{P}(X_1 = 1 \\mid X_0 = 2) + \\mathbb{E}(N_2 \\mid X_1 = 3)\\, \\mathbb{P}(X_1 = 3 \\mid X_0 = 2)$$\n$$= \\mathbb{E}(N_1 + 1) \\cdot \\frac{2}{3} + \\mathbb{E}(N_3 + 1) \\cdot \\frac{1}{3} = 1 + \\frac{2}{3}\\mathbb{E}(N_1) + \\frac{1}{3}\\mathbb{E}(N_3).$$\n\nAnd\n$$\\mathbb{E}(N_3) = \\mathbb{E}(N_3 \\mid X_1 = 2)\\, \\mathbb{P}(X_1 = 2 \\mid X_0 = 3) = \\mathbb{E}(N_2 + 1) = \\mathbb{E}(N_2) + 1.$$\n\nSolving this, we get\n$$\\boxed{\\mathbb{E}(N_0) = 8.}$$",
+    "createdAt": "2026-04-02"
   },
   {
     "id": 41,
@@ -581,14 +581,14 @@
     "category": "Probability",
     "difficulty": "Easy",
     "timeLimit": 4,
-    "isNew": true,
     "source": "Jane Street",
     "preview": "You flip a fair coin until it lands heads 4 times. What is the probability that it lands heads on the 6th flip?",
     "question": "You flip a fair coin until it lands heads 4 times (not necessarily in a row). What is the probability that it lands heads on the $6^{\\text{th}}$ flip?\n\nExpress your answer as a fraction or decimal.",
     "answerType": "numeric",
     "correctAnswer": 0.40625,
     "tolerance": 0.001,
-    "solution": "We first calculate the probability that after the $5^{\\text{th}}$ flip, at most 3 heads have appeared. That is, either 0, 1, 2, or 3 heads. Thus,\n$$\\mathbb{P}(\\#\\{\\text{heads in first 5 flips}\\} \\leq 3)$$\n$$= \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 0\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 1\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 2\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 3\\right)$$\n$$= \\frac{\\binom{5}{0} + \\binom{5}{1} + \\binom{5}{2} + \\binom{5}{3}}{2^5} = \\frac{1 + 5 + 10 + 10}{32} = \\frac{26}{32} = \\frac{13}{16}.$$\n\nThus,\n$$\\mathbb{P}(\\text{6th flip is heads and the process has not stopped before then})$$\n$$= \\mathbb{P}(\\#\\{\\text{heads in first 5 flips}\\} \\leq 3) \\cdot \\mathbb{P}(\\text{6th flip is heads}) = \\frac{13}{16} \\cdot \\frac{1}{2} = \\frac{13}{32}.$$\n\nFinal answer:\n$$\\boxed{\\frac{13}{32}}$$"
+    "solution": "We first calculate the probability that after the $5^{\\text{th}}$ flip, at most 3 heads have appeared. That is, either 0, 1, 2, or 3 heads. Thus,\n$$\\mathbb{P}(\\#\\{\\text{heads in first 5 flips}\\} \\leq 3)$$\n$$= \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 0\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 1\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 2\\right) + \\mathbb{P}\\!\\left(\\text{Bin}\\left(5, \\tfrac{1}{2}\\right) = 3\\right)$$\n$$= \\frac{\\binom{5}{0} + \\binom{5}{1} + \\binom{5}{2} + \\binom{5}{3}}{2^5} = \\frac{1 + 5 + 10 + 10}{32} = \\frac{26}{32} = \\frac{13}{16}.$$\n\nThus,\n$$\\mathbb{P}(\\text{6th flip is heads and the process has not stopped before then})$$\n$$= \\mathbb{P}(\\#\\{\\text{heads in first 5 flips}\\} \\leq 3) \\cdot \\mathbb{P}(\\text{6th flip is heads}) = \\frac{13}{16} \\cdot \\frac{1}{2} = \\frac{13}{32}.$$\n\nFinal answer:\n$$\\boxed{\\frac{13}{32}}$$",
+    "createdAt": "2026-04-03"
   },
   {
     "id": 42,
@@ -596,14 +596,14 @@
     "category": "Expected Value",
     "difficulty": "Medium",
     "timeLimit": 12,
-    "isNew": true,
     "source": "Citadel",
     "preview": "You roll a die until it lands 1 or 2, summing all outcomes except the last. If the last roll was 1 you profit that sum; otherwise nothing. What is the expected profit?",
     "question": "You roll a fair die until it lands 1 or 2, and sum all the outcomes, excluding the last one. Denote by $S$ the described sum.\n\nIf the last roll was 1, you profit $S$ dollars. Otherwise, you leave with nothing.\n\nWhat is the expected profit of this game?",
     "answerType": "numeric",
     "correctAnswer": 4.5,
     "tolerance": 0.01,
-    "solution": "Say $X_i$ is the result of the $i^{\\text{th}}$ roll, and let\n$$N + 1 \\sim \\text{Geo}\\!\\left(\\frac{1}{3}\\right)$$\nbe the number of rolls (including the last one). That is,\n$$N := \\min\\{n > 0 : X_{n+1} \\in \\{1, 2\\}\\}.$$\n\nNow, for every roll before the last one, the outcome must be in $\\{3, 4, 5, 6\\}$, and conditioned on this, it is uniformly distributed on that set. Hence,\n$$X_i \\mid (i \\leq N) \\sim \\text{Unif}\\{3, 4, 5, 6\\}.$$\n\nSo $S = X_1 + \\cdots + X_N$. Therefore, by Wald's identity,\n$$\\mathbb{E}(S) = \\mathbb{E}(X_1)\\mathbb{E}(N) = 4.5 \\cdot 2 = 9.$$\n\nSince the full profit of this game is $P = S\\, \\mathbf{1}_{\\{X_{N+1}=1\\}}$, we get\n$$\\mathbb{E}(P) = \\mathbb{E}(P \\mid X_{N+1} = 1)\\mathbb{P}(X_{N+1} = 1) + \\mathbb{E}(P \\mid X_{N+1} = 2)\\mathbb{P}(X_{N+1} = 2).$$\n\nBut if $X_{N+1} = 1$, then $P = S$, and if $X_{N+1} = 2$, then $P = 0$. Also,\n$$\\mathbb{P}(X_{N+1} = 1) = \\mathbb{P}(X_{N+1} = 2) = \\frac{1}{2}.$$\n\nHence,\n$$\\mathbb{E}(P) = \\mathbb{E}(S) \\cdot \\frac{1}{2} + 0 \\cdot \\frac{1}{2} = 9 \\cdot \\frac{1}{2} = 4.5.$$\n\nThus,\n$$\\boxed{\\mathbb{E}(P) = 4.5.}$$"
+    "solution": "Say $X_i$ is the result of the $i^{\\text{th}}$ roll, and let\n$$N + 1 \\sim \\text{Geo}\\!\\left(\\frac{1}{3}\\right)$$\nbe the number of rolls (including the last one). That is,\n$$N := \\min\\{n > 0 : X_{n+1} \\in \\{1, 2\\}\\}.$$\n\nNow, for every roll before the last one, the outcome must be in $\\{3, 4, 5, 6\\}$, and conditioned on this, it is uniformly distributed on that set. Hence,\n$$X_i \\mid (i \\leq N) \\sim \\text{Unif}\\{3, 4, 5, 6\\}.$$\n\nSo $S = X_1 + \\cdots + X_N$. Therefore, by Wald's identity,\n$$\\mathbb{E}(S) = \\mathbb{E}(X_1)\\mathbb{E}(N) = 4.5 \\cdot 2 = 9.$$\n\nSince the full profit of this game is $P = S\\, \\mathbf{1}_{\\{X_{N+1}=1\\}}$, we get\n$$\\mathbb{E}(P) = \\mathbb{E}(P \\mid X_{N+1} = 1)\\mathbb{P}(X_{N+1} = 1) + \\mathbb{E}(P \\mid X_{N+1} = 2)\\mathbb{P}(X_{N+1} = 2).$$\n\nBut if $X_{N+1} = 1$, then $P = S$, and if $X_{N+1} = 2$, then $P = 0$. Also,\n$$\\mathbb{P}(X_{N+1} = 1) = \\mathbb{P}(X_{N+1} = 2) = \\frac{1}{2}.$$\n\nHence,\n$$\\mathbb{E}(P) = \\mathbb{E}(S) \\cdot \\frac{1}{2} + 0 \\cdot \\frac{1}{2} = 9 \\cdot \\frac{1}{2} = 4.5.$$\n\nThus,\n$$\\boxed{\\mathbb{E}(P) = 4.5.}$$",
+    "createdAt": "2026-04-03"
   },
   {
     "id": 43,
@@ -611,13 +611,13 @@
     "category": "Expected Value",
     "difficulty": "Easy",
     "timeLimit": 12,
-    "isNew": true,
     "source": "WorldQuant",
     "preview": "In a bag there are 15 red balls and 2 green balls. We draw without replacement. What is the expected number of red balls left once the last green ball is taken?",
     "question": "In a bag there are 15 red balls and 2 green balls. We draw balls one by one, without replacement. What is the expected number of red balls left in the bag once the last green ball is taken?\n\nEnter an exact integer answer.",
     "answerType": "numeric",
     "correctAnswer": 5,
     "tolerance": 0,
-    "solution": "Let $X_1$ be the number of red balls taken before the first green ball, and $X_2$ the number of red balls taken after the first green ball and before the second green ball. Let\n$$X_3 = 15 - (X_1 + X_2)$$\nbe the number of red balls remaining once the second green ball is taken.\n\nClearly,\n$$X_1 + X_2 + X_3 = 15.$$\n\nConsider a uniformly random ordering of the 15 red balls and 2 green balls. The two green balls divide the sequence into three segments:\n- before the first green,\n- between the two green balls,\n- after the second green ball.\n\nThese three segments are symmetric, and therefore $X_1, X_2, X_3$ have the same distribution. In particular,\n$$\\mathbb{E}[X_1] = \\mathbb{E}[X_2] = \\mathbb{E}[X_3].$$\n\nTaking expectations, we get\n$$15 = \\mathbb{E}[X_1 + X_2 + X_3] = 3\\mathbb{E}[X_3].$$\n\nHence,\n$$\\mathbb{E}[X_3] = 5.$$\n\nTherefore, the expected number of red balls remaining in the bag is $\\boxed{5}$."
+    "solution": "Let $X_1$ be the number of red balls taken before the first green ball, and $X_2$ the number of red balls taken after the first green ball and before the second green ball. Let\n$$X_3 = 15 - (X_1 + X_2)$$\nbe the number of red balls remaining once the second green ball is taken.\n\nClearly,\n$$X_1 + X_2 + X_3 = 15.$$\n\nConsider a uniformly random ordering of the 15 red balls and 2 green balls. The two green balls divide the sequence into three segments:\n- before the first green,\n- between the two green balls,\n- after the second green ball.\n\nThese three segments are symmetric, and therefore $X_1, X_2, X_3$ have the same distribution. In particular,\n$$\\mathbb{E}[X_1] = \\mathbb{E}[X_2] = \\mathbb{E}[X_3].$$\n\nTaking expectations, we get\n$$15 = \\mathbb{E}[X_1 + X_2 + X_3] = 3\\mathbb{E}[X_3].$$\n\nHence,\n$$\\mathbb{E}[X_3] = 5.$$\n\nTherefore, the expected number of red balls remaining in the bag is $\\boxed{5}$.",
+    "createdAt": "2026-04-03"
   }
 ]

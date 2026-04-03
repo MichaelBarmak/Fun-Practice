@@ -4,7 +4,18 @@ import { useState, useEffect } from 'react';
 import QuestionList from './QuestionList';
 import InterviewMode from './InterviewMode';
 
+function withIsNew(questions) {
+  const twoDaysAgo = new Date();
+  twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+  twoDaysAgo.setHours(0, 0, 0, 0);
+  return questions.map(q => ({
+    ...q,
+    isNew: q.createdAt ? new Date(q.createdAt) >= twoDaysAgo : false,
+  }));
+}
+
 export default function AppClient({ questions }) {
+  const enrichedQuestions = withIsNew(questions);
   const [mode, setMode] = useState('list'); // 'list' | 'interview'
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -17,7 +28,7 @@ export default function AppClient({ questions }) {
   }, []);
 
   if (mode === 'interview') {
-    return <InterviewMode questions={questions} onExit={() => setMode('list')} />;
+    return <InterviewMode questions={enrichedQuestions} onExit={() => setMode('list')} />;
   }
 
   return (
@@ -37,7 +48,7 @@ export default function AppClient({ questions }) {
         </div>
       </div>
 
-      <QuestionList questions={questions} onStartInterview={() => setMode('interview')} />
+      <QuestionList questions={enrichedQuestions} onStartInterview={() => setMode('interview')} />
 
       {/* Scroll-to-top button */}
       {showScrollTop && (
