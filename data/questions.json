@@ -647,5 +647,17 @@
     "options": ["You", "Alice"],
     "correctAnswer": "Alice",
     "solution": "For any number $k$ that you remove, Alice can remove $6 - k$.\n\nThis way, on your first turn, there are 30 pebbles on the table. On your second turn, there will be 24, and on your $n = 5$ turn, there will be\n$$30 - 6(n-1) = 6$$\npebbles on the table.\n\nTherefore, after your fifth turn, there will be $k_0 \\in \\{1, \\ldots, 5\\}$ pebbles left on the table for Alice, and she can remove all of them and win the game.\n\nFinal answer: $\\boxed{\\text{Alice}}$"
+  },
+  {
+    "id": 46,
+    "title": "Infinite Hats Problem",
+    "category": "Logic Reasoning",
+    "difficulty": "Hard",
+    "timeLimit": 15,
+    "createdAt": "2026-04-03",
+    "preview": "Infinitely many prisoners each get a black or white hat. Each sees all others' hats but not their own. They guess simultaneously. Give a strategy ensuring only finitely many guess wrong.",
+    "question": "Suppose there are infinitely many blindfolded prisoners, labeled $1, 2, 3, \\ldots$. Each prisoner is assigned either a black or a white hat. At a certain moment, all blindfolds are removed simultaneously, and each prisoner can see the hats of all other prisoners, but not their own.\n\nThe prisoners are not allowed to communicate in any way. Each prisoner must simultaneously submit a guess of the color of their own hat.\n\nIf only finitely many prisoners guess incorrectly, then all prisoners are freed.\n\nAssume standard mathematical axioms, and that each prisoner has unlimited memory and can perform arbitrary computations instantly.\n\nGive a strategy that guarantees this outcome.",
+    "answerType": "theory",
+    "solution": "This is a set-theoretic construction.\n\nAssign the value 0 to the color black and 1 to the color white. In this way, any assignment of hats corresponds to a binary sequence.\n\nDefine an equivalence relation on the set of infinite binary sequences by declaring two sequences equivalent if and only if they differ in only finitely many coordinates.\n\nBy the Axiom of Choice, there exists a set of representatives\n$$\\{X_i \\mid i \\in I\\},$$\nwhere each $X_i$ is a binary sequence, and each equivalence class contains exactly one representative.\n\nLet $Y$ denote the actual sequence corresponding to the hat assignment.\n\nEach prisoner determines the unique representative $X_i$ such that $Y$ is equivalent to $X_i$, and guesses their own hat according to the corresponding coordinate of $X_i$.\n\nSince $Y$ and $X_i$ differ in only finitely many coordinates, only finitely many prisoners will guess incorrectly. $\\blacksquare$"
   }
 ]
