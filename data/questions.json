@@ -684,7 +684,7 @@
     "answerType": "numeric",
     "correctAnswer": 0.5,
     "tolerance": 0.001,
-    "solution": "By symmetry,\n$$\\mathbb{E}(X) = \\mathbb{E}(Y) = 0.$$\n\nTherefore,\n$$\\text{Var}(Y) = \\mathbb{E}(Y^2) - \\mathbb{E}(Y)^2 = \\mathbb{E}(Y^2).$$\n\nAgain by symmetry,\n$$\\mathbb{E}(X^2) = \\mathbb{E}(Y^2).$$\n\nSince\n$$X^2 + Y^2 = 1,$$\nwe have by linearity of expectation\n$$1 = \\mathbb{E}(X^2 + Y^2) = \\mathbb{E}(X^2) + \\mathbb{E}(Y^2) = 2\\mathbb{E}(Y^2).$$\n\nHence,\n$$\\text{Var}(Y) = \\frac{1}{2}. \\quad \\blacksquare$$"
+    "solution": "By symmetry,\n$$\\mathbb{E}(X) = \\mathbb{E}(Y) = 0.$$\n\nTherefore,\n$$\\text{Var}(Y) = \\mathbb{E}(Y^2) - \\mathbb{E}(Y)^2 = \\mathbb{E}(Y^2).$$\n\nAgain by symmetry,\n$$\\mathbb{E}(X^2) = \\mathbb{E}(Y^2).$$\n\nSince\n$$X^2 + Y^2 = 1,$$\nwe have by linearity of expectation\n$$1 = \\mathbb{E}(X^2 + Y^2) = \\mathbb{E}(X^2) + \\mathbb{E}(Y^2) = 2\\mathbb{E}(Y^2).$$\n\nHence,\n$$\\boxed{\\text{Var}(Y) = \\frac{1}{2}.}$$"
   },
   {
     "id": 49,
