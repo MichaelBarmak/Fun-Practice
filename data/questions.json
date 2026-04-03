@@ -633,5 +633,19 @@
     "correctAnswer": 1,
     "tolerance": 0,
     "solution": "Define the events\n$$A_n = \\{X_n = 1\\}.$$\n\nThen\n$$\\sum_{n=1}^{\\infty} \\mathbb{P}(A_n) = \\sum_{n=1}^{\\infty} \\frac{1}{n^2} < \\infty.$$\n\nBy the **Borel–Cantelli lemma**,\n$$\\mathbb{P}(A_n \\text{ infinitely often}) = 0.$$\n\nNow observe that since $X_n \\in \\{0, 1\\}$,\n$$\\{S = \\infty\\} = \\{A_n \\text{ infinitely often}\\}.$$\n\nHence,\n$$\\mathbb{P}(S = \\infty) = 0,$$\n\nand therefore\n$$\\boxed{\\mathbb{P}(S < \\infty) = 1}$$"
+  },
+  {
+    "id": 45,
+    "title": "Pebbles Game",
+    "category": "Logic Reasoning",
+    "difficulty": "Easy",
+    "timeLimit": 15,
+    "createdAt": "2026-04-03",
+    "preview": "There are 30 pebbles on a table. Each turn, a player removes 1–5 pebbles. The player who removes the last pebble wins. You go first. Who has a winning strategy?",
+    "question": "There are 30 pebbles on a table between you and Alice. On each turn, a player removes $k \\in \\{1, \\ldots, 5\\}$ pebbles from the table as they wish. The player who removes the last pebble wins.\n\nAssuming you take the first turn, then Alice, and so on, who has a winning strategy?",
+    "answerType": "multiple_choice",
+    "options": ["You", "Alice"],
+    "correctAnswer": "Alice",
+    "solution": "For any number $k$ that you remove, Alice can remove $6 - k$.\n\nThis way, on your first turn, there are 30 pebbles on the table. On your second turn, there will be 24, and on your $n = 5$ turn, there will be\n$$30 - 6(n-1) = 6$$\npebbles on the table.\n\nTherefore, after your fifth turn, there will be $k_0 \\in \\{1, \\ldots, 5\\}$ pebbles left on the table for Alice, and she can remove all of them and win the game.\n\nFinal answer: $\\boxed{\\text{Alice}}$"
   }
 ]
