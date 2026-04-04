@@ -694,7 +694,7 @@
     "timeLimit": 5,
     "createdAt": "2026-04-03",
     "preview": "A farmer claims melon weights are N(1, 1/10). A friend says: buy 100 melons, and if the average is below 1, stop buying. Should you listen?",
-    "question": "You regularly buy many melons from a specific farmer. The farmer claims that the weight of each melon is independently distributed as\n$$\\mathcal{N}\\!\\left(1, \\frac{1}{10}\\right).$$\n\nYou only care about the mean weight of the melons you buy, in order to know whether you are being scammed.\n\nA friend suggests that you buy 100 melons and let $\\bar{M}$ denote their average weight.\n\nThey tell you that if\n$$\\bar{M} < 1,$$\nthen you should stop buying from this farmer.\n\nShould you listen to your friend?",
+    "question": "You regularly buy many melons from a specific farmer. The farmer claims that the weight of each melon is independently distributed as\n$$\\mathcal{N}\\!\\left(1, \\frac{1}{10}\\right).$$\n\nYou believe the farmer, but want to check if he's not lying about the mean weight of the melons.\n\nA friend suggests that you buy 100 melons and let $\\bar{M}$ denote their average weight.\n\nThey tell you that if\n$$\\bar{M} < 1,$$\nthen you should stop buying from this farmer.\n\nShould you listen to your friend?",
     "answerType": "multiple_choice",
     "options": ["Yes", "No"],
     "correctAnswer": "No",
