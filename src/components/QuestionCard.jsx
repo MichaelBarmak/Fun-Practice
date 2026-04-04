@@ -70,15 +70,14 @@ export default function QuestionCard({
         ${isExpanded ? 'border-indigo-300 shadow-md' : 'border-slate-200 hover:shadow-sm'}`}
     >
       {/* ── Card header ── */}
-      <button
-        onClick={handleToggle}
-        className="w-full text-left px-5 py-4 flex items-start gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-xl"
-        aria-expanded={isExpanded}
-      >
-        {/* Title + meta */}
-        <div className="flex-1 min-w-0">
+      <div className="flex items-start px-5 py-4 gap-3">
+        {/* Clickable title + meta area */}
+        <button
+          onClick={handleToggle}
+          className="flex-1 min-w-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-lg"
+          aria-expanded={isExpanded}
+        >
           <div className="flex flex-wrap items-center gap-2 mb-1">
-            {/* Question number */}
             <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 text-xs font-bold">
               {question.id}
             </span>
@@ -92,7 +91,6 @@ export default function QuestionCard({
             )}
           </div>
 
-          {/* Badges */}
           <div className="flex flex-wrap gap-2 mb-2">
             <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${CATEGORY_STYLE}`}>
               {question.category}
@@ -115,26 +113,32 @@ export default function QuestionCard({
           {!isExpanded && (
             <p className="text-sm text-slate-500 line-clamp-2">{question.preview}</p>
           )}
-        </div>
+        </button>
+
+        {/* Stopwatch — visible only when expanded */}
+        {isExpanded && question.timeLimit && (
+          <div className="flex-shrink-0 mt-0.5">
+            <Stopwatch key={stopwatchKey} timeLimit={question.timeLimit} />
+          </div>
+        )}
 
         {/* Chevron */}
-        <span className={`flex-shrink-0 mt-1 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
+        <button
+          onClick={handleToggle}
+          className={`flex-shrink-0 mt-1 text-slate-400 transition-transform duration-200 focus:outline-none ${isExpanded ? 'rotate-180' : ''}`}
+          aria-label={isExpanded ? 'Collapse question' : 'Expand question'}
+        >
           <ChevronIcon />
-        </span>
-      </button>
+        </button>
+      </div>
 
       {/* ── Expandable detail panel ── */}
       <div className={`${isExpanded ? 'overflow-x-auto accordion-open' : 'overflow-hidden accordion-closed'}`}>
         <div className="px-5 pb-6 pt-1 border-t border-slate-100">
           {/* Full question text */}
-          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
             <MathText text={question.question} />
           </p>
-
-          {/* ── Stopwatch ── */}
-          {question.timeLimit && (
-            <Stopwatch key={stopwatchKey} timeLimit={question.timeLimit} />
-          )}
 
           {/* ── Numeric answer input ── */}
           {question.answerType === 'numeric' && (
