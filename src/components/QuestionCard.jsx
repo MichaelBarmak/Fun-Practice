@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { checkAnswer } from '../utils/answerChecker';
 import MathText from './MathText';
 
@@ -23,6 +23,7 @@ export default function QuestionCard({
   const [part2Answer, setPart2Answer] = useState('');
   const [part2Feedback, setPart2Feedback] = useState(null);
   const [solutionVisible, setSolutionVisible] = useState(false);
+  const [stopwatchKey, setStopwatchKey] = useState(0);
 
   function handleCheckAnswer(answer) {
     const input = answer ?? userAnswer;
@@ -57,6 +58,7 @@ export default function QuestionCard({
       setPart2Answer('');
       setPart2Feedback(null);
       setSolutionVisible(false);
+      setStopwatchKey(k => k + 1);
     }
     onToggle();
   }
@@ -125,9 +127,14 @@ export default function QuestionCard({
       <div className={`${isExpanded ? 'overflow-x-auto accordion-open' : 'overflow-hidden accordion-closed'}`}>
         <div className="px-5 pb-6 pt-1 border-t border-slate-100">
           {/* Full question text */}
-          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-5">
+          <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4">
             <MathText text={question.question} />
           </p>
+
+          {/* ── Stopwatch ── */}
+          {question.timeLimit && (
+            <Stopwatch key={stopwatchKey} timeLimit={question.timeLimit} />
+          )}
 
           {/* ── Numeric answer input ── */}
           {question.answerType === 'numeric' && (
@@ -251,6 +258,58 @@ function Feedback({ feedback }) {
     );
   }
   return null;
+}
+
+function Stopwatch({ timeLimit }) {
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    if (running) {
+      intervalRef.current = setInterval(() => setElapsed(s => s + 1), 1000);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [running]);
+
+  function reset() {
+    setRunning(false);
+    setElapsed(0);
+  }
+
+  const limitSecs = timeLimit * 60;
+  const isOver = elapsed >= limitSecs;
+  const isWarning = !isOver && elapsed >= limitSecs - 30;
+
+  const timerColor = isOver ? 'text-rose-600' : isWarning ? 'text-amber-500' : 'text-emerald-600';
+  const borderColor = isOver ? 'border-rose-300' : isWarning ? 'border-amber-300' : 'border-emerald-300';
+  const bgColor = isOver ? 'bg-rose-50' : isWarning ? 'bg-amber-50' : 'bg-emerald-50';
+
+  const m = Math.floor(elapsed / 60);
+  const s = elapsed % 60;
+  const display = `${m}:${s.toString().padStart(2, '0')}`;
+
+  return (
+    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border mb-4 ${bgColor} ${borderColor}`}>
+      <span className={`font-mono font-bold text-sm tabular-nums w-10 ${timerColor}`}>{display}</span>
+      <button
+        onClick={() => setRunning(r => !r)}
+        className={`text-sm ${timerColor} hover:opacity-70 transition-opacity`}
+        aria-label={running ? 'Pause stopwatch' : 'Start stopwatch'}
+      >
+        {running ? '⏸' : '▶'}
+      </button>
+      <button
+        onClick={reset}
+        className="text-sm text-slate-400 hover:text-slate-600 transition-colors"
+        aria-label="Reset stopwatch"
+      >
+        ↺
+      </button>
+    </div>
+  );
 }
 
 function ChevronIcon() {
