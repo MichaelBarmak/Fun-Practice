@@ -699,5 +699,17 @@
     "options": ["Yes", "No"],
     "correctAnswer": "No",
     "solution": "Let $M_i$ be the weight of melon $i$, for $i = 1, \\ldots, 100$. Then\n$$M_1, \\ldots, M_{100} \\overset{\\text{iid}}{\\sim} \\mathcal{N}\\!\\left(1, \\frac{1}{10}\\right).$$\n\nDefine the sample mean\n$$\\bar{M} := \\frac{M_1 + \\cdots + M_{100}}{100}.$$\n\nSince the average of independent normal random variables is also normally distributed, we have\n$$\\bar{M} \\sim \\mathcal{N}\\!\\left(1, \\frac{1}{1000}\\right).$$\n\nIn particular,\n$$\\mathbb{E}[\\bar{M}] = 1.$$\n\nSince the normal distribution is symmetric about its mean,\n$$\\mathbb{P}(\\bar{M} < 1) = \\frac{1}{2}.$$\n\nThus, even if the farmer is honest, your friend's rule would incorrectly tell you to leave with probability $\\frac{1}{2}$.\n\nTherefore, your friend's suggestion should be politely declined. $\\blacksquare$"
+  },
+  {
+    "id": 50,
+    "title": "Continuously Compounded Interest",
+    "category": "Finance",
+    "difficulty": "Medium",
+    "timeLimit": 5,
+    "createdAt": "2026-04-07",
+    "preview": "Derive the continuously compounded interest formula starting from compounding n times per year.",
+    "question": "A continuously compounded interest rate means that your money grows continuously over time, rather than only at a finite number of times.\n\nSuppose you hold an initial amount of money $A_0$, with interest rate $r$ per one unit of time (say, one year), for $t$ years.\n\nDerive the formula for the continuously compounded amount $A_t$.",
+    "answerType": "theory",
+    "solution": "To understand continuous compounding, let us first consider compounding $n$ times per year. In that case, each time interest is applied, the rate is\n$$\\frac{r}{n}.$$\n\nSince over $t$ years the interest is applied $nt$ times, the value of your money at time $t$ is\n$$\\hat{A}_t = A_0 \\left(1 + \\frac{r}{n}\\right)^{nt}.$$\n\nNow, if we let the number of compounding times $n$ go to infinity, we obtain the continuously compounded amount:\n$$A_t = \\lim_{n \\to \\infty} \\hat{A}_t = A_0 e^{rt}.$$\n\nSo under continuous compounding, the amount grows according to the formula\n$$\\boxed{A_t = A_0 e^{rt}.}$$"
   }
 ]
