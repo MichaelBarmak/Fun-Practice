@@ -312,7 +312,7 @@
   {
     "id": 22,
     "title": "Optimal Hedge",
-    "category": "Probability",
+    "category": "Finance",
     "difficulty": "Easy",
     "timeLimit": 6,
     "preview": "You own j shares of stock A and want to hedge by shorting stock B. How many shares of B should you short to minimize variance?",
