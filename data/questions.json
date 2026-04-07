@@ -708,7 +708,7 @@
     "timeLimit": 5,
     "createdAt": "2026-04-07",
     "preview": "Derive the continuously compounded interest formula starting from compounding n times per year.",
-    "question": "A continuously compounded interest rate means that your money grows continuously over time, rather than only at a finite number of times.\n\nSuppose you hold an initial amount of money $A_0$, with interest rate $r$ per one unit of time (say, one year), for $t$ years.\n\nDerive the formula for the continuously compounded amount $A_t$.",
+    "question": "Explain what is Continuously Compounded Interest, give the exact formula and prove it.",
     "answerType": "theory",
     "solution": "To understand continuous compounding, let us first consider compounding $n$ times per year. In that case, each time interest is applied, the rate is\n$$\\frac{r}{n}.$$\n\nSince over $t$ years the interest is applied $nt$ times, the value of your money at time $t$ is\n$$\\hat{A}_t = A_0 \\left(1 + \\frac{r}{n}\\right)^{nt}.$$\n\nNow, if we let the number of compounding times $n$ go to infinity, we obtain the continuously compounded amount:\n$$A_t = \\lim_{n \\to \\infty} \\hat{A}_t = A_0 e^{rt}.$$\n\nSo under continuous compounding, the amount grows according to the formula\n$$\\boxed{A_t = A_0 e^{rt}.}$$"
   }
