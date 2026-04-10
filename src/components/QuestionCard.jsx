@@ -13,6 +13,37 @@ const DIFFICULTY_STYLES = {
 const CATEGORY_STYLE = 'bg-indigo-100 text-indigo-700';
 const SOURCE_STYLE = 'bg-violet-100 text-violet-700';
 
+function NumericKeypad({ value, onChange, onClose }) {
+  const rows = [['7','8','9'], ['4','5','6'], ['1','2','3'], ['.','0','/']];
+  const press = (fn) => (e) => { e.preventDefault(); fn(); };
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-100 border-t border-slate-300 shadow-2xl pb-safe">
+      <div className="max-w-sm mx-auto p-3 space-y-2">
+        {rows.map((row, i) => (
+          <div key={i} className="flex gap-2">
+            {row.map((k) => (
+              <button
+                key={k}
+                type="button"
+                onPointerDown={press(() => onChange(value + k))}
+                className="flex-1 py-4 bg-white rounded-xl text-xl font-semibold shadow-sm active:bg-slate-200 select-none"
+              >{k}</button>
+            ))}
+          </div>
+        ))}
+        <div className="flex gap-2">
+          <button type="button" onPointerDown={press(() => onChange(value.slice(0, -1)))}
+            className="flex-1 py-3 bg-white rounded-xl text-lg shadow-sm active:bg-slate-200 select-none">⌫</button>
+          <button type="button" onPointerDown={press(() => onChange(''))}
+            className="flex-1 py-3 bg-white rounded-xl text-sm font-medium shadow-sm active:bg-slate-200 select-none">Clear</button>
+          <button type="button" onPointerDown={press(onClose)}
+            className="flex-1 py-3 bg-indigo-600 text-white rounded-xl text-sm font-semibold active:bg-indigo-700 select-none">Done</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function QuestionCard({
   question,
   isExpanded,
@@ -24,6 +55,12 @@ export default function QuestionCard({
   const [part2Feedback, setPart2Feedback] = useState(null);
   const [solutionVisible, setSolutionVisible] = useState(false);
   const [stopwatchKey, setStopwatchKey] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [keypadTarget, setKeypadTarget] = useState(null); // null | 'main' | 'part2'
+
+  useEffect(() => {
+    setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   function handleCheckAnswer(answer) {
     const input = answer ?? userAnswer;
@@ -59,6 +96,7 @@ export default function QuestionCard({
       setPart2Feedback(null);
       setSolutionVisible(false);
       setStopwatchKey(k => k + 1);
+      setKeypadTarget(null);
     }
     onToggle();
   }
@@ -146,10 +184,10 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode="decimal"
-                  pattern="[0-9./]*"
+                  readOnly={isMobile}
                   value={userAnswer}
                   onChange={(e) => { setUserAnswer(e.target.value); setFeedback(null); }}
+                  onClick={() => isMobile && setKeypadTarget('main')}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAnswer()}
                   placeholder="e.g. 0.5 or 1/2"
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
@@ -163,6 +201,13 @@ export default function QuestionCard({
                   Check
                 </button>
               </div>
+              {isMobile && keypadTarget === 'main' && (
+                <NumericKeypad
+                  value={userAnswer}
+                  onChange={(v) => { setUserAnswer(v); setFeedback(null); }}
+                  onClose={() => setKeypadTarget(null)}
+                />
+              )}
               <Feedback feedback={feedback} />
             </div>
           )}
@@ -204,10 +249,10 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode="decimal"
-                  pattern="[0-9./]*"
+                  readOnly={isMobile}
                   value={part2Answer}
                   onChange={(e) => { setPart2Answer(e.target.value); setPart2Feedback(null); }}
+                  onClick={() => isMobile && setKeypadTarget('part2')}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckPart2()}
                   placeholder="Enter a number"
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
@@ -221,6 +266,13 @@ export default function QuestionCard({
                   Check
                 </button>
               </div>
+              {isMobile && keypadTarget === 'part2' && (
+                <NumericKeypad
+                  value={part2Answer}
+                  onChange={(v) => { setPart2Answer(v); setPart2Feedback(null); }}
+                  onClose={() => setKeypadTarget(null)}
+                />
+              )}
               <Feedback feedback={part2Feedback} />
             </div>
           )}
