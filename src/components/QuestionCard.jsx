@@ -13,41 +13,6 @@ const DIFFICULTY_STYLES = {
 const CATEGORY_STYLE = 'bg-indigo-100 text-indigo-700';
 const SOURCE_STYLE = 'bg-violet-100 text-violet-700';
 
-function NumericKeypad({ onKey, onDone }) {
-  const keys = ['7','8','9','4','5','6','1','2','3','.','0','/'];
-  return (
-    <div
-      className="mt-2 bg-slate-100 rounded-xl p-3 grid grid-cols-3 gap-2"
-      onPointerDown={(e) => e.preventDefault()}
-    >
-      {keys.map((k) => (
-        <button
-          key={k}
-          type="button"
-          onClick={() => onKey(k)}
-          className="py-3 bg-white rounded-lg text-lg font-medium shadow-sm active:bg-slate-200 select-none"
-        >
-          {k}
-        </button>
-      ))}
-      <button
-        type="button"
-        onClick={() => onKey('⌫')}
-        className="py-3 bg-white rounded-lg text-lg font-medium shadow-sm active:bg-slate-200 col-span-2 select-none"
-      >
-        ⌫
-      </button>
-      <button
-        type="button"
-        onClick={onDone}
-        className="py-3 bg-indigo-600 text-white rounded-lg text-sm font-semibold active:bg-indigo-700 select-none"
-      >
-        Done
-      </button>
-    </div>
-  );
-}
-
 export default function QuestionCard({
   question,
   isExpanded,
@@ -59,25 +24,6 @@ export default function QuestionCard({
   const [part2Feedback, setPart2Feedback] = useState(null);
   const [solutionVisible, setSolutionVisible] = useState(false);
   const [stopwatchKey, setStopwatchKey] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [keypadTarget, setKeypadTarget] = useState(null); // null | 'main' | 'part2'
-
-  useEffect(() => {
-    setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-
-  function handleKeypadInput(key) {
-    const isMain = keypadTarget === 'main';
-    const current = isMain ? userAnswer : part2Answer;
-    const setter = isMain ? setUserAnswer : setPart2Answer;
-    const feedbackSetter = isMain ? setFeedback : setPart2Feedback;
-    feedbackSetter(null);
-    if (key === '⌫') {
-      setter(current.slice(0, -1));
-    } else {
-      setter(current + key);
-    }
-  }
 
   function handleCheckAnswer(answer) {
     const input = answer ?? userAnswer;
@@ -113,7 +59,6 @@ export default function QuestionCard({
       setPart2Feedback(null);
       setSolutionVisible(false);
       setStopwatchKey(k => k + 1);
-      setKeypadTarget(null);
     }
     onToggle();
   }
@@ -201,10 +146,8 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode={isMobile ? 'none' : 'text'}
                   value={userAnswer}
-                  onChange={(e) => { if (!isMobile) { setUserAnswer(e.target.value); setFeedback(null); } }}
-                  onFocus={() => isMobile && setKeypadTarget('main')}
+                  onChange={(e) => { setUserAnswer(e.target.value); setFeedback(null); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAnswer()}
                   placeholder="e.g. 0.5 or 1/2"
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
@@ -218,12 +161,6 @@ export default function QuestionCard({
                   Check
                 </button>
               </div>
-              {isMobile && keypadTarget === 'main' && (
-                <NumericKeypad
-                  onKey={handleKeypadInput}
-                  onDone={() => setKeypadTarget(null)}
-                />
-              )}
               <Feedback feedback={feedback} />
             </div>
           )}
@@ -265,10 +202,8 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode={isMobile ? 'none' : 'text'}
                   value={part2Answer}
-                  onChange={(e) => { if (!isMobile) { setPart2Answer(e.target.value); setPart2Feedback(null); } }}
-                  onFocus={() => isMobile && setKeypadTarget('part2')}
+                  onChange={(e) => { setPart2Answer(e.target.value); setPart2Feedback(null); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckPart2()}
                   placeholder="Enter a number"
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
@@ -282,12 +217,6 @@ export default function QuestionCard({
                   Check
                 </button>
               </div>
-              {isMobile && keypadTarget === 'part2' && (
-                <NumericKeypad
-                  onKey={handleKeypadInput}
-                  onDone={() => setKeypadTarget(null)}
-                />
-              )}
               <Feedback feedback={part2Feedback} />
             </div>
           )}
