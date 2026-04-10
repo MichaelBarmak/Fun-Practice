@@ -146,8 +146,6 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode="decimal"
-                  pattern="[0-9./]*"
                   value={userAnswer}
                   onChange={(e) => { setUserAnswer(e.target.value); setFeedback(null); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAnswer()}
@@ -204,8 +202,6 @@ export default function QuestionCard({
               <div className="flex gap-2">
                 <input
                   type="text"
-                  inputMode="decimal"
-                  pattern="[0-9./]*"
                   value={part2Answer}
                   onChange={(e) => { setPart2Answer(e.target.value); setPart2Feedback(null); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckPart2()}
