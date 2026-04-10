@@ -24,22 +24,6 @@ export default function QuestionCard({
   const [part2Feedback, setPart2Feedback] = useState(null);
   const [solutionVisible, setSolutionVisible] = useState(false);
   const [stopwatchKey, setStopwatchKey] = useState(0);
-  const mainInputRef = useRef(null);
-  const part2InputRef = useRef(null);
-
-  function insertChar(ref, current, setter, feedbackSetter, char) {
-    const el = ref.current;
-    feedbackSetter(null);
-    if (!el) { setter(current + char); return; }
-    const start = el.selectionStart ?? current.length;
-    const end = el.selectionEnd ?? current.length;
-    const next = current.slice(0, start) + char + current.slice(end);
-    setter(next);
-    requestAnimationFrame(() => {
-      el.focus();
-      el.setSelectionRange(start + 1, start + 1);
-    });
-  }
 
   function handleCheckAnswer(answer) {
     const input = answer ?? userAnswer;
@@ -161,8 +145,8 @@ export default function QuestionCard({
             <div className="mb-4">
               <div className="flex gap-2">
                 <input
-                  ref={mainInputRef}
                   type="text"
+                  inputMode="decimal"
                   pattern="[0-9./]*"
                   value={userAnswer}
                   onChange={(e) => { setUserAnswer(e.target.value); setFeedback(null); }}
@@ -171,18 +155,6 @@ export default function QuestionCard({
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
                   aria-label="Your answer"
                 />
-                <button
-                  type="button"
-                  onMouseDown={(e) => { e.preventDefault(); insertChar(mainInputRef, userAnswer, setUserAnswer, setFeedback, '.'); }}
-                  className="px-3 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-200 transition-colors"
-                  aria-label="Insert decimal point"
-                >.</button>
-                <button
-                  type="button"
-                  onMouseDown={(e) => { e.preventDefault(); insertChar(mainInputRef, userAnswer, setUserAnswer, setFeedback, '/'); }}
-                  className="px-3 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-200 transition-colors"
-                  aria-label="Insert fraction slash"
-                >/</button>
                 <button
                   onClick={() => handleCheckAnswer()}
                   disabled={!userAnswer.trim()}
@@ -231,8 +203,8 @@ export default function QuestionCard({
               <p className="text-sm font-semibold text-slate-600 mb-2">Your answer for Part 2:</p>
               <div className="flex gap-2">
                 <input
-                  ref={part2InputRef}
                   type="text"
+                  inputMode="decimal"
                   pattern="[0-9./]*"
                   value={part2Answer}
                   onChange={(e) => { setPart2Answer(e.target.value); setPart2Feedback(null); }}
@@ -241,18 +213,6 @@ export default function QuestionCard({
                   className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent"
                   aria-label="Part 2 answer"
                 />
-                <button
-                  type="button"
-                  onMouseDown={(e) => { e.preventDefault(); insertChar(part2InputRef, part2Answer, setPart2Answer, setPart2Feedback, '.'); }}
-                  className="px-3 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-200 transition-colors"
-                  aria-label="Insert decimal point"
-                >.</button>
-                <button
-                  type="button"
-                  onMouseDown={(e) => { e.preventDefault(); insertChar(part2InputRef, part2Answer, setPart2Answer, setPart2Feedback, '/'); }}
-                  className="px-3 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-200 transition-colors"
-                  aria-label="Insert fraction slash"
-                >/</button>
                 <button
                   onClick={handleCheckPart2}
                   disabled={!part2Answer.trim()}
