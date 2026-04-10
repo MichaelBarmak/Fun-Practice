@@ -725,5 +725,19 @@
     "correctAnswer": 0.3302585092994046,
     "tolerance": 0.001,
     "solution": "Since $X$ and $Y$ are independent and uniformly distributed on $[0, 1]$, their joint density is constant on the unit square $[0, 1]^2$. Therefore,\n$$\\mathbb{P}(XY < 0.1)$$\nis equal to the area of the set\n$$A := \\{(x, y) \\in [0, 1]^2 : xy < 0.1\\}.$$\n\nFix $x \\in (0, 1)$. Then the condition $xy < 0.1$ is equivalent to\n$$y < \\frac{0.1}{x}.$$\n\nWe distinguish two cases:\n- If $0 \\leq x \\leq 0.1$, then $\\frac{0.1}{x} \\geq 1$, so all $y \\in [0, 1]$ satisfy the inequality.\n- If $0.1 < x \\leq 1$, then $y < \\frac{0.1}{x}$.\n\nHence,\n$$\\mathbb{P}(XY < 0.1) = \\int_0^{0.1} 1\\, dx + \\int_{0.1}^{1} \\frac{0.1}{x}\\, dx.$$\n\nComputing the integrals:\n$$= 0.1 + 0.1 \\int_{0.1}^{1} \\frac{1}{x}\\, dx = 0.1 + 0.1 \\Big[\\ln x\\Big]_{0.1}^{1} = 0.1 + 0.1\\ln(10).$$\n\nTherefore,\n$$\\boxed{\\mathbb{P}(XY < 0.1) = 0.1(1 + \\ln 10) \\approx 0.33.}$$"
+  },
+  {
+    "id": 52,
+    "title": "Even Heads",
+    "category": "Probability",
+    "difficulty": "Easy",
+    "timeLimit": 4,
+    "createdAt": "2026-04-10",
+    "preview": "We flip a fair coin 50 times. What is the probability that the total number of heads is even?",
+    "question": "We flip a fair coin 50 times. What is the probability that the total number of heads is even?\n\nExpress your answer as an exact decimal.",
+    "answerType": "numeric",
+    "correctAnswer": 0.5,
+    "tolerance": 0,
+    "solution": "Let $A_n$ be the event that after $n$ coin flips, the number of heads is even.\n\nWe analyze how the parity changes after the last flip:\n- If after $n-1$ flips the number of heads is even, then flipping tails keeps it even, and flipping heads makes it odd.\n- If after $n-1$ flips the number of heads is odd, then flipping heads makes it even, and flipping tails keeps it odd.\n\nSince the coin is fair, each outcome has probability $\\frac{1}{2}$. Therefore,\n$$\\mathbb{P}(A_n) = \\frac{1}{2}\\mathbb{P}(A_{n-1}) + \\frac{1}{2}\\big(1 - \\mathbb{P}(A_{n-1})\\big).$$\n\nSimplifying,\n$$\\mathbb{P}(A_n) = \\frac{1}{2}.$$\n\nThus,\n$$\\boxed{\\mathbb{P}(A_{50}) = \\frac{1}{2}.}$$"
   }
 ]
