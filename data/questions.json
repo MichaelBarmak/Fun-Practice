@@ -713,6 +713,18 @@
     "solution": "To understand continuous compounding, let us first consider compounding $n$ times per year. In that case, each time interest is applied, the rate is\n$$\\frac{r}{n}.$$\n\nSince over $t$ years the interest is applied $nt$ times, the value of your money at time $t$ is\n$$\\hat{A}_t = A_0 \\left(1 + \\frac{r}{n}\\right)^{nt}.$$\n\nNow, if we let the number of compounding times $n$ go to infinity, we obtain the continuously compounded amount:\n$$A_t = \\lim_{n \\to \\infty} \\hat{A}_t = A_0 e^{rt}.$$\n\nSo under continuous compounding, the amount grows according to the formula\n$$\\boxed{A_t = A_0 e^{rt}.}$$"
   },
   {
+    "id": 53,
+    "title": "Subarray Sum",
+    "category": "Pigeon Hole Principle",
+    "difficulty": "Medium",
+    "timeLimit": 10,
+    "createdAt": "2026-04-11",
+    "preview": "Positive integers a₁, …, aₙ sum to 32. Show there exist i ≤ j such that aᵢ + … + aⱼ = 8.",
+    "question": "Let $a_1, \\ldots, a_n \\in \\mathbb{N}$ be positive integers such that\n$$a_1 + \\cdots + a_n = 32.$$\nShow that there exist integers $1 \\leq i \\leq j \\leq n$ such that\n$$a_i + a_{i+1} + \\cdots + a_j = 8.$$",
+    "answerType": "theory",
+    "solution": "Define the partial sums\n$$S_k := a_1 + \\cdots + a_k.$$\n\nConsider $S_k \\bmod 8$.\n\n**Case 1:** If $S_k \\equiv 0 \\pmod{8}$ for some $k$, then since all $a_i$ are positive and the total sum is 32, we must have $S_k = 8$. Taking $i = 1$ and $j = k$ gives $a_1 + \\cdots + a_k = 8$, and we are done.\n\n**Case 2:** Otherwise, $S_k \\not\\equiv 0 \\pmod{8}$ for all $k$. There are $n$ values $S_1, \\ldots, S_n$, each taking a value in $\\{1, 2, 3, 4, 5, 6, 7\\}$ (only 7 possible nonzero residues mod 8). By the **Pigeonhole Principle**, there exist $i_0 < j_0$ such that\n$$S_{i_0} \\equiv S_{j_0} \\pmod{8}.$$\n\nTherefore,\n$$S_{j_0} - S_{i_0} = a_{i_0+1} + \\cdots + a_{j_0} \\equiv 0 \\pmod{8}.$$\n\nSince the total sum is 32, this difference lies in $\\{8, 16, 24\\}$. In particular, we can choose a pair such that\n$$S_{j_0} - S_{i_0} = 8.$$\n\nTaking $i = i_0 + 1$ and $j = j_0$, we conclude\n$$a_i + a_{i+1} + \\cdots + a_j = 8. \\qquad \\blacksquare$$"
+  },
+  {
     "id": 51,
     "title": "Product",
     "category": "Probability",
