@@ -754,8 +754,8 @@
     "timeLimit": 10,
     "createdAt": "2026-04-11",
     "preview": "Let a₁, …, a₂₀ ∈ ℕ sum to 32. Do there exist i < j such that aᵢ + … + aⱼ = 8?",
-    "question": "Let $a_1, ldots, a_n in mathbb{N}$ such that\n$$a_1 + cdots + a_{20} = 32.$$\nDo there exist integers $i < j$ such that\n$$a_i + a_{i+1} + cdots + a_j = 8?$$",
+    "question": "Let $a_1, \\ldots, a_n \\in \\mathbb{N}$ such that\n$$a_1 + \\cdots + a_{20} = 32.$$\nDo there exist integers $i < j$ such that\n$$a_i + a_{i+1} + \\cdots + a_j = 8?$$",
     "answerType": "theory",
-    "solution": "Define\n$$S_0 = 0, quad S_k = a_1 + cdots + a_k, quad \forall k in [20].$$\n\nSince $a_i > 0$ for all $i in [20]$,\n$$0 = S_0 < S_1 < cdots < S_{20} = 32.$$\n\nConsider the two sets of size 20:\n$$A := {S_1, ldots, S_{20}}, qquad B := {S_0 + 8, ldots, S_{19} + 8}.$$\n\nSince $A subset {1, ldots, 32}$ and $a_{20} > 0$ implies $S_{19} leq 31$, we have\n$$B subset {8, ldots, 39}.$$\n\nTherefore $A cup B subset {1, 2, ldots, 39}$, and by inclusion-exclusion:\n$$39 geq |A cup B| = |A| + |B| - |A cap B| = 40 - |A cap B|.$$\n\nThus $|A cap B| geq 1$, so there exist $i_0, j_0$ such that\n$$S_{i_0} + 8 = S_{j_0}.$$\n\nThis gives\n$$8 = S_{j_0} - S_{i_0} = a_{i_0+1} + cdots + a_{j_0}.$$\n\nTaking $i = i_0 + 1$ and $j = j_0$, we are done. $\blacksquare$"
+    "solution": "Define\n$$S_0 = 0, \\quad S_k = a_1 + \\cdots + a_k, \\quad \\forall k \\in [20].$$\n\nSince $a_i > 0$ for all $i \\in [20]$,\n$$0 = S_0 < S_1 < \\cdots < S_{20} = 32.$$\n\nConsider the two sets of size 20:\n$$A := \\{S_1, \\ldots, S_{20}\\}, \\qquad B := \\{S_0 + 8, \\ldots, S_{19} + 8\\}.$$\n\nSince $A \\subset \\{1, \\ldots, 32\\}$ and $a_{20} > 0$ implies $S_{19} \\leq 31$, we have\n$$B \\subset \\{8, \\ldots, 39\\}.$$\n\nTherefore $A \\cup B \\subset \\{1, 2, \\ldots, 39\\}$, and by inclusion-exclusion:\n$$39 \\geq |A \\cup B| = |A| + |B| - |A \\cap B| = 40 - |A \\cap B|.$$\n\nThus $|A \\cap B| \\geq 1$, so there exist $i_0, j_0$ such that\n$$S_{i_0} + 8 = S_{j_0}.$$\n\nThis gives\n$$8 = S_{j_0} - S_{i_0} = a_{i_0+1} + \\cdots + a_{j_0}.$$\n\nTaking $i = i_0 + 1$ and $j = j_0$, we are done. $\\blacksquare$"
   }
 ]
