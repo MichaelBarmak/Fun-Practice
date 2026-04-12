@@ -21,7 +21,7 @@ export default function QuestionList({ questions, onStartInterview }) {
     setSelectedSource('All');
     setExpandedId(random.id);
     setTimeout(() => {
-      document.getElementById(`question-${random.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById(`question-${random.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 50);
   }
 
